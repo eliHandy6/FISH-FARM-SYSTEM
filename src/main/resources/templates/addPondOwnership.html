@@ -1,0 +1,207 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+	  <head>
+		  	<title>Add Pond Ownership</title>
+		    <meta charset="utf-8">
+		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+				
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+			
+				
+			<link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+			<link rel="stylesheet" href="/sidebar-01/css/style.css">
+			
+	  </head>
+	  <body>
+			
+			<div class="wrapper d-flex align-items-stretch">
+					<nav id="sidebar">
+							<div class="p-4 pt-5">
+								  	<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+							        <ul class="list-unstyled components mb-5">
+										<li  >
+											<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ponds</a>
+											<ul class="collapse list-unstyled" id="ponds">
+
+												<li class>
+													<a href="/pondtype/viewPondTypes">View Ponds</a>
+												</li>
+												<li  >
+													<a href="/pondtype/addNewPondType">Add Pond</a>
+												</li>
+
+
+											</ul>
+										</li>
+										<li >
+											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Species</a>
+											<ul class="collapse list-unstyled" id="species">
+
+												<li >
+													<a href="/species/viewSpecies">View Species</a>
+												</li>
+												<li class>
+													<a href="/species/addSpecies">Add Species</a>
+												</li>
+
+
+											</ul>
+										</li>
+										<li >
+											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>
+											<ul class="collapse list-unstyled" id="owners">
+
+												<li >
+													<a href="/owners/viewOwners">View Owners</a>
+												</li>
+												<li class>
+													<a href="/owners/addOwner">Add Owner</a>
+												</li>
+
+
+											</ul>
+										</li>
+<!--								          -->
+<!--								         <li class="active" >-->
+<!--							             	 <a href="/ownership/viewPondOwnership">Pond Ownership</a>-->
+<!--								             -->
+<!--								          </li>-->
+<!--								            <li >-->
+<!--							             	 <a href="/feeds/viewFeeds">Feeds</a>-->
+<!--								             -->
+<!--								          </li>-->
+								          <li>
+							             	 <a href="#">Portfolio</a>
+								          </li>
+								          <li>
+							             	 <a href="#">Contact</a>
+								          </li>
+							        </ul>
+						
+							      
+				      </div>
+		    	</nav>
+		
+		        <!-- Page Content  -->
+		      <div id="content" class="p-4 p-md-5">
+		
+			        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+				          <div class="container-fluid">
+				
+					            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+						              <i class="fa fa-bars"></i>
+						              <span class="sr-only">Toggle Menu</span>
+					            </button>
+					            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					               	 <i class="fa fa-bars"></i>
+					            </button>
+					
+					            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+						              <ul class="nav navbar-nav ml-auto">
+							                <li class="nav-item active">
+							                    <a class="nav-link" href="#">Home</a>
+							                </li>
+							                <li class="nav-item">
+							                    <a class="nav-link" href="#">About</a>
+							                </li>
+							                <li class="nav-item">
+							                    <a class="nav-link" href="#">Portfolio</a>
+							                </li>
+							                <li class="nav-item">
+							                    <a class="nav-link" href="#">Contact</a>
+							                </li>
+						              </ul>
+					            </div>
+				          </div>
+			        </nav>
+			        
+			        <div class="container">
+			        
+			        	<div class="col-md-10">
+			        	
+			        	<div class="row">
+			        	
+			    
+			        	
+				        	<div class="col-md-4">
+				        			<div align="left">
+										<a href="/ownership/viewPondOwnership"><button class="btn btn-secondary">Back</button></a><br><br>
+									</div>
+				        	
+				        	</div>
+				        	
+				        	<div class="col-md-8">
+				        	
+				        		<div align="center">
+										<h3>Add Pond Ownership</h3>
+									
+								</div>
+				        	
+			        	</div>
+			     	   </div>
+			     
+			     	   <form action="">
+							
+							<label>Pond ID</label><br>
+							        	
+							<select class="form-control">
+								<option></option>
+							
+							</select>
+							
+							<label>Owner ID</label><br>
+							        	
+							<select class="form-control">
+								<option></option>
+							
+							</select>
+							
+					   </br>
+			        
+			       
+			        		<div class="row">
+			        		
+			        			<div class="col-md-8">
+			        			
+			        			</div>
+			        			
+			        			<div class="col-md-4 ">
+			        				<div class="row">
+			        					<div class="col-md-5">
+											<button class="btn btn-success" type="submit" style="float:right">Save</button>
+											
+			        					</div>
+			        					</form>
+			        					<div class="col-md-5 offset=2">
+											<a href="/viewSpecies"><button class="btn btn-danger">Cancel</button></a><br><br>
+			        					
+			        					</div>
+			        				
+			        				</div>
+			        			
+			        			</div>
+			        		
+			        		
+			        		</div>
+			        	 
+			    		 
+			        </div>
+			        
+			        </div>
+			
+			      
+			      		
+				
+		
+					</div>
+		      </div>
+			</div>
+	
+	    <script src="/sidebar-01/js/jquery.min.js"></script>
+	    <script src="/sidebar-01/js/popper.js"></script>
+	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
+	    <script src="/sidebar-01/js/main.js"></script>
+	  </body>
+</html>

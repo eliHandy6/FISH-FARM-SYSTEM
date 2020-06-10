@@ -1,0 +1,243 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org" >
+<head>
+    <title>Fish Variety Stock</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sidebar-01/css/style.css">
+    <link rel="stylesheet" href="/sidebar-01/css/parsley.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"></a>
+            <ul class="list-unstyled components mb-5">
+
+                <li class="active">
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties</a>
+                    <ul class="collapse list-unstyled" id="species">
+
+                        <li class="">
+                            <a href="/species/viewSpecies">View Varieties</a>
+                        </li>
+
+                        <li class="active" >
+                            <a href="#">Varieties Data</a>
+                        </li>
+                        <!--												<li class>-->
+                        <!--													<a href="/species/addSpecies">Add Species</a>-->
+                        <!--												</li>-->
+
+
+                    </ul>
+                </li>
+                <li  >
+                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+                    <ul class="collapse list-unstyled" id="ponds">
+
+                        <li class>
+                            <a href="/pondtype/viewPondTypes">Tank Types</a>
+                        </li>
+                        <li  >
+                            <a href="/pond/viewPonds">Tank Descriptions</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <!--										<li class="active">-->
+                <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
+                <!--											<ul class="collapse list-unstyled" id="species">-->
+
+                <!--												<li class="active">-->
+                <!--													<a href="#">View Species</a>-->
+                <!--												</li>-->
+                <!--												<li class>-->
+                <!--													<a href="/species/addSpecies">Add Species</a>-->
+                <!--												</li>-->
+
+
+                <!--											</ul>-->
+                <!--										</li>-->
+
+                <!--										<li >-->
+                <!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
+                <!--											<ul class="collapse list-unstyled" id="owners">-->
+
+                <!--												<li >-->
+                <!--													<a href="/owners/viewOwners">View Owners</a>-->
+                <!--												</li>-->
+                <!--												<li class>-->
+                <!--													<a href="/owners/addOwner">Add Owner</a>-->
+                <!--												</li>-->
+
+
+                <!--											</ul>-->
+                <!--										</li>-->
+
+
+
+                <!--								          <li >-->
+                <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
+                <!--								             -->
+                <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
+                <li  >
+                    <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
+                    <ul class="collapse list-unstyled" id="feeds">
+
+                        <li  >
+                            <a href="/feeds/viewFeeds">View Feeds</a>
+                        </li>
+                        <!--												<li class>-->
+                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
+                        <!--												</li>-->
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="col-md-10">
+
+                <div align="center">
+                    <h3> Varieties Data</h3>
+
+                </div>
+
+                <div th:switch="${message}">
+                    <div th:case="'success'" class="alert alert-success">
+                        <strong>Success!</strong> <p th:text="${data}"></p>
+                    </div>
+
+                    <div th:case="'failed'" class="alert alert-danger">
+                        <strong>Failed!</strong> <p th:text="${data}"></p>
+                    </div>
+                </div>
+
+
+
+
+
+                <table class="table">
+<!--                    <div align="right">-->
+<!--                        <a href="/species/addSpecies"><button class="btn btn-secondary">Add Variety</button></a><br><br>-->
+<!--                    </div>-->
+
+
+                    <thead>
+                    <tr>
+                        <!--						      <th scope="col">Species Code </th>-->
+                        <th scope="col">Variety</th>
+                        <th></th>
+                        <th scope="col">Number</th>
+                        <th></th>
+                        <th scope="col">Price</th>
+                        <!--						  	  <th scope="col">Generate pdf</th>-->
+
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="varietyStockDat : ${varietyStockData}">
+                        <!--						  <td th:text="${feed.id}">#</td>-->
+
+                        <!--                        <td>	 <i  th:text="${species.GeneName +' '+ species.speciesName}"></i></td>-->
+                        <td th:text="${varietyStockDat.species.GeneName +' '+varietyStockDat.species.SpeciesName}">Variety Name<td>
+                        <td th:text="${varietyStockDat.Number}">Number</td>
+                        <td></td>
+                        <td th:text="${varietyStockDat.Price}">Price</td>
+                        <td></td>
+
+                        <td>
+
+<!--                            <a th:href="@{'/species/edit/'+ ${species.id}}"><button class="btn btn-success ">Edit</button></a>-->
+<!--                            &lt;!&ndash;						  <a th:href="@{'/species/delete/'+${species.id}}"><button class="btn btn-danger" onClick="return confirm('Delete Species?')	">Delete</button></a>&ndash;&gt;-->
+
+
+
+                        </td>
+                    </tr>
+
+
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<script src="/sidebar-01/js/jquery.min.js"></script>
+<script src="/sidebar-01/js/popper.js"></script>
+<script src="/sidebar-01/js/bootstrap.min.js"></script>
+<script src="/sidebar-01/js/main.js"></script>
+</body>
+</html>
