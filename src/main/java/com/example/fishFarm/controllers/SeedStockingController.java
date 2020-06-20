@@ -31,16 +31,24 @@ public class SeedStockingController {
     public String obtainAllDatabaseVales(Model model){
         model.addAttribute("allStockData",seedingService.getallStockingData());
 
-        for (SeedStock seedStock:seedingService.getallStockingData()) {
-
-           System.out.println(seedStock.getPond().getPondNumber());
-          System.out.println(seedStock.getVarietyStock().getSpecies().getGeneName());
-            System.out.println(seedStock.getQuantity());
-            System.out.println(seedStock.getAvailable_quantity());
-            System.out.println(seedStock.getPond().getPondType().getName());
-
-        }
+//        for (SeedStock seedStock:seedingService.getallStockingData()) {
+//
+//           System.out.println(seedStock.getPond().getPondNumber());
+//          System.out.println(seedStock.getVarietyStock().getSpecies().getGeneName());
+//            System.out.println(seedStock.getQuantity());
+//            System.out.println(seedStock.getAvailable_quantity());
+//            System.out.println(seedStock.getPond().getPondType().getName());
+//
+//        }
         return "PondFishStocking";
+    }
+
+    @RequestMapping("addfishStocking")
+    public String addStock(Model model){
+        SeedStock seedStock=new SeedStock();
+        model.addAttribute("seedStock",seedStock);
+        return "addFishStocking";
+
     }
 
 
