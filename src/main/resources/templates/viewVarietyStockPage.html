@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
@@ -155,7 +161,7 @@
 
 
 
-                <table class="table">
+                <table class="table" id="varietyTable">
 
                     <div align="right">
                         <a href="/inventoryManagerVariety/varietyData"><button class="btn btn-secondary">Add Variety Data</button></a><br><br>
@@ -173,36 +179,35 @@
 
                     <thead>
                     <tr>
-                        <!--						      <th scope="col">#</th>-->
                         <th scope="col">Variety Name<th>
-                        <th scope="col">Number<th>
-                        <th scope="col"> Total Price</th>
+                        <th scope="col"> Available Number<th>
 
+                        <th scope="col"> Total Cost</th>
 
-
+                       <th scope="col"> Action</th>
                     </tr>
+                    </tr>
+
                     </thead>
                     <tbody>
 
                     <tr th:each="varietyStockDat : ${varietyStockData}">
                         <!--						  <td th:text="${feed.id}">#</td>-->
 
-<!--                        <td>	 <i  th:text="${species.GeneName +' '+ species.speciesName}"></i></td>-->
                         <td th:text="${varietyStockDat.species.GeneName +' '+varietyStockDat.species.SpeciesName}">Variety Name<td>
-                        <td th:text="${varietyStockDat.Number}">Number</td>
-                        <td></td>
-                        <td th:text="${varietyStockDat.Price}">Price</td>
-                        <td></td>
-<!--                        <td th:text="${medicine.medicinePrice}">Unit  Price</td>-->
-<!--                        <td th:text="${medicine.medicinePrice * medicine.medicineQuantity}">Total Price</td>-->
+                        <td th:text="${varietyStockDat.Number}">Available Number</td>
+
+                        <td th:text="${varietyStockDat.Price}"> Cost</td>
 
 
+                        <td></td>
                         <td>
                             <a th:href="@{'/inventoryManagerVariety/edit/'+ ${varietyStockDat.id}}"><button class="btn btn-success ">Edit</button></a>
 <!--                            <a ><button class="btn btn-success ">Edit</button></a>-->
 <!--                            <a th:href="@{'/inventoryManagerMedicines/delete/'+${medicine.number}}"><button class="btn btn-danger "onClick="return confirm('Delete Medicine')">Delete</button></a>-->
 
                         </td>
+
                     </tr>
 
 
@@ -223,7 +228,15 @@
     </div>
 </div>
 
-<script src="/sidebar-01/js/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#varietyTable').DataTable()
+
+    });
+</script>
+
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

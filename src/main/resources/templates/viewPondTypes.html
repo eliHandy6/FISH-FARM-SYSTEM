@@ -3,15 +3,20 @@
 	  <head>
 		  	<title>View Pond Types</title>
 		  <meta charset="utf-8">
+		  <meta charset="utf-8">
 		  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-		  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+		  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 
 		  <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
-		  <link rel="stylesheet" href="/sidebar-01/css/style.css">
+		  <link rel="stylesheet" href="/sidebar-01/css/style.css">s
 			
 
 
@@ -188,16 +193,11 @@
 						      <th scope="col">Tank Type</th>
 						  	  <th scope="col">Action</th>
 <!--						  	  <th scope="col">Generate pdf</th>-->
-						  	  
-						  	   
-					      
+
 					    </tr>
 				  </thead>
 				  <tbody>
-				   		<tr>
-				   		
-				   		
-				   		</tr>
+
 				  
 
 					    <tr th:each="pondType : ${listOfPondTypes}">
@@ -232,7 +232,15 @@
 		      </div>
 			</div>
 
-	    <script src="/sidebar-01/js/jquery.min.js"></script>
+
+			<script>
+				$(document).ready(function() {
+					$('#pondTypeTable').DataTable()
+
+				});
+			</script>
+
+
 	    <script src="/sidebar-01/js/popper.js"></script>
 	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
 	    <script src="/sidebar-01/js/main.js"></script>

@@ -1,19 +1,27 @@
-<!doctype html>
-<html xmlns:th="http://thymeleaf.org">
-	  <head>
-		  	<title>View Feeds</title>
-		    <meta charset="utf-8">
-		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-		    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-				
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-			
-				
-			<link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
-			<link rel="stylesheet" href="/sidebar-01/css/style.css">
-			
-	  </head>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<title>Spring Boot + JPA + Datatables</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+	<script src="/sidebar-01/js/datatables.js"></script>
+
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/sidebar-01/css/style.css">
+
+</head>
 	  <body>
 			
 			<div class="wrapper d-flex align-items-stretch">
@@ -157,62 +165,84 @@
 									<h3>View Feeds</h3>
 								
 							</div>
-							        	
-			        
-			        	
+
+
+							<table id="feedTable" class="display">
+
+								<!-- Header Table -->
+								<thead>
+								<tr>
+									<th >id<th>
+									<th >FeedName<th>
+									<th >FeedQuantity<th>
+									<th >UnitPrice</th>
+
+								</tr>
+								</thead>
+								<!-- Footer Table -->
+								<tfoot>
+								<tr>
+									<th >id<th>
+									<th >FeedName<th>
+									<th >FeedQuantity<th>
+									<th >UnitPrice</th>
+
+								</tr>
+								</tfoot>
+							</table>
 			        
 			        	  
-			        	<table class="table">
-			        	
-<!--			        		<div align="right">-->
-<!--								<a href="/feeds/addFeed"><button class="btn btn-secondary">Add Feed</button></a><br><br>-->
+<!--			        	<table class="table">-->
+<!--			        	-->
+<!--&lt;!&ndash;			        		<div align="right">&ndash;&gt;-->
+<!--&lt;!&ndash;								<a href="/feeds/addFeed"><button class="btn btn-secondary">Add Feed</button></a><br><br>&ndash;&gt;-->
+<!--&lt;!&ndash;							</div>&ndash;&gt;-->
+
+<!--							<div th:switch="${message}">-->
+<!--								<div th:case="'success'" class="alert alert-success">-->
+<!--									<strong>Success!</strong> <p th:text="${data}"></p>-->
+<!--								</div>-->
+
+<!--								<div th:case="'failed'" class="alert alert-danger">-->
+<!--									<strong>Failed!</strong> <p th:text="${deta}"></p>-->
+<!--								</div>-->
 <!--							</div>-->
+<!--					-->
+<!--				  <thead>-->
+<!--					    <tr>-->
+<!--&lt;!&ndash;						      <th scope="col">#</th>&ndash;&gt;-->
+<!--						      <th scope="col">Feed Name<th>-->
+<!--							  <th scope="col">Feed Quantity<th>-->
+<!--						  	  <th scope="col">Unit Price</th>-->
+<!--							  <th scope="col">Total Price</th>-->
 
-							<div th:switch="${message}">
-								<div th:case="'success'" class="alert alert-success">
-									<strong>Success!</strong> <p th:text="${data}"></p>
-								</div>
+<!--					    </tr>-->
+<!--				  </thead>-->
+<!--				  <tbody>-->
 
-								<div th:case="'failed'" class="alert alert-danger">
-									<strong>Failed!</strong> <p th:text="${deta}"></p>
-								</div>
-							</div>
-					
-				  <thead>
-					    <tr>
-<!--						      <th scope="col">#</th>-->
-						      <th scope="col">Feed Name<th>
-							  <th scope="col">Feed Quantity<th>
-						  	  <th scope="col">Unit Price</th>
-							  <th scope="col">Total Price</th>
-
-					    </tr>
-				  </thead>
-				  <tbody>
-
-					  <tr th:each="feed : ${feedList}">
-<!--						  <td th:text="${feed.id}">#</td>-->
-						  <td th:text="${feed.feedName}">Feed Name<td>
-						  <td th:text="${feed.feedQuality}">Feed Quantity</td>
-						  <td></td>
-						  <td th:text="${feed.unitPrice}">Unit Price</td>
-						  <td th:text="${feed.unitPrice * feed.feedQuality}">Total Price</td>
+<!--					  <tr th:each="feed : ${feedList}">-->
+<!--&lt;!&ndash;						  <td th:text="${feed.id}">#</td>&ndash;&gt;-->
+<!--						  <td th:text="${feed.feedName}">Feed Name<td>-->
+<!--						  <td th:text="${feed.feedQuality}">Feed Quantity</td>-->
+<!--						  <td></td>-->
+<!--						  <td th:text="${feed.unitPrice}">Unit Price</td>-->
+<!--						  <td th:text="${feed.unitPrice * feed.feedQuality}">Total Price</td>-->
 
 
-<!--						  <td>-->
+<!--&lt;!&ndash;						  <td>&ndash;&gt;-->
 
-<!--						  <a th:href="@{'/feeds/edit/'+ ${feed.id}}"><button class="btn btn-success ">Edit</button></a>-->
-<!--						  <a th:href="@{'/feeds/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>-->
+<!--&lt;!&ndash;						  <a th:href="@{'/feeds/edit/'+ ${feed.id}}"><button class="btn btn-success ">Edit</button></a>&ndash;&gt;-->
+<!--&lt;!&ndash;						  <a th:href="@{'/feeds/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>&ndash;&gt;-->
 
-<!--					 	 </td>-->
-				  </tr>
+<!--&lt;!&ndash;					 	 </td>&ndash;&gt;-->
+<!--				  </tr>-->
 
 
-				   
-				   
-				  </tbody>
-				 
-			</table>
+<!--				   -->
+<!--				   -->
+<!--				  </tbody>-->
+<!--				 -->
+<!--			</table>-->
 			        
 			        
 			        </div>
@@ -225,9 +255,6 @@
 		      </div>
 			</div>
 	
-	    <script src="/sidebar-01/js/jquery.min.js"></script>
-	    <script src="/sidebar-01/js/popper.js"></script>
-	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
-	    <script src="/sidebar-01/js/main.js"></script>
+
 	  </body>
 </html>

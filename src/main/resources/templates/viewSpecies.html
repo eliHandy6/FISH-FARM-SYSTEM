@@ -8,9 +8,15 @@
 		    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 				
 			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-			
-				
-			<link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+		  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+		  <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
 			<link rel="stylesheet" href="/sidebar-01/css/style.css">
 			
 	  </head>
@@ -172,7 +178,7 @@
 
 
 
-							<table class="table">
+							<table class="table" id="speciesTable">
 								<div align="right">
 									<a href="/species/addSpecies"><button class="btn btn-secondary">Add Variety</button></a><br><br>
 								</div>
@@ -227,8 +233,17 @@
 					</div>
 		      </div>
 			</div>
-	
-	    <script src="/sidebar-01/js/jquery.min.js"></script>
+
+
+			<script>
+				$(document).ready(function() {
+					$('#speciesTable').DataTable()
+
+				});
+			</script>
+
+
+
 	    <script src="/sidebar-01/js/popper.js"></script>
 	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
 	    <script src="/sidebar-01/js/main.js"></script>

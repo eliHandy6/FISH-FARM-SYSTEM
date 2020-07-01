@@ -1,7 +1,7 @@
 <!doctype html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org" >
 <head>
-    <title>Tank Fish Stocking</title>
+    <title>Pond Stocking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,14 +9,19 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
+    <link rel="stylesheet" href="/sidebar-01/css/parsley.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
 
 </head>
 <body>
 
 <div class="wrapper d-flex align-items-stretch">
+
     <nav id="sidebar">
         <div class="p-4 pt-5">
             <a href="#" class="img logo rounded-circle mb-5"></a>
@@ -169,6 +174,7 @@
         </div>
     </nav>
 
+
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
@@ -204,112 +210,142 @@
 
         <div class="container">
 
-            <div class="col-md-12">
+            <div class="col-md-10">
 
-                <div align="center">
-                    <h3> Fish Stocking Data</h3>
+                <div class="row">
 
+
+
+                    <div class="col-md-4">
+                        <div align="left">
+                            <a href="/operationManager/findall"><button class="btn btn-secondary">Back</button></a><br><br>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-8">
+
+                        <div align="center">
+                            <h3>Add Pond Stocking</h3>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div th:switch="${values}">
+                    <div th:case="'success'" class="alert alert-success">
+                        <strong>Success!</strong> <p th:text="${data}"></p>
+                    </div>
+
+                    <div th:case="'failed'" class="alert alert-danger">
+                        <strong>Failed!</strong> <p th:text="${data}"></p>
+                    </div>
                 </div>
 
 
 
+                <form action="#" th:action="@{/inventoryManagerMedicines/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
+
+                    <!--								<label>Feed ID eg <i>Feed-001</i></label><br>-->
+
+                    <!--								<input type="text" name="" class="form-control" th:field="*{id}" data-parsley-pattern="[a-zA-Z]*[/-][0-9]*" data-parsley-length="[5,10]"  data-parsley-trigger="keyup">-->
+
+                    <label>Pond  Number (Volume in M cubic)</label><br>
+
+                    <select  th:field="*{pond}" class="form-control">
 
 
-                <table class="table">
+                        <option  th:each="pond: ${pond} "th:value="${pond.id}" th:text="${pond.pondNumber +' --------   (with volume '+pond.pondArea*pond.avarageDepth +' ) and pondType('+ pond.pondType.name+' )'}" ></option>
 
-                    <div align="right">
-                        <a href="/operationManager/addfishStocking"><button class="btn btn-secondary">Add Seed Stocking</button></a><br><br>
-                    </div>
 
-                    <div th:switch="${message}">
-                        <div th:case="'success'" class="alert alert-success">
-                            <strong>Success!</strong> <p th:text="${data}"></p>
+                    </select>
+
+
+
+
+
+<!--                    <input type="text" name="" class="form-control" th:field="*{pond}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 50]" data-parsley-trigger="keyup">-->
+
+                    <label>Variety eg  <i> Bidens pilosa</i> </label><br>
+
+
+
+
+                    <select  th:field="*{varietyStock}" class="form-control">
+
+
+                        <option  th:each="varietystock: ${varietystock} "th:value="${varietystock.id}" th:text="${varietystock.species.geneName +' '+ varietystock.species.speciesName +     ' --------  Available --------'+varietystock.number}" ></option>
+
+
+                    </select>
+
+<!--                    <input type="text" name="" class="form-control" th:field="*{varietyStock}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">-->
+
+                    <label> Variety Quantity eg <i> 400.0</i></label><br>
+                    <input type="text" name="" class="form-control" th:field="*{quantity}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+
                         </div>
 
-                        <div th:case="'failed'" class="alert alert-danger">
-                            <strong>Failed!</strong> <p th:text="${deta}"></p>
-                        </div>
-                    </div>
+                        <div class="col-md-4 ">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <button class="btn btn-success" type="submit" style="float:right">Save</button>
 
-                    <thead>
-                    <tr>
-                        <!--						      <th scope="col">#</th>-->
-<!--                        <th scope="col">Date<th>-->
-                        <th scope="col">Pond Number<th>
-                        <th scope="col">Pond Type<th>
-                        <th scope="col"> Species </th>
-
-                        <th scope="col"> Initial Quantity </th>
-                        <th scope="col">Date</th>
-<!--                        <th scope="col">Initial Stock Density </th>-->
-<!--                        <th scope="col">Date</th>-->
-
-                        <th scope="col">Current Quantity </th>
-
-                        <th scope="col">Date </th>
-                        <th scope="col">Initial Stock Density </th>
-                        <th scope="col">current Stock Density </th>
+                                </div>
+                </form>
 
 
 
+                <div class="col-md-5 offset=2">
+                    <a href=""><button class="btn btn-danger">Cancel</button></a><br><br>
 
-
-
-                    </tr>
-                    </thead>
-                                        <tbody>
-
-                                        <tr th:each="stockData : ${allStockData}">
-                                            <!--						  <td th:text="${feed.id}">#</td>-->
-                                            <td th:text="${stockData.pond.pondNumber}">Pond Number<td>
-                                            <td th:text="${stockData.pond.pondType.name}">Pond Type<td>
-                                            <td th:text="${stockData.varietyStock.species.geneName +' '+stockData.varietyStock.species.speciesName}">Species </td>
-<!--                                            <td></td>-->
-                                            <td th:text="${stockData.quantity}">Initial Quantity</td>
-
-                                            <td></td>
-
-<!--                                            <td th:text="${(stockData.pond.pondArea * stockData.pond.avarageDepth)/stockData.quantity}">Density</td>-->
-
-                                            <td th:text="${stockData.quantity}">Final Quantity</td>
-<!--                                            <td th:text="${stockData.available}"> Available Quantity</td>-->
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-
-<!--                                            <td th:text="${(stockData.pond.pondArea * stockData.pond.avarageDepth)/stockData.quantity}">Density</td>-->
-
-<!--                                            <td th:text="${(stockData.pond.pondArea * stockData.pond.avarageDepth)/stockData.quantity}">Density</td>-->
-
-                                            <td>
-
-                                                <a th:href="@{'/operationManager/edit/'+ ${stockData.number}}"><button class="btn btn-success ">Edit</button></a>
-                                                <!--                        						  <a th:href="@{'/inventoryManager/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>-->
-
-                                            </td>
-                    </tr>
-
-
-
-
-                    </tbody>
-
-                </table>
-
+                </div>
 
             </div>
 
 
-
-
-
         </div>
+
+
     </div>
+
+
 </div>
 
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+
+<script >
+
+    $(document).ready(function(){
+        $('#validate_form').parsley();
+
+
+
+    });
+</script>
 <script src="/sidebar-01/js/jquery.min.js"></script>
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>
+<script src="/sidebar-01/js/parsley.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
 </body>
 </html>
+

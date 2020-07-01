@@ -1,15 +1,21 @@
-//$(document).ready( function () {
-//	 var table = $('#pondTypeTable').DataTable({
-//			"sAjaxSource": "/viewPondTypes",
-//			"sAjaxDataProp": "",
-//			"order": [[ 0, "asc" ]],
-//			"aoColumns": [
-//			    { "mData": "id"},
-//			    	{ "mData": "name" }
-////				  { "mData": "lastName" },
-////				  { "mData": "email" },
-////				  { "mData": "phone" },
-////				  { "mData": "active" }
-//			]
-//	 })
-//});
+$(document).ready( function () {
+	 var table = $('#feedTable').DataTable({
+
+		 "ajax": {
+			 "url": "/feeds/viewFeeds",
+			 "type": "GET"
+		 },
+			"sAjaxSource": "/feeds/viewFeeds",
+			"sAjaxDataProp": "",
+			"order": [[ 0, "asc" ]],
+			"aoColumns": [
+				{ "mData": "id"},
+			       { "mData": "FeedName"},
+			    	{ "mData": "FeedQuality" },
+				  { "mData":"UnitPrice" }
+
+
+
+			]
+	 })
+});

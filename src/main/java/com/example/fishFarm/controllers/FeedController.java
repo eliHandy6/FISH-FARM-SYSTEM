@@ -20,23 +20,35 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("feeds")
+
 public class FeedController {
 
-	@Autowired
-	FeedService feedService;
-	PondService pondService;
 
-	@RequestMapping("viewFeeds")
-	public String viewFeed(Model model) {
-		List<Feed> feedList = feedService.findAllFeeds();
-
-
-
-		model.addAttribute("feedList", feedList);
-		return "viewFeeds";
-
+	@RequestMapping(path="/", method=RequestMethod.GET)
+	public String goHome(){
+		return "index";
 	}
+
+	@RequestMapping(path="/FarmManager/feeds", method=RequestMethod.GET)
+	public String goFeeds(){
+		return "viewFeeds";
+	}
+}
+
+
+
+
+
+//	@RequestMapping("viewFeeds")
+//	public String viewFeed(Model model) {
+//		List<Feed> feedList = feedService.findAllFeeds();
+//
+//
+//
+//		model.addAttribute("feedList", feedList);
+//		return "viewFeeds";
+//
+//	}
 
 //	@RequestMapping("addFeed")
 //	public String addFeed(Model model) {
@@ -170,7 +182,7 @@ public class FeedController {
 //		return "redirect:/feeds/viewFeeds";
 //	}
 
-}
+
 	
 
 

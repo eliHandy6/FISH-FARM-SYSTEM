@@ -7,7 +7,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
@@ -168,7 +172,7 @@
 
 
 
-                <table class="table">
+                <table class="table" id="pondtable">
                     <div align="right">
                         <a href="/pond/addPond"><button class="btn btn-secondary">Add Pond</button></a><br><br>
                     </div>
@@ -177,14 +181,12 @@
                     <thead>
                     <tr>
                         <!--						      <th scope="col">Species Code </th>-->
-                        <th scope="col">Pond Number</th>
-                        <th scope="col">Pond Type</th>
-                        <th scope="col">Pond Area</th>
-                        <th scope="col">Avarage depth</th>
+                        <th >Pond Number</th>
+                        <th >Pond Type</th>
+                        <th >Pond Area</th>
+                        <th >Avarage depth</th>
+                        <th >Action</th>
                         <!--						  	  <th scope="col">Generate pdf</th>-->
-
-
-
                     </tr>
                     </thead>
                     <tbody>
@@ -195,7 +197,7 @@
                         <!--/*@thymesVar id="id" type="int"*/-->
                         <!--					  <td th:text="${species.id}"></td>-->
                         <!--/*@thymesVar id="speciesName" type="String"*/-->
-                        <td th:text="${pond.pondNumber}">Pond Number</td>
+                        <td th:text="${pond.pondNumber}">Pond Numberi</td>
                         <td th:text="${pond.pondType.name}">Pond Type</td>
                         <td th:text="${pond.pondArea}">Pond Area</td>
                         <td th:text="${pond.avarageDepth}">Avarage depth</td>
@@ -229,9 +231,16 @@
     </div>
 </div>
 
-<script src="/sidebar-01/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#pondtable').DataTable()
+
+    });
+</script>
+
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>
+
 </body>
 </html>

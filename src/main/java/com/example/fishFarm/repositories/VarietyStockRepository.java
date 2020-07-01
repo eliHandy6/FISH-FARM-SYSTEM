@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VarietyStockRepository extends JpaRepository<VarietyStock,Integer> {
 
-    public Boolean existsBySpeciesId(int id);
+    Boolean existsBySpeciesId(int id);
 
-    public VarietyStock findBySpeciesId(int id);
+    VarietyStock findBySpeciesId(int id);
 
-    public  Boolean existsById(int id);
+    Boolean existsById(int id);
 }

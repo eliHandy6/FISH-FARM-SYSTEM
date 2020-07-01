@@ -47,7 +47,9 @@ public class SeedStockingController {
     public String addStock(Model model){
         SeedStock seedStock=new SeedStock();
         model.addAttribute("seedStock",seedStock);
-        return "addFishStocking";
+        model.addAttribute("pond",pondService.findAllPonds());
+        model.addAttribute("varietystock",varietyStockService.findAll());
+        return "addfishStocking";
 
     }
 

@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
@@ -155,7 +161,7 @@
 
 
 
-                <table class="table">
+                <table class="table" id="feedTable">
 
                     			        		<div align="right">
                     								<a href="/inventoryManager/addFeed/"><button class="btn btn-secondary">Add Feed</button></a><br><br>
@@ -178,6 +184,8 @@
                         <th scope="col">Feed Quantity<th>
                         <th scope="col">Unit Price</th>
                         <th scope="col">Total Price</th>
+                        <th scope="col">Action</th>
+
 
                     </tr>
                     </thead>
@@ -198,6 +206,7 @@
 <!--                        						  <a th:href="@{'/inventoryManager/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>-->
 
                         					 	 </td>
+
                     </tr>
 
 
@@ -218,7 +227,14 @@
     </div>
 </div>
 
-<script src="/sidebar-01/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#feedTable').DataTable()
+
+    });
+</script>
+
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

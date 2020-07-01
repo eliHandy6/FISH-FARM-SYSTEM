@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 public interface PondRepository extends JpaRepository<Pond, Integer> {
 
 
-    public Boolean existsByPondNumber(int number);
+    Boolean existsByPondNumber(int number);
 
-    public  Boolean existsById(int id);
+    Boolean existsById(int id);
 
 
 //    @Query("SELECT p.pondNumber,p.pondArea,p.avarageDepth ,t.pondType FROM  Pond p JOIN p.pondType t")
