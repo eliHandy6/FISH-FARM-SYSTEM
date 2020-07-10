@@ -17,7 +17,8 @@ public class SeedStock {
     private VarietyStock varietyStock;
 
     private int quantity;
-    private int available;
+
+  //  private int available;
 
 
 //    private String date;
@@ -25,11 +26,12 @@ public class SeedStock {
     public SeedStock() {
     }
 
-    public SeedStock(int number,Pond pond,int quantity,int available_quantity){
+    public SeedStock(int number,Pond pond ,VarietyStock VarietyStock,int quantity){
         this.number=number;
         this.pond=pond;
+        this.varietyStock=VarietyStock;
         this.quantity=quantity;
-        this.available=available_quantity;
+//        this.available=available_quantity;
     }
 
     public int getNumber() {
@@ -60,13 +62,13 @@ public class SeedStock {
         this.quantity = quantity;
     }
 
-    public int getAvailable_quantity() {
-        return available;
-    }
-
-    public void setAvailable_quantity(int available_quantity) {
-        this.available = available_quantity;
-    }
+//    public int getAvailable_quantity() {
+//        return available;
+//    }
+//
+//    public void setAvailable_quantity(int available_quantity) {
+//        this.available = available_quantity;
+//    }
 
 //    public String getDate() {
 //        return date;
@@ -75,4 +77,17 @@ public class SeedStock {
 //    public void setDate(String date) {
 //        this.date = date;
 //    }
+
+
+    @Override
+    public String toString() {
+        return "SeedStock{" +
+                "number=" + number +
+                ", pond=" + pond +
+                ", varietyStock=" + varietyStock +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+
 }

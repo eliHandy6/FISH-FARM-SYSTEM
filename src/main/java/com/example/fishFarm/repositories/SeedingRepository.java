@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SeedingRepository extends JpaRepository<SeedStock,Integer> {
+
+    public  boolean existsByPondAndVarietyStock(int pondno,int variety);
 }

@@ -33,4 +33,10 @@ public class SeedingService {
     public void DeletebyId(int id){
         seedingRepository.deleteById(id);
     }
+
+
+    public  Boolean exiting(int pond,int  species){
+       return  seedingRepository.existsByPondAndVarietyStock(pond,species);
+
+    }
 }

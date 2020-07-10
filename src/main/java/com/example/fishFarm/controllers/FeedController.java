@@ -20,35 +20,23 @@ import java.util.List;
 
 
 @Controller
-
+@RequestMapping("feeds")
 public class FeedController {
 
+	@Autowired
+	FeedService feedService;
 
-	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String goHome(){
-		return "index";
-	}
 
-	@RequestMapping(path="/FarmManager/feeds", method=RequestMethod.GET)
-	public String goFeeds(){
+	@RequestMapping("viewFeeds")
+	public String viewFeed(Model model) {
+		List<Feed> feedList = feedService.findAllFeeds();
+
+
+		model.addAttribute("feedList", feedList);
 		return "viewFeeds";
+
 	}
 }
-
-
-
-
-
-//	@RequestMapping("viewFeeds")
-//	public String viewFeed(Model model) {
-//		List<Feed> feedList = feedService.findAllFeeds();
-//
-//
-//
-//		model.addAttribute("feedList", feedList);
-//		return "viewFeeds";
-//
-//	}
 
 //	@RequestMapping("addFeed")
 //	public String addFeed(Model model) {

@@ -16,7 +16,7 @@ public class FeedRestController {
     @Autowired
     FeedService feedService;
 
-    @RequestMapping(path = "/feeds/viewFeeds",method = RequestMethod.GET)
+    @RequestMapping(path = "/fes",method = RequestMethod.GET)
         public List<Feed> viewFeed() {
          return feedService.findAllFeeds();
 	}

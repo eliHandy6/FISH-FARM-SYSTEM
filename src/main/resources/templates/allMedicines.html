@@ -3,16 +3,19 @@
 <head>
     <title>Inventory View Medicines</title>
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
-
 </head>
 <body>
 
@@ -155,7 +158,7 @@
 
 
 
-                <table class="table">
+                <table class="table" id="medicinetable">
 
                     <div align="right">
                         <a href="/inventoryManagerMedicines/addmedicine"><button class="btn btn-secondary">Add Medicine</button></a><br><br>
@@ -178,8 +181,7 @@
                         <th scope="col">Medicine Quantity<th>
                         <th scope="col"> Unit Price</th>
                         <th scope="col"> Total Price</th>
-
-
+                        <th scope="col"> Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -219,8 +221,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#medicinetable').DataTable()
 
-<script src="/sidebar-01/js/jquery.min.js"></script>
+    });
+
+
+
+</script>
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

@@ -9,9 +9,16 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
+
 
 </head>
 <body>
@@ -215,7 +222,7 @@
 
 
 
-                <table class="table">
+                <table class="table" id="stockTable">
 
                     <div align="right">
                         <a href="/operationManager/addfishStocking"><button class="btn btn-secondary">Add Seed Stocking</button></a><br><br>
@@ -241,14 +248,16 @@
 
                         <th scope="col"> Initial Quantity </th>
                         <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+
 <!--                        <th scope="col">Initial Stock Density </th>-->
 <!--                        <th scope="col">Date</th>-->
 
-                        <th scope="col">Current Quantity </th>
+<!--                        <th scope="col">Current Quantity </th>-->
 
-                        <th scope="col">Date </th>
-                        <th scope="col">Initial Stock Density </th>
-                        <th scope="col">current Stock Density </th>
+<!--                        <th scope="col">Date </th>-->
+<!--                        <th scope="col">Initial Stock Density </th>-->
+<!--                        <th scope="col">current Stock Density </th>-->
 
 
 
@@ -271,11 +280,9 @@
 
 <!--                                            <td th:text="${(stockData.pond.pondArea * stockData.pond.avarageDepth)/stockData.quantity}">Density</td>-->
 
-                                            <td th:text="${stockData.quantity}">Final Quantity</td>
+<!--                                            <td th:text="${stockData.quantity}">Final Quantity</td>-->
 <!--                                            <td th:text="${stockData.available}"> Available Quantity</td>-->
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+
 
 <!--                                            <td th:text="${(stockData.pond.pondArea * stockData.pond.avarageDepth)/stockData.quantity}">Density</td>-->
 
@@ -307,7 +314,14 @@
     </div>
 </div>
 
-<script src="/sidebar-01/js/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+        $('#stockTable').DataTable()
+
+    });
+</script>
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

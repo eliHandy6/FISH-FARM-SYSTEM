@@ -233,7 +233,7 @@
                     </div>
                 </div>
 
-                <div th:switch="${values}">
+                <div th:switch="${message}">
                     <div th:case="'success'" class="alert alert-success">
                         <strong>Success!</strong> <p th:text="${data}"></p>
                     </div>
@@ -245,7 +245,7 @@
 
 
 
-                <form action="#" th:action="@{/inventoryManagerMedicines/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
+                <form action="#" th:action="@{/operationManager/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
 
                     <!--								<label>Feed ID eg <i>Feed-001</i></label><br>-->
 
@@ -255,9 +255,7 @@
 
                     <select  th:field="*{pond}" class="form-control">
 
-
-                        <option  th:each="pond: ${pond} "th:value="${pond.id}" th:text="${pond.pondNumber +' --------   (with volume '+pond.pondArea*pond.avarageDepth +' ) and pondType('+ pond.pondType.name+' )'}" ></option>
-
+                        <option  th:each="pond: ${pond} "th:value="${pond.id}" th:text="${pond.pondNumber +  ' =================> Volume ='+pond.pondArea*pond.avarageDepth +',  '+ pond.pondType.name+' '}" ></option>
 
                     </select>
 
@@ -269,21 +267,16 @@
 
                     <label>Variety eg  <i> Bidens pilosa</i> </label><br>
 
-
-
-
                     <select  th:field="*{varietyStock}" class="form-control">
 
-
-                        <option  th:each="varietystock: ${varietystock} "th:value="${varietystock.id}" th:text="${varietystock.species.geneName +' '+ varietystock.species.speciesName +     ' --------  Available --------'+varietystock.number}" ></option>
-
+                        <option  th:each="varietystocky: ${varietystock} "th:value="${varietystocky.id}" th:text="${varietystocky.species.geneName +' '+ varietystocky.species.speciesName  +     ' ====================> Available ='+varietystocky.number}" ></option>
 
                     </select>
 
 <!--                    <input type="text" name="" class="form-control" th:field="*{varietyStock}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">-->
 
                     <label> Variety Quantity eg <i> 400.0</i></label><br>
-                    <input type="text" name="" class="form-control" th:field="*{quantity}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>
+                    <input type="text" name="" class="form-control" th:field="*{quantity}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0"><br>
 
 
 
