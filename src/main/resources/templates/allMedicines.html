@@ -177,10 +177,10 @@
                     <thead>
                     <tr>
                         <!--						      <th scope="col">#</th>-->
-                        <th scope="col">Medicine  Name<th>
-                        <th scope="col">Medicine Quantity<th>
-                        <th scope="col"> Unit Price</th>
-                        <th scope="col"> Total Price</th>
+                        <th scope="col">Medicine  Name</th>
+                        <th scope="col">Medicine Quantity</th>
+                        <th scope="col"> Created At</th>
+                        <th scope="col"> Updated At</th>
                         <th scope="col"> Action</th>
                     </tr>
                     </thead>
@@ -188,11 +188,11 @@
 
                     <tr th:each="medicine : ${medicines}">
                         <!--						  <td th:text="${feed.id}">#</td>-->
-                        <td th:text="${medicine.medicineName}">Medicine  Name<td>
-                        <td th:text="${medicine.medicineQuantity}">Medicine Quantity</td>
-                        <td></td>
-                        <td th:text="${medicine.medicinePrice}">Unit  Price</td>
-                        <td th:text="${medicine.medicinePrice * medicine.medicineQuantity}">Total Price</td>
+                        <td th:text="${medicine.medicineName}">Medicine  Name</td>
+                        <td th:text="${medicine.medicineQuantity +'('+medicine.medicineUnit+')'}">Medicine Quantity</td>
+
+                        <td th:text="${medicine.createdAt}">Created At</td>
+                        <td th:text="${medicine.updatedAt}">Updated At</td>
 
 
 

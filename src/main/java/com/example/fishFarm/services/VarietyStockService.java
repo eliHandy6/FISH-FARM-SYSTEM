@@ -1,5 +1,6 @@
 package com.example.fishFarm.services;
 
+import com.example.fishFarm.models.Species;
 import com.example.fishFarm.models.VarietyStock;
 import com.example.fishFarm.repositories.VarietyStockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,34 @@ public class VarietyStockService {
     }
 
     public void saveVarietyData(VarietyStock s){
-        repository.save(s);
+
+        if(existByID(s.getId())){
+
+            VarietyStock varietyStock=findbyId(s.getId());
+            String created=varietyStock.getCreatedAt();
+
+            s.setCreatedAt(created);
+
+            repository.save(s);
+
+        }
+        else{
+            repository.save(s);
+        }
+
+//        if(existByID(s.getId())){
+//            VarietyStock varietyStock=findbySpecies(s.getId());
+//
+//            String created=varietyStock.getCreatedAt();
+//
+//            s.setCreatedAt(created);
+//            repository.save(s);
+//
+//        }
+//        else{
+//            repository.save(s);
+//        }
+
     }
 
     public void deleteVariety(int id){
@@ -40,5 +68,9 @@ public class VarietyStockService {
 
     public Boolean existByID(int id){
         return repository.existsById(id);
+    }
+
+    public VarietyStock findbyId(int id){
+        return repository.findById(id).get();
     }
 }

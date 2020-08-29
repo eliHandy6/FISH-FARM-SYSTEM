@@ -13,7 +13,7 @@ public interface  SpeciesRepository extends  JpaRepository<Species, Integer> {
 
     Boolean existsByspeciesName(String speciesName);
 
-    Boolean existsById(int id);
+    Boolean existsByName(String name);
 
     Boolean existsByGeneNameAndSpeciesName(String gname,String sname);
 

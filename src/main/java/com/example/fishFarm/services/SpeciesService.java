@@ -19,7 +19,19 @@ public class SpeciesService {
 	}
 	
 	public void saveSpecies(Species species) {
-		speciesRepo.save(species);
+		if(existById(species.getId())){
+			Species species1=findSpeciesById(species.getId());
+
+			String created=species1.getCreatedAt();
+
+			species.setCreatedAt(created);
+			speciesRepo.save(species);
+
+		}
+		else{
+			speciesRepo.save(species);
+		}
+
 	}
 	
 	
@@ -44,6 +56,10 @@ public class SpeciesService {
 
 	public Boolean existById(int id){
 		return speciesRepo.existsById(id);
+	}
+
+	public Boolean existbyName(String name){
+		return speciesRepo.existsByName(name);
 	}
 
 

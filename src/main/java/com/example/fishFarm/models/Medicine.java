@@ -10,18 +10,47 @@ public class Medicine {
     private int number;
     private String medicineName;
     private double medicineQuantity;
-    private double medicinePrice;
+    private String  medicineUnit;
+    private String createdAt;
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getMedicineUnit() {
+        return medicineUnit;
+    }
+
+    public void setMedicineUnit(String medicineUnit) {
+        this.medicineUnit = medicineUnit;
+    }
+
+    private String updatedAt;
 
     public Medicine() {
         super();
     }
 
-    public Medicine(int number,String medicineName,double medicineQuantity,double medicinePrice) {
+    public Medicine(int number,String medicineName,double medicineQuantity,String medicineUnit,String createdAt,String updatedAt) {
         super();
         this.number=number;
         this.medicineName=medicineName;
         this.medicineQuantity=medicineQuantity;
-        this.medicinePrice=medicinePrice;
+        this.medicineUnit=medicineUnit;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
 
     public int getNumber() {
@@ -48,11 +77,5 @@ public class Medicine {
         this.medicineQuantity = medicineQuantity;
     }
 
-    public double getMedicinePrice() {
-        return medicinePrice;
-    }
 
-    public void setMedicinePrice(double medicinePrice) {
-        this.medicinePrice = medicinePrice;
-    }
 }

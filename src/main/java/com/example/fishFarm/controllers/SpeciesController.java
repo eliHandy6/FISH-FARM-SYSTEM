@@ -70,37 +70,48 @@ public class SpeciesController {
 		String message;
 
 
-		Boolean existinSpeciesTable=speciesService.existInSpeciesTable(species.getGeneName(),species.getSpeciesName());
+		Boolean existinSpeciesTable = speciesService.existInSpeciesTable(species.getGeneName(), species.getSpeciesName());
 
-		List<Species> speciesList=speciesService.findByGeneandSpecies(species.getGeneName(),species.getSpeciesName());
+		List<Species> speciesList = speciesService.findByGeneandSpecies(species.getGeneName(), species.getSpeciesName());
+		Boolean foundByName = speciesService.existbyName(species.getName());
+
+		if (foundByName) {
 
 
-			if(speciesList.size()>0){
+			message = "Fish Species " + species.getName()+ " " + "is Existing";
 
-				message = "Fish Species " + species.getGeneName() + " " + species.getSpeciesName() + " " + "is Existing";
+			redirAttrs.addFlashAttribute("data", message);
+			redirAttrs.addFlashAttribute("message", "failed");
 
-				redirAttrs.addFlashAttribute("data", message);
-				redirAttrs.addFlashAttribute("message", "failed");
+			return "redirect:/species/viewSpecies";
 
-				return "redirect:/species/viewSpecies";
+		} else {
 
-			}
 
-			else{
+		//	if (speciesList.size() > 0 && foundByName==false) {
+
+//				message = "Fish Species " + species.getGeneName() + " " + species.getSpeciesName() + " " + "is Existing";
+//
+//				redirAttrs.addFlashAttribute("data", message);
+//				redirAttrs.addFlashAttribute("message", "failed");
+//
+//				return "redirect:/species/viewSpecies";
+//
+//			} else {
 
 				speciesService.saveSpecies(species);
 				message = "id " + species.getId() + " " + "Successfully Edited";
 				redirAttrs.addFlashAttribute("data", message);
 				redirAttrs.addFlashAttribute("message", "success");
 
-				return "redirect:/species/viewSpecies";
-			}
+		//	}
 
 
+		}
 
+		return "redirect:/species/viewSpecies";
 
-
-
+	}
 
 //		Boolean ifExistBoolean=speciesService.existBySpeciesName(species.getSpeciesName());
 //
@@ -138,7 +149,7 @@ public class SpeciesController {
 //		}
 
 
-	}
+
 
 	@RequestMapping(value="save",method = RequestMethod.POST)
 
@@ -146,16 +157,16 @@ public class SpeciesController {
 
 		List<Species> speciesList=speciesService.findByGeneandSpecies(species.getGeneName(),species.getSpeciesName());
 		Boolean answer=speciesService.existBySpeciesName(species.getSpeciesName());
-		Boolean foundById=speciesService.existById(species.getId());
+		Boolean foundByName=speciesService.existbyName(species.getName());
 
 		String message;
 //
 //		System.out.println(foundById);
 
 
-		if(foundById==true){
+		if(foundByName==true){
 
-			message="ID "+species.getId()+" "+ "is Already Used ";
+			message="Name "+species.getName()+" "+ "is existing  ";
 
 			attrdir.addFlashAttribute("data",message);
 			attrdir.addFlashAttribute("message","failed");

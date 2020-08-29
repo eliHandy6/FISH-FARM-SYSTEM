@@ -51,14 +51,14 @@
 								</ul>
 							</li>
 							<li class="active" >
-								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ponds</a>
 								<ul class="collapse list-unstyled" id="ponds">
 
 									<li class ="active">
-										<a href="#">Tank Types</a>
+										<a href="#">Pond Types</a>
 									</li>
 									<li  >
-										<a href="/pond/viewPonds">Tank Descriptions</a>
+										<a href="/pond/viewPonds">Farm Ponds</a>
 									</li>
 
 
@@ -164,7 +164,7 @@
 			        	<div class="col-md-10">
 			        	
 			        		<div align="center">
-									<h3> Tank Types </h3>
+									<h3> Pond Types </h3>
 								
 							</div>
 
@@ -183,14 +183,16 @@
 			        	<table class="table" id="pondTypeTable" >
 
 							<div align="right">
-								<a href="/pondtype/addNewPondType"><button class="btn btn-secondary">Add Tank Type</button></a><br><br>
+								<a href="/pondtype/addNewPondType"><button class="btn btn-secondary">Add Pond Type</button></a><br><br>
 							</div>
 
 
 							<thead>
 					    <tr>
 <!--						      <th scope="col">#</th>-->
-						      <th scope="col">Tank Type</th>
+						      <th scope="col">Pond Type</th>
+							  <th scope="col">Created At</th>
+							  <th scope="col">Updated At</th>
 						  	  <th scope="col">Action</th>
 <!--						  	  <th scope="col">Generate pdf</th>-->
 
@@ -203,6 +205,10 @@
 					    <tr th:each="pondType : ${listOfPondTypes}">
 <!--			                <td th:text="${pondType.id}">#</td>-->
 			                <td th:text="${pondType.name}">#</td>
+
+							<td th:text="${pondType.createdAt}">#</td>
+							<td th:text="${pondType.updatedAt}">#</td>
+
 			                  <td>
 			             
 			                <a th:href="@{'/pondtype/edit/'+ ${pondType.id}}"><button class="btn btn-success ">Edit</button></a>
@@ -239,8 +245,7 @@
 
 				});
 			</script>
-
-
+			<script src="/sidebar-01/js/jquery.min.js"></script>
 	    <script src="/sidebar-01/js/popper.js"></script>
 	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
 	    <script src="/sidebar-01/js/main.js"></script>

@@ -12,6 +12,8 @@ public class PondType {
 //	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	private String name;
+	private String createdAt;
+	private String updatedAt;
 	
 	
 	
@@ -28,11 +30,21 @@ public class PondType {
 	}
 
 
+	public String getCreatedAt() {
+		return createdAt;
+	}
 
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
 
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
 
-
-
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 
 	public int getId() {
 		return id;
@@ -60,11 +72,5 @@ public class PondType {
 	}
 
 
-	@Override
-	public String toString() {
-		return "PondType{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				'}';
-	}
+
 }

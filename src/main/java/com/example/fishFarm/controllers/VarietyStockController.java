@@ -1,5 +1,6 @@
 package com.example.fishFarm.controllers;
 
+import com.example.fishFarm.models.Species;
 import com.example.fishFarm.models.VarietyStock;
 import com.example.fishFarm.services.PondTypeService;
 import com.example.fishFarm.services.SpeciesService;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+import java.util.Objects;
+
 @Controller
 @RequestMapping("inventoryManagerVariety")
 
@@ -23,34 +27,33 @@ public class VarietyStockController {
     VarietyStockService varietyStockService;
 
     @Autowired
-    SpeciesService  speciesService;
+    SpeciesService speciesService;
 
 
-    @RequestMapping(value="Save",method = RequestMethod.POST)
-    public  String saveVarietyData(@ModelAttribute("varietyStock")VarietyStock varietyStock,RedirectAttributes redirectAttributes){
+    @RequestMapping(value = "Save", method = RequestMethod.POST)
+    public String saveVarietyData(@ModelAttribute("varietyStock") VarietyStock varietyStock, RedirectAttributes redirectAttributes) {
 
         String data;
 
-        System.out.println(varietyStock.getSpecies());
+//        System.out.println(varietyStock.getSpecies());
 
-        Boolean existbySpecies=varietyStockService.existbySpecies(varietyStock.getSpecies().getId());
+        Boolean existbySpecies = varietyStockService.existbySpecies(varietyStock.getSpecies().getId());
 
         System.out.println(existbySpecies);
 
-        if(existbySpecies==true){
+        if (existbySpecies == true) {
 
-            data="The "+ varietyStock.getSpecies().getGeneName() +" " +varietyStock.getSpecies().getSpeciesName()+ " exists in the database,Kindly Update the existing record ";
-            redirectAttributes.addFlashAttribute("message","failed");
-            redirectAttributes.addFlashAttribute("data",data);
+            data = "The " + varietyStock.getSpecies().getGeneName() + " " + varietyStock.getSpecies().getSpeciesName() + " exists in the database,Kindly Update the existing record ";
+            redirectAttributes.addFlashAttribute("message", "failed");
+            redirectAttributes.addFlashAttribute("data", data);
 
             return "redirect:/inventoryManagerVariety/varietyData";
-        }
-        else {
+        } else {
 
             varietyStockService.saveVarietyData(varietyStock);
-            data="The data "+ varietyStock.getSpecies().getGeneName() +" " +varietyStock.getSpecies().getSpeciesName()+ "  Record  is successfully saved";
-            redirectAttributes.addFlashAttribute("message","success");
-            redirectAttributes.addFlashAttribute("data",data);
+            data = "The " + varietyStock.getSpecies().getName() + "=>" + varietyStock.getSpecies().getGeneName() + " " + varietyStock.getSpecies().getSpeciesName() + "  Record  is successfully saved";
+            redirectAttributes.addFlashAttribute("message", "success");
+            redirectAttributes.addFlashAttribute("data", data);
             return "redirect:/inventoryManagerVariety/varietyData";
 
         }
@@ -58,10 +61,35 @@ public class VarietyStockController {
 
 
     @RequestMapping("varietyData")
-        public String addvariety(Model model){
-        VarietyStock varietyStock=new VarietyStock();
-        model.addAttribute("varietyStock",varietyStock);
-        model.addAttribute("speciesData",speciesService.findAllSpecies());
+    public String addvariety(Model model) {
+        VarietyStock varietyStock = new VarietyStock();
+        model.addAttribute("varietyStock", varietyStock);
+
+        List<Species> allspecies = speciesService.findAllSpecies();
+        List<VarietyStock> varietyStocks = varietyStockService.findAll();
+
+
+        for (int j=0;j<allspecies.toArray().length;j++) {
+
+            for(int i=0;i<varietyStocks.toArray().length;i++){
+                VarietyStock varietyStock1=new VarietyStock();
+                Species species=new Species();
+
+                varietyStock= (VarietyStock) varietyStocks.toArray()[i];
+                species= (Species) allspecies.toArray()[j];
+                if (varietyStock.getSpecies().getId()== species.getId()) {
+
+                    allspecies.remove(j);
+
+                }
+            }
+
+        }
+
+
+
+
+        model.addAttribute("speciesData",allspecies);
         return "newVarietyStock";
     }
 
@@ -70,6 +98,7 @@ public class VarietyStockController {
 
     @RequestMapping("viewVarietyStockData")
     public String viewVarietyStockData(Model model){
+
         model.addAttribute("varietyStockData",varietyStockService.findAll());
 
         return "viewVarietyStockPage";
@@ -111,12 +140,12 @@ public class VarietyStockController {
 
         if (existbyId == true) {
 
-            System.out.println("exist by id");
+
 
 //            if (existbySpecies == true) {
 
                 varietyStockService.saveVarietyData(varietyStock);
-                data = "The data " + varietyStock.getSpecies().getGeneName() + " " + varietyStock.getSpecies().getSpeciesName() + "  Record  is successfully updated";
+               data="The "+varietyStock.getSpecies().getName()+"=>" + varietyStock.getSpecies().getGeneName() + " " + varietyStock.getSpecies().getSpeciesName() + "  Record  is successfully updated";
                 redirectAttributes.addFlashAttribute("message", "success");
                 redirectAttributes.addFlashAttribute("data", data);
                 return "redirect:/inventoryManagerVariety/viewVarietyStockData";

@@ -195,7 +195,7 @@
 <!--                       <tr th:each="pondtype : ${pondtypes}">-->
 <!--                        <td th:text="${medicine.medicineName}">Medicine  Name<td>-->
 
-                       <option  th:each="species: ${speciesData} "th:value="${species.id}" th:text="${species.GeneName+' '+ species.speciesName}" ></option>
+                       <option  th:each="species: ${speciesData} "th:value="${species.id}" th:text="${species.name+'('+species.GeneName+' '+ species.speciesName+')'}" ></option>
 <!--                       <option th:value="'F'" th:text="FEMALE"></option>-->
 
                    </select>
@@ -204,12 +204,12 @@
 
 <!--                    <input type="text" name=""  th:field="*{species}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 20]" data-parsley-trigger="keyup">-->
 
-                    <label>Variety Quantity eg  <i> 40.0</i> </label><br>
+                    <label>Fingerlings Quantity eg  <i> 40.0</i> </label><br>
                     <input type="text" name="" class="form-control" th:field="*{number}" required  data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">
 
-                    <label>Variety  Price eg <i> 400.0</i></label><br>
-                    <input type="text" name="" class="form-control" th:field="*{Price}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup" value="0.0"><br>
-
+<!--                    <label>Variety  Price eg <i> 400.0</i></label><br>-->
+<!--                    <input type="text" name="" class="form-control" th:field="*{Price}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup" value="0.0"><br>-->
+                        <br>
 
 
                     <div class="row">

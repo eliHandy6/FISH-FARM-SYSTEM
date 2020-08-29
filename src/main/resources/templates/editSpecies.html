@@ -185,6 +185,13 @@
 
                     <input type="text"  class="form-control" th:field="*{id}" data-parsley-pattern="^[1-9][0-9]*$" data-parsley-length="[1, 11]"  data-parsley-trigger="keyup" hidden >
 
+
+                    <label>Edit Fish Common Name</label><br>
+
+                    <input type="text"  class="form-control" th:field="*{name}"required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]"   data-parsley-trigger="keyup" >
+
+
+
                     <label>Edit Fish Gene Name</label><br>
 
                     <input type="text" class="form-control" th:field="*{geneName}" required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 20]" data-parsley-trigger="keyup">

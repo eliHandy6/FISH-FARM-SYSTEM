@@ -188,6 +188,8 @@
 					    <tr>
 <!--						      <th scope="col">Species Code </th>-->
 						      <th scope="col">Variety</th>
+							  <th scope="col">Created At</th>
+							  <th scope="col">Modified At</th>
 						  	  <th scope="col">Action</th>
 <!--						  	  <th scope="col">Generate pdf</th>-->
 						  	  
@@ -204,10 +206,12 @@
 <!--					  <td th:text="${species.id}"></td>-->
 					  <!--/*@thymesVar id="speciesName" type="String"*/-->
 
-					<td>	 <i  th:text="${species.GeneName +' '+ species.speciesName}"></i></td>
+					<td	  th:text="${ species.name+ '('+ species.GeneName +' '+ species.speciesName + ')'}"></td>
 
-
+					  <td scope="col" th:text="${species.createdAt}">Created At</td>
+					  <td scope="col" th:text="${species.updatedAt}" >Modified At</td>
 					  <td>
+
 
 						  <a th:href="@{'/species/edit/'+ ${species.id}}"><button class="btn btn-success ">Edit</button></a>
 <!--						  <a th:href="@{'/species/delete/'+${species.id}}"><button class="btn btn-danger" onClick="return confirm('Delete Species?')	">Delete</button></a>-->
@@ -241,9 +245,7 @@
 
 				});
 			</script>
-
-
-
+<!--			<script src="/sidebar-01/js/jquery.min.js"></script>-->
 	    <script src="/sidebar-01/js/popper.js"></script>
 	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
 	    <script src="/sidebar-01/js/main.js"></script>

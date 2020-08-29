@@ -5,11 +5,14 @@ import javax.persistence.Id;
 
 @Entity
 	public class Feed {
+
 	@Id
 	private int id;
 	private String feedName;
 	private double feedQuality;
-	private double unitPrice;
+//	private double unitPrice;
+	private  String createdAt;
+	private  String updatedAt;
 	
 	
 	
@@ -19,12 +22,14 @@ import javax.persistence.Id;
 
 
 
-	public Feed(int id, String feedName, double feedQuality, double unitPrice) {
+	public Feed(int id, String feedName, double feedQuality,String createdAt,String updatedAt) {
 		super();
 		this.id = id;
 		this.feedName = feedName;
 		this.feedQuality = feedQuality;
-		this.unitPrice = unitPrice;
+//		this.unitPrice = unitPrice;
+		this.createdAt=createdAt;
+		this.updatedAt=updatedAt;
 	}
 
 
@@ -47,9 +52,9 @@ import javax.persistence.Id;
 
 
 
-	public double getUnitPrice() {
-		return unitPrice;
-	}
+//	public double getUnitPrice() {
+//		return unitPrice;
+//	}
 
 
 
@@ -70,16 +75,25 @@ import javax.persistence.Id;
 	}
 
 
+//
+//	public void setUnitPrice(double unitPrice) {
+//		this.unitPrice = unitPrice;
+//	}
 
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
+
+	public String getCreatedAt() {
+		return createdAt;
 	}
 
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
 
-	
-	
-	
-	
-	
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
 
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 }

@@ -25,10 +25,24 @@ public class MedicineService {
         return  medicineRepo.findById(id).get();
     }
 
+    public Boolean existbyId(int id){
+        return medicineRepo.existsById(id);
+    }
+
     //save medicine to the database
 
     public void saveMedicine(Medicine medicine){
-        medicineRepo.save(medicine);
+
+        if(existbyId(medicine.getNumber())){
+            Medicine medicine1= getmedicinebyid(medicine.getNumber());
+            String created=medicine1.getCreatedAt();
+            medicine.setCreatedAt(created);
+            medicineRepo.save(medicine);
+
+        }else{
+            medicineRepo.save(medicine);
+        }
+
     }
 
     //delete medicine by id

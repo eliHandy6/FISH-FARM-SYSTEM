@@ -6,32 +6,50 @@ import javax.persistence.*;
 public class SeedStock {
 
     @Id
-    private  int number;
+    private int number;
 
-    @ManyToOne(cascade = CascadeType.ALL,optional = false,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private Pond pond;
 
-    @ManyToOne(cascade = CascadeType.ALL,optional = false,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    private VarietyStock varietyStock;
+    private VarietyStock variety;
 
     private int quantity;
+    private boolean status;
+    private  String createdAt;
+    private  String updatedAt;
 
-  //  private int available;
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+//  private int available;
 
 
 //    private String date;
 
     public SeedStock() {
-    }
-
-    public SeedStock(int number,Pond pond ,VarietyStock VarietyStock,int quantity){
-        this.number=number;
-        this.pond=pond;
-        this.varietyStock=VarietyStock;
-        this.quantity=quantity;
-//        this.available=available_quantity;
     }
 
     public int getNumber() {
@@ -50,8 +68,12 @@ public class SeedStock {
         this.pond = pond;
     }
 
-    public VarietyStock getVarietyStock() {
-        return varietyStock;
+    public VarietyStock getVariety() {
+        return variety;
+    }
+
+    public void setVariety(VarietyStock variety) {
+        this.variety = variety;
     }
 
     public int getQuantity() {
@@ -61,33 +83,6 @@ public class SeedStock {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-//    public int getAvailable_quantity() {
-//        return available;
-//    }
-//
-//    public void setAvailable_quantity(int available_quantity) {
-//        this.available = available_quantity;
-//    }
-
-//    public String getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
-
-
-    @Override
-    public String toString() {
-        return "SeedStock{" +
-                "number=" + number +
-                ", pond=" + pond +
-                ", varietyStock=" + varietyStock +
-                ", quantity=" + quantity +
-                '}';
-    }
-
-
 }
+
+

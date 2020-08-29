@@ -4,11 +4,14 @@ import com.example.fishFarm.models.SystemUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface SystemUserRepository extends JpaRepository<SystemUser,Integer> {
 
 
-   // public  SystemUser findByEmail(String email);
 
+    Optional<SystemUser> findByUsername(String username);
 
+    public boolean existsByUsername(String username);
 }

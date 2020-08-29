@@ -180,10 +180,10 @@
                     <thead>
                     <tr>
                         <!--						      <th scope="col">#</th>-->
-                        <th scope="col">Feed Name<th>
-                        <th scope="col">Feed Quantity<th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Total Price</th>
+                        <th scope="col">Feed Name</th>
+                        <th scope="col">Feed Quantity(Kg)</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Updated At</th>
                         <th scope="col">Action</th>
 
 
@@ -193,11 +193,11 @@
 
                     <tr th:each="feed : ${feedList}">
                         <!--						  <td th:text="${feed.id}">#</td>-->
-                        <td th:text="${feed.feedName}">Feed Name<td>
+                        <td th:text="${feed.feedName}">Feed Name</td>
                         <td th:text="${feed.feedQuality}">Feed Quantity</td>
-                        <td></td>
-                        <td th:text="${feed.unitPrice}">Unit Price</td>
-                        <td th:text="${feed.unitPrice * feed.feedQuality}">Total Price</td>
+
+                        <td th:text="${feed.createdAt}">Created At</td>
+                        <td th:text="${feed.updatedAt}">Updated At</td>
 
 
                         						  <td>

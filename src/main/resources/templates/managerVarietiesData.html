@@ -46,14 +46,14 @@
                     </ul>
                 </li>
                 <li  >
-                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ponds</a>
                     <ul class="collapse list-unstyled" id="ponds">
 
                         <li class>
-                            <a href="/pondtype/viewPondTypes">Tank Types</a>
+                            <a href="/pondtype/viewPondTypes">Pond Types</a>
                         </li>
                         <li  >
-                            <a href="/pond/viewPonds">Tank Descriptions</a>
+                            <a href="/pond/viewPonds">Farm Ponds</a>
                         </li>
 
 
@@ -189,7 +189,10 @@
                         <th >Variety</th>
                         <th></th>
                         <th >Number</th>
-                        <th >Cost</th>
+<!--                        <th >Cost</th>-->
+
+                        <th >Created At</th>
+                        <th >Updated At</th>
                         <!--						  	  <th scope="col">Generate pdf</th>-->
 
 
@@ -202,10 +205,13 @@
                         <!--						  <td th:text="${feed.id}">#</td>-->
 
                         <!--                        <td>	 <i  th:text="${species.GeneName +' '+ species.speciesName}"></i></td>-->
-                        <td th:text="${varietyStockDat.species.GeneName +' '+varietyStockDat.species.SpeciesName}">Variety Name<td>
+                        <td th:text="${varietyStockDat.species.name+' ( '+varietyStockDat.species.GeneName +' '+varietyStockDat.species.SpeciesName} +' )'">Variety Name<td>
                         <td th:text="${varietyStockDat.Number}">Number</td>
 
-                        <td th:text="${varietyStockDat.Price}">Price</td>
+<!--                        <td th:text="${varietyStockDat.Price}">Cost</td>-->
+
+                        <td th:text="${varietyStockDat.createdAt}">Created At</td>
+                        <td th:text="${varietyStockDat.updatedAt}">Updated At</td>
 
 
 <!--                        <td>-->
@@ -240,7 +246,7 @@
 
     });
 </script>
-
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

@@ -14,20 +14,38 @@ public class Pond {
 	private PondType pondType;
 	private double  pondArea;
 	private double  avarageDepth;
-	//private String date;
-	//private Boolean Status;
-	
+
+	private String createdAt;
+	private String updatedAt;
 	
 	public Pond() {
 		super();
 	}
 
-	public Pond (int id,int pondnumber,PondType pondtype,int pondArea,int avarageDepth){
-		this.id=id;
-		this.pondNumber=pondnumber;
-		this.pondType=pondtype;
-		this.pondArea=pondArea;
-		this.avarageDepth=avarageDepth;
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(String updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Pond (int id, int pondnumber, PondType pondtype, int pondArea, int avarageDepth, String createdAt, String updatedAt) {
+		this.id = id;
+		this.pondNumber = pondnumber;
+		this.pondType = pondtype;
+		this.pondArea = pondArea;
+		this.avarageDepth = avarageDepth;
+		this.createdAt=createdAt;
+		this.updatedAt=updatedAt;
 	}
 
 	public int getId() {

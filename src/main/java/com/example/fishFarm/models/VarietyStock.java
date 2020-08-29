@@ -11,17 +11,22 @@ public class VarietyStock {
     @JoinColumn(nullable = false)
     private  Species species;
     private int number;
-    private double Price;
+    //private double Price;
+    private  String createdAt;
+    private  String updatedAt;
+
 
     public VarietyStock(){
 
     }
 
-    public VarietyStock(int id, Species species, int number, Double price) {
+    public VarietyStock(int id, Species species, int number,String createdAt,String updatedAt) {
         this.id = id;
         this.species = species;
         this.number = number;
-        Price = price;
+
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
     }
 
     public int getId() {
@@ -48,11 +53,31 @@ public class VarietyStock {
         this.number = number;
     }
 
-    public Double getPrice() {
-        return Price;
+//    public Double getPrice() {
+//        return Price;
+//    }
+//
+//    public void setPrice(Double price) {
+//        Price = price;
+//    }
+//
+//    public void setPrice(double price) {
+//        Price = price;
+//    }
+
+    public String getCreatedAt() {
+        return createdAt;
     }
 
-    public void setPrice(Double price) {
-        Price = price;
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

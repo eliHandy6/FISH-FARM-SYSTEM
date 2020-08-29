@@ -1,5 +1,6 @@
 package com.example.fishFarm.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -12,7 +13,18 @@ import org.springframework.stereotype.Service;
 @Service
 
 public class PondTypeService {
-	
+
+
+
+
+	LocalDateTime now=LocalDateTime.now();
+
+
+	 String todayTemp= now.toString().replace("T"," ");
+
+	 String dateTime= todayTemp.substring(0,19);
+
+	// String updateTime=todayTemp.substring(0,19);
 	
 	@Autowired
 	private PondTypeRepository pondTypeRepo;
@@ -20,9 +32,28 @@ public class PondTypeService {
 	public List<PondType> findAllPondType(){
 		return pondTypeRepo.findAll();
 	}
-	
+
+	public PondType findPondbyId(Integer id){
+		return  pondTypeRepo.findById(id).get();
+	}
 	public void savePondOType(PondType pondType) {
-		pondTypeRepo.save(pondType);
+
+		if (existsById(pondType.getId())){
+
+			PondType  pondType1=findPondbyId(pondType.getId());
+
+			String created=pondType1.getCreatedAt();
+
+			pondType.setCreatedAt(created);
+//			pondType.setUpdatedAt(dateTime);
+			pondTypeRepo.save(pondType);
+		}
+		else {
+//			pondType.setCreatedAt(dateTime);
+//			pondType.setUpdatedAt(dateTime);
+			pondTypeRepo.save(pondType);
+
+		}
 	}
 	
 	

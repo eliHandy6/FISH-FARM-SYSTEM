@@ -183,9 +183,9 @@
 			     
 			     	   <form action="#" th:action="@{/species/save}" th:object="${species}" method="post" id="validate_form" data-parsley-validate>
 							
-<!--							<label>Add Fish  Id</label><br>-->
-<!--							        	-->
-<!--							<input type="text"  class="form-control" th:field="*{id}" data-parsley-pattern="^[1-9][0-9]*$" data-parsley-length="[1, 11]"  data-parsley-trigger="keyup" >-->
+							<label>Fish Common Name</label><br>
+
+							<input type="text"  class="form-control" th:field="*{name}"required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]"   data-parsley-trigger="keyup" >
 
 						   <label>Fish Gene Name</label><br>
 

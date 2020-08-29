@@ -48,14 +48,14 @@
 								</ul>
 							</li>
 							<li  >
-								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ponds</a>
 								<ul class="collapse list-unstyled" id="ponds">
 
 									<li class>
-										<a href="/pondtype/viewPondTypes">Tank Types</a>
+										<a href="/pondtype/viewPondTypes">Pond Types</a>
 									</li>
 									<li  >
-										<a href="/pond/viewPonds">Tank Descriptions</a>
+										<a href="/pond/viewPonds"> Farm Ponds</a>
 									</li>
 
 
@@ -188,8 +188,8 @@
 <!--						      <th scope="col">#</th>-->
 						      <th scope="col">Feed Name<th>
 							  <th scope="col">Feed Quantity<th>
-						  	  <th scope="col">Unit Price</th>
-							  <th scope="col">Total Price</th>
+						  	  <th scope="col">Created At</th>
+							  <th scope="col">Updated At</th>
 
 					    </tr>
 				  </thead>
@@ -200,8 +200,8 @@
 						  <td th:text="${feed.feedName}">Feed Name<td>
 						  <td th:text="${feed.feedQuality}">Feed Quantity</td>
 						  <td></td>
-						  <td th:text="${feed.unitPrice}">Unit Price</td>
-						  <td th:text="${feed.unitPrice * feed.feedQuality}">Total Price</td>
+						  <td th:text="${feed.createdAt}">Created At</td>
+						  <td th:text="${feed.updatedAt}">Updated At</td>
 
 
 <!--						  <td>-->
@@ -236,7 +236,7 @@
 
 				});
 			</script>
-
+<!--			<script src="/sidebar-01/js/jquery.min.js"></script>-->
 			<script src="/sidebar-01/js/popper.js"></script>
 			<script src="/sidebar-01/js/bootstrap.min.js"></script>
 			<script src="/sidebar-01/js/main.js"></script>

@@ -195,8 +195,8 @@
                     <label>Medicine Quantity eg  <i> 40.0</i> </label><br>
                     <input type="text" name="" class="form-control" th:field="*{medicineQuantity}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">
 
-                    <label>Unit Price eg <i> 400.0</i></label><br>
-                    <input type="text" name="" class="form-control" th:field="*{medicinePrice}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>
+                    <label>Unit eg <i> Kg,mm</i></label><br>
+                    <input type="text" name="" class="form-control" th:field="*{medicineUnit}" required data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>
 
 
 

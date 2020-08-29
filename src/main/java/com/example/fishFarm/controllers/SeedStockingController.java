@@ -1,5 +1,7 @@
 package com.example.fishFarm.controllers;
 
+import com.example.fishFarm.SMS.MessageProperties;
+import com.example.fishFarm.SMS.SendSms;
 import com.example.fishFarm.models.Pond;
 import com.example.fishFarm.models.SeedStock;
 import com.example.fishFarm.models.Species;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,18 +38,57 @@ public class SeedStockingController {
     @RequestMapping("findall")
 
     public String obtainAllDatabaseVales(Model model){
-        model.addAttribute("allStockData",seedingService.getallStockingData());
 
-//        for (SeedStock seedStock:seedingService.getallStockingData()) {
+
+        List<Pond> pondslist= pondService.findAllPonds();
+        List<SeedStock> seedStocks= seedingService.getallStockingData();
+
+
+        for(int i=0;i<pondslist.toArray().length;i++){
+
+                Pond pond = (Pond) pondslist.toArray()[i];
+                int approved = seedingService.counttrue(pond.getId());
+                int unpproved = seedingService.countfalse(pond.getId());
+                 pond.setCreatedAt(Integer.toString(approved));
+                 pond.setUpdatedAt(Integer.toString(unpproved));
+
+
+        }
+
+
+        model.addAttribute("listPonds",pondslist);
+
+//        MessageProperties messageProperties=new MessageProperties();
+//        SendSms sendSms=new SendSms();
 //
-//           System.out.println(seedStock.getPond().getPondNumber());
-//          System.out.println(seedStock.getVarietyStock().getSpecies().getGeneName());
-//            System.out.println(seedStock.getQuantity());
-//            System.out.println(seedStock.getAvailable_quantity());
-//            System.out.println(seedStock.getPond().getPondType().getName());
+//        messageProperties.setPhoneNumber("+254703907872");
+//        messageProperties.setMessage("hello world");
 //
-//        }
+//        sendSms.sendSMS(messageProperties);
+
         return "PondFishStocking";
+    }
+
+    @RequestMapping("stockpond/{id}")
+    public String stockPondwithSeedlings(@PathVariable(name = "id") int id, RedirectAttributes   redirectAttributes,Model  model){
+        Pond  pond=pondService.findPondById(id);
+
+
+        //obtaina all varieties in stock and remove those with 0 number of seedlings
+
+        List <VarietyStock> varietiesInStock=varietyStockService.findAll();
+
+        for (int i = 0; i < varietiesInStock.toArray().length; i++) {
+
+            VarietyStock varietyStock= (VarietyStock) varietiesInStock.toArray()[i];
+
+
+        }
+
+        model.addAttribute("variety",varietiesInStock);
+        model.addAttribute("pond",pond);
+        return "addfishStocking.html";
+
     }
 
     @RequestMapping("addfishStocking")
@@ -57,13 +99,7 @@ public class SeedStockingController {
         model.addAttribute("varietystock",varietyStockService.findAll());
 
 
-
-        for(VarietyStock z:varietyStockService.findAll()){
-
-            System.out.println(z.getId());
-
-        }
-        return "addfishStocking";
+        return "";
 
     }
 @RequestMapping(value = "save",method = RequestMethod.POST)
@@ -72,29 +108,48 @@ public class SeedStockingController {
         String message;
         String data;
 
-    System.out.println(seedStock.getVarietyStock().getSpecies());
+        VarietyStock currentSpecies=varietyStockService.getbyID(seedStock.getVariety().getId());
+        int currentno=currentSpecies.getNumber();
 
-//        boolean answer=seedingService.exiting(seedStock.getPond().getId(),seedStock.getVarietyStock().getId());
-//
-//    System.out.println(answer);
+         System.out.println(currentno);
 
-//        if(answer) {
-//
-//            data="The pond number "+seedStock.getPond().getPondNumber() +"has " +seedStock.getVarietyStock().getSpecies().getGeneName()+ " "+seedStock.getVarietyStock().getSpecies().getSpeciesName();
-//
-//            redirectAttributes.addFlashAttribute("data",data);
-//            redirectAttributes.addFlashAttribute("message","failed");
-//
-//        return "redirect:/operationManager/addfishStocking";
-//          }
-//        else{
-//
-//
-//
-//        return "redirect:/operationManager/addfishStocking";
-//        }
+     boolean answer=seedingService.exiting(seedStock.getPond(),seedStock.getVariety());
 
-    return "redirect:/operationManager/addfishStocking";
+        if(seedStock.getQuantity()>currentno){
+
+            data="The quantity  "+seedStock.getQuantity() +" exceeds " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName()+ " quantity  which is "+currentno;
+
+            redirectAttributes.addFlashAttribute("data",data);
+            redirectAttributes.addFlashAttribute("message","failed");
+
+            return "redirect:/operationManager/addfishStocking";
+
+        }
+
+
+        else if(answer) {
+
+            data="The pond number "+seedStock.getPond().getPondNumber() +" has " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
+
+            redirectAttributes.addFlashAttribute("data",data);
+            redirectAttributes.addFlashAttribute("message","failed");
+
+                 return "redirect:/operationManager/addfishStocking";
+          }
+        else{
+
+
+            currentSpecies.setNumber(currentSpecies.getNumber()-seedStock.getQuantity());
+            seedingService.saveStockData(seedStock);
+            data="The pond number "+seedStock.getPond().getPondNumber() +" is Successfuly stocked with "+seedStock.getQuantity()+" seeds of "+seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
+            redirectAttributes.addFlashAttribute("data",data);
+            redirectAttributes.addFlashAttribute("message","success" );
+
+
+            return "redirect:/operationManager/addfishStocking";
+        }
+
+
 
 }
 
