@@ -33,8 +33,8 @@ public class SystemUsersService {
         systemUserRepository.save(systemUser);
     }
 
-    public  boolean exixtbyUname(String uname){
-       return systemUserRepository.existsByUsername(uname);
+    public  boolean exixtbyUname(String uname,String email){
+       return systemUserRepository.existsByUsernameOrEmail(uname,email);
     }
 
 

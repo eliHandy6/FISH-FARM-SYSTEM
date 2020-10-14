@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.example.fishFarm.models.Pond;
+import com.example.fishFarm.models.SeedStock;
 import com.example.fishFarm.repositories.PondRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,8 @@ public class PondService {
 		return (int) pondRepo.count();
 		
 	}
+
+
 
 	public Boolean existbyPondNumber(int id){
 		return pondRepo.existsByPondNumber(id);

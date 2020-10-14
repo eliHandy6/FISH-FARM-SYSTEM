@@ -14,139 +14,89 @@
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
 
 </head>
-<body>
+<body style="background-image: url('/sidebar-01/images/pexels-elianne-dipp-4666748.jpg')">
 
 <div class="wrapper d-flex align-items-stretch">
-<!--    <nav id="sidebar">-->
-<!--        <div class="p-4 pt-5">-->
-<!--            <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>-->
-<!--            <ul class="list-unstyled components mb-5">-->
-
-<!--                <li class="active">-->
-<!--                    <a href="#">Home</a>-->
-<!--                </li>-->
-
-<!--                <li>-->
-<!--                    <a href="#depts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Farm Departments</a>-->
-<!--                    <ul class="collapse list-unstyled" id="depts">-->
-
-<!--                        <li>-->
-<!--                            <a href="#">Admin</a>-->
-<!--                        </li>-->
-
-<!--                        <li>-->
-<!--                            <a href="/species/viewSpecies">Farm Manager</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="#">Inventory Manager</a>-->
-<!--                        </li>-->
-<!--                        <li>-->
-<!--                            <a href="#">Operations Manager</a>-->
-<!--                        </li>-->
-
-<!--                        <li>-->
-<!--                            <a href="#">Sales Manager</a>-->
-<!--                        </li>-->
 
 
-<!--                    </ul>-->
-<!--                </li>-->
 
-<!--                <li>-->
-<!--                    <a href="#">Fish Reservation</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="#">Contact</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-
-
-<!--        </div>-->
-<!--    </nav>-->
-
-    <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
-
-        <!--			        <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-        <!--				          <div class="container-fluid">-->
-        <!--				-->
-        <!--					            <button type="button" id="sidebarCollapse" class="btn btn-primary">-->
-        <!--						              <i class="fa fa-bars"></i>-->
-        <!--						              <span class="sr-only">Toggle Menu</span>-->
-        <!--					            </button>-->
-        <!--					            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--					               	 <i class="fa fa-bars"></i>-->
-        <!--					            </button>-->
-        <!--					-->
-        <!--					            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-        <!--						              <ul class="nav navbar-nav ml-auto">-->
-        <!--							                <li class="nav-item active">-->
-        <!--							                    <a class="nav-link" href="#">Home</a>-->
-        <!--							                </li>-->
-        <!--							                <li class="nav-item">-->
-        <!--							                    <a class="nav-link" href="#">About</a>-->
-        <!--							                </li>-->
-        <!--							                <li class="nav-item">-->
-        <!--							                    <a class="nav-link" href="#">Portfolio</a>-->
-        <!--							                </li>-->
-        <!--							                <li class="nav-item">-->
-        <!--							                    <a class="nav-link" href="#">Contact</a>-->
-        <!--							                </li>-->
-        <!--						              </ul>-->
-        <!--					            </div>-->
-        <!--				          </div>-->
-        <!--			        </nav>-->
-
-
 
         <div class="row">
 
-            <div class="col-md-2">
+            <div class="col-md-3">
 
             </div>
 
-            <div class="col-md-7">
+            <div class="col-md-5 offset-1">
 
-                <h1 class="mb-4">FISH FARM MANAGEMENT SYSTEM</h1>
+                <div class="card" style="margin-top: 50px">
+                    <div class="card-header">
 
-                <a href="/" class="btn btn-secondary">Back</a><br>
+                        <h3 align="center" style="font-weight: bold">FISH FARM MANAGEMENT SYSTEM</h3>
 
-                <form name="f" th:action="@{/login}" method="post">
 
-                    <fieldset>
+                    </div>
 
-<!--                        <legend>Please Login</legend>-->
-                        <div th:if="${param.error}" class="alert-danger">
-                            Invalid Username and Password
+                    <div class="card-body" >
+
+                        <form name="f" th:action="@{/login}" method="post">
+
+                            <fieldset>
+
+
+                                <div th:if="${param.error}" class="alert-danger">
+                                    Invalid Username and Password
+
+                                </div>
+
+                                <div th:if="${param.logout}" class="alert alert-success">
+                                    You have been logged Out
+
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" >Password</label>
+                                    <input class="form-control" type="password" name="password" id="password" required>
+
+                                </div>
+
+
+                            </fieldset>
+
+
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-md-3 offset-3">
+                                <button type="submit" class=" btn  btn-success"> Log in</button>
+                            </div>
+                            </form>
+
+                            <div class="col-md-6">
+                                <a href="/" class="btn btn-danger">Cancel</a><br>
+
+                            </div>
 
                         </div>
 
-                        <div th:if="${param.logout}" class="alert alert-success">
-                           You have been logged Out
-
-                        </div>
-
-                        <label for="username">Username</label>
-                        <input class="form-control" type="text" id="username" name="username">
-
-                        <label for="password" >Password</label>
-                        <input class="form-control" type="password" name="password" id="password"><br>
-
-                        <div class="form-actions">
-                            <button type="submit" class="form-control btn  btn-success"> Log in</button>
-                        </div>
+                    </div>
 
 
 
-                    </fieldset>
+
+                </div>
 
 
-
-                </form>
 
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-">
 
             </div>
 

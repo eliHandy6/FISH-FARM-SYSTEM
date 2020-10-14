@@ -28,12 +28,20 @@
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
 
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+
                 <li class="active">
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties Data</a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li class="active" >
-                            <a href="#">Variety Stock </a>
+                            <a href="#">Fingerlings</a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -43,11 +51,11 @@
                     </ul>
                 </li>
                 <li class >
-                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds Data</a>
+                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
                     <ul class="collapse list-unstyled" id="feed">
 
                         <li   >
-                            <a href="/inventoryManager/feedsData">Feeds Stock</a>
+                            <a href="/inventoryManager/feedsData">Farm Feeds</a>
                         </li>
 
 
@@ -90,11 +98,11 @@
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  >
-                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicine Data</a>
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
                     <ul class="collapse list-unstyled" id="medicine">
 
                         <li  >
-                            <a href="/inventoryManagerMedicines/viewMedicines">Medicine Stock</a>
+                            <a href="/inventoryManagerMedicines/viewMedicines">Farm Medicines</a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/feeds/addFeed">Add Feed</a>-->
@@ -153,7 +161,7 @@
             <div class="col-md-12">
 
                 <div align="center">
-                    <h3> Variety Fingerlings </h3>
+                    <h3 style="font-weight: bold"> Species Fingerlings </h3>
 
                 </div>
 
@@ -164,7 +172,7 @@
                 <table class="table" id="varietyTable">
 
                     <div align="right">
-                        <a href="/inventoryManagerVariety/varietyData"><button class="btn btn-secondary">Add Variety Fingerlings Data</button></a><br><br>
+                        <a href="/inventoryManagerVariety/varietyData"><button class="btn btn-info">New Species Fingerlings</button></a><br><br>
                     </div>
 
                     <div th:switch="${message}">
@@ -180,7 +188,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Variety Name</th>
-                        <th scope="col"> Available Fingerlings Number</th>
+                        <th scope="col"> Number</th>
 <!--                        <th scope="col"> Total Cost</th>-->
                         <th scope="col"> Created At</th>
                         <th scope="col"> Updated At</th>
@@ -203,7 +211,7 @@
 
 <!--                        <td></td>-->
                         <td>
-                            <a th:href="@{'/inventoryManagerVariety/edit/'+ ${varietyStockDat.id}}"><button class="btn btn-success ">Edit</button></a>
+                            <a th:href="@{'/inventoryManagerVariety/edit/'+ ${varietyStockDat.id}}"><button class="btn btn-success ">Update</button></a>
 <!--                            <a ><button class="btn btn-success ">Edit</button></a>-->
 <!--                            <a th:href="@{'/inventoryManagerMedicines/delete/'+${medicine.number}}"><button class="btn btn-danger "onClick="return confirm('Delete Medicine')">Delete</button></a>-->
 

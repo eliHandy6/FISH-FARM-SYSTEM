@@ -12,18 +12,43 @@ public class SystemUser  {
     private String username;
     private String password;
     private String email;
+    private String phoneNo;
+    private String createdAt;
+    private String updatedAt;
 
      @ManyToOne(cascade = CascadeType.ALL,optional = false,fetch = FetchType.EAGER)
      @JoinColumn(nullable = false)
     private FarmSection section;
 
+    public String getPhoneNo() {
+        return phoneNo;
+    }
 
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public SystemUser() {
 
     }
 
-    public  SystemUser(int id,String fname,String lname,String username,String password,String email,FarmSection section){
+    public  SystemUser(int id,String fname,String lname,String username,String password,String email,FarmSection section,String createdAt,String updatedAt,String phoneno){
         this.id=id;
         this.fname=fname;
         this.lname=lname;
@@ -31,6 +56,9 @@ public class SystemUser  {
         this.password=password;
         this.email=email;
         this.section=section;
+        this.createdAt=createdAt;
+        this.updatedAt=updatedAt;
+        this.phoneNo=phoneno;
 
     }
 

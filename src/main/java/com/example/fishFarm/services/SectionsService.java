@@ -17,6 +17,10 @@ public class SectionsService {
         return  sectionRepository.findAll();
     }
 
+    public FarmSection  findById(int id){
+        return sectionRepository.findById(id).get();
+    }
+
 
 
 }

@@ -30,17 +30,24 @@
 						<a href="#" class="img logo rounded-circle mb-5"></a>
 						<ul class="list-unstyled components mb-5">
 
+							<hr/>
+							<li>
+
+								<img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+								<!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+							</li>
+
 							<li class="">
-								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties</a>
+								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
 								<ul class="collapse list-unstyled" id="species">
 
 									<li class="">
-										<a href="/species/viewSpecies">View Varieties</a>
+										<a href="/species/viewSpecies">Species</a>
 									</li>
 
 
 									<li class="">
-										<a href="/ManagerVariety/ManagerStockData"> Varieties Data</a>
+										<a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
 									</li>
 
 									<!--												<li class>-->
@@ -55,7 +62,7 @@
 								<ul class="collapse list-unstyled" id="ponds">
 
 									<li class ="active">
-										<a href="#">Pond Types</a>
+										<a href="#">Pond Categories</a>
 									</li>
 									<li  >
 										<a href="/pond/viewPonds">Farm Ponds</a>
@@ -161,10 +168,10 @@
 			        
 			        <div class="container">
 			        
-			        	<div class="col-md-10">
+			        	<div class="col-md-12">
 			        	
 			        		<div align="center">
-									<h3> Pond Types </h3>
+									<h3 style="font-weight: bold"> Pond Categories </h3>
 								
 							</div>
 
@@ -183,14 +190,14 @@
 			        	<table class="table" id="pondTypeTable" >
 
 							<div align="right">
-								<a href="/pondtype/addNewPondType"><button class="btn btn-secondary">Add Pond Type</button></a><br><br>
+								<a href="/pondtype/addNewPondType"><button class="btn btn-info">New Pond Category</button></a><br><br>
 							</div>
 
 
 							<thead>
 					    <tr>
 <!--						      <th scope="col">#</th>-->
-						      <th scope="col">Pond Type</th>
+						      <th scope="col">Pond Category</th>
 							  <th scope="col">Created At</th>
 							  <th scope="col">Updated At</th>
 						  	  <th scope="col">Action</th>
@@ -211,7 +218,7 @@
 
 			                  <td>
 			             
-			                <a th:href="@{'/pondtype/edit/'+ ${pondType.id}}"><button class="btn btn-success ">Edit</button></a>
+			                <a th:href="@{'/pondtype/edit/'+ ${pondType.id}}"><button class="btn btn-success ">Update</button></a>
 <!--			                <a th:href="@{'/pondtype/delete/'+${pondType.id}}"><button class="btn btn-danger" onClick="return confirm('Delete Pond Type?')	">Delete</button></a>-->
 <!--			                -->
 			                
@@ -245,7 +252,7 @@
 
 				});
 			</script>
-			<script src="/sidebar-01/js/jquery.min.js"></script>
+<!--			<script src="/sidebar-01/js/jquery.min.js"></script>-->
 	    <script src="/sidebar-01/js/popper.js"></script>
 	    <script src="/sidebar-01/js/bootstrap.min.js"></script>
 	    <script src="/sidebar-01/js/main.js"></script>

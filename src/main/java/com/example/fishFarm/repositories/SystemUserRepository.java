@@ -13,5 +13,7 @@ public interface SystemUserRepository extends JpaRepository<SystemUser,Integer> 
 
     Optional<SystemUser> findByUsername(String username);
 
-    public boolean existsByUsername(String username);
+     boolean existsByUsernameOrEmail(String username,String email);
+
+
 }

@@ -10,8 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -40,12 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/feeds/**").hasRole("manager")
                 .antMatchers("/pondtype/**").hasRole("manager")
                 .antMatchers("/species/**").hasRole("manager")
-                .antMatchers("/managerVariety/**").hasRole("manager")
+                .antMatchers("/ManagerVariety/**").hasRole("manager")
 
 
-                .antMatchers("/inventoryManager/**").hasRole("inventory")
-                .antMatchers("/inventoryManagerVariety/**").hasRole("inventory")
-                .antMatchers("/inventoryManagerMedicines/**").hasRole("inventory")
+
+                .antMatchers("/inventoryManager/**").hasRole("accountant")
+                .antMatchers("/inventoryManagerVariety/**").hasRole("accountant")
+                .antMatchers("/inventoryManagerMedicines/**").hasRole("accountant")
 
                 .antMatchers("/").permitAll()
 

@@ -32,7 +32,7 @@
                     <ul class="collapse list-unstyled" id="species">
 
                         <li class="active">
-                            <a href="#">Pond Fish Stocking </a>
+                            <a href="/operationManager/findall">Pond Fish Stocking </a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -226,7 +226,7 @@
                     <div class="col-md-8">
 
                         <div align="center">
-                            <h3>Add Pond Stocking</h3>
+                            <h4>Pond FingerLings Variety Stocking</h4>
 
                         </div>
 
@@ -245,28 +245,25 @@
 
                 <form action="#" th:action="@{/operationManager/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
 
-                    <!--								<label>Feed ID eg <i>Feed-001</i></label><br>-->
-
-                    <!--								<input type="text" name="" class="form-control" th:field="*{id}" data-parsley-pattern="[a-zA-Z]*[/-][0-9]*" data-parsley-length="[5,10]"  data-parsley-trigger="keyup">-->
 
                     <label>Pond  Number </label><br>
 
-                    <input type="text" name="pondnumber" class="form-control" th:value="${pond.pondNumber}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0">
+                    <input type="text"  name="pond" class="form-control" th:value="${pond.id}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" hidden >
 
-                    <!--                    <input type="text" name="" class="form-control" th:field="*{pond}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 50]" data-parsley-trigger="keyup">-->
+
+                    <input type="text"   class="form-control" th:value="${pond.pondNumber}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" disabled>
+
 
                     <label>Variety </label><br>
 
-                     <select  class="form-control">
+                     <select th:field="*{variety}" class="form-control">
 
                         <option  th:each="varietystock: ${variety} "th:value="${varietystock.id}" th:text="${varietystock.species.name+'('+varietystock.species.geneName+' '+varietystock.species.speciesName+ ')------------ Available fingerLings =' +varietystock.number}" ></option>
 
                     </select>
 
-<!--&lt;!&ndash;                    <input type="text" name="" class="form-control" th:field="*{varietyStock}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">&ndash;&gt;-->
-
                     <label> Variety Quantity eg <i> 400.0</i></label><br>
-                    <input type="text" name="" class="form-control"  required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0"><br>
+                    <input  type="text" th:field="*{quantity}"  class="form-control"  required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0"><br>
 
 
 

@@ -42,11 +42,18 @@ public class SeedingService {
 
     }
 
+    public List<SeedStock> existingPondSpecies(int pondId){
+        return seedingRepository.existingPondSpecies(pondId);
+    }
+
     public int counttrue(int pondnumber){
         return seedingRepository.countTrue(pondnumber);
     }
 
     public int countfalse(int pondnumber){
         return seedingRepository.countFalse(pondnumber);
+    }
+    public int pondSpeciesNumber(int pondId){
+        return seedingRepository.countpondSpecies(pondId);
     }
 }

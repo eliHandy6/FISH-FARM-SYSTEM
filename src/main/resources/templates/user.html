@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://thymeleaf.org" >
 <head>
-    <title>View System Users</title>
+    <title> System User</title>
     <meta charset="utf-8">
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,28 +34,28 @@
                         <li class="active" >
                             <a href="/admin/viewallUsers">View System users</a>
                         </li>
-<!--                        <li>-->
-<!--                            <a href="/ManagerVariety/ManagerStockData">Variety Data</a>-->
-<!--                        </li>-->
+                        <!--                        <li>-->
+                        <!--                            <a href="/ManagerVariety/ManagerStockData">Variety Data</a>-->
+                        <!--                        </li>-->
 
 
                     </ul>
                 </li>
 
-<!--                <li  class="active">-->
-<!--                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>-->
-<!--                    <ul class="collapse list-unstyled" id="ponds">-->
+                <!--                <li  class="active">-->
+                <!--                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>-->
+                <!--                    <ul class="collapse list-unstyled" id="ponds">-->
 
-<!--                        <li class>-->
-<!--                            <a href="/pondtype/viewPondTypes">Tank Types</a>-->
-<!--                        </li>-->
-<!--                        <li class="active"  >-->
-<!--                            <a href="#">Tank Descriptions</a>-->
-<!--                        </li>-->
+                <!--                        <li class>-->
+                <!--                            <a href="/pondtype/viewPondTypes">Tank Types</a>-->
+                <!--                        </li>-->
+                <!--                        <li class="active"  >-->
+                <!--                            <a href="#">Tank Descriptions</a>-->
+                <!--                        </li>-->
 
 
-<!--                    </ul>-->
-<!--                </li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
                 <!--										<li class="active">-->
                 <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
                 <!--											<ul class="collapse list-unstyled" id="species">-->
@@ -92,20 +92,20 @@
                 <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
-<!--                <li  >-->
-<!--                    <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>-->
-<!--                    <ul class="collapse list-unstyled" id="feeds">-->
+                <!--                <li  >-->
+                <!--                    <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>-->
+                <!--                    <ul class="collapse list-unstyled" id="feeds">-->
 
-<!--                        <li  >-->
-<!--                            <a href="/feeds/viewFeeds">View Feeds</a>-->
-<!--                        </li>-->
-<!--                        &lt;!&ndash;												<li class>&ndash;&gt;-->
-<!--                        &lt;!&ndash;													<a href="/feeds/addFeed">Add Feed</a>&ndash;&gt;-->
-<!--                        &lt;!&ndash;												</li>&ndash;&gt;-->
+                <!--                        <li  >-->
+                <!--                            <a href="/feeds/viewFeeds">View Feeds</a>-->
+                <!--                        </li>-->
+                <!--                        &lt;!&ndash;												<li class>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;													<a href="/feeds/addFeed">Add Feed</a>&ndash;&gt;-->
+                <!--                        &lt;!&ndash;												</li>&ndash;&gt;-->
 
 
-<!--                    </ul>-->
-<!--                </li>-->
+                <!--                    </ul>-->
+                <!--                </li>-->
                 <li>
                     <a href="#">Portfolio</a>
                 </li>
@@ -154,74 +154,37 @@
         <div class="container">
 
             <div class="col-md-12">
+               <h3 align="center">User Details</h3>
+                <hr/>
 
-                <div align="center">
-                    <h3> System Users</h3>
+                       <div class="row" th:object="${user}">
+                           <div class="col-md-6">
+                               <h6>First Name</h6>
+                               <label th:text="*{fname}"></label>
+                               <br/>
+                               <h6>Last Name</h6>
+                               <label th:text="*{lname}"></label>
+                               <br/>
+                               <h6>Email</h6>
+                               <label th:text="*{email}"></label>
+                               <br/>
+                               <br/>
 
+                           </div>
 
-                </div>
+                           <div class="col-md-6">
+                               <h6>Section</h6>
+                               <label th:text="*{section.sectionName}"></label>
+                               <h6>Created At</h6>
+                               <label th:text="*{createdAt}"></label>
+                               <h6>Updated At</h6>
+                               <label th:text="*{updatedAt}"></label>
+                           </div>
+                           <a href="/admin/viewallUsers"><button class="btn btn-secondary">Back</button></a>
 
-                <div th:switch="${message}">
-                    <div th:case="'success'" class="alert alert-success">
-                        <strong>Success!</strong> <p th:text="${data}"></p>
-                    </div>
-
-                    <div th:case="'failed'" class="alert alert-danger">
-                        <strong>Failed!</strong> <p th:text="${data}"></p>
-                    </div>
-                </div>
-
-                <table class="table" id="userTable">
-                    <div align="right">
-                        <a href="/admin/addUser"><button class="btn btn-info">Register  User</button></a><br/><br/>
-                    </div>
-
-
-
-                    <thead>
-                    <tr>
-                        <!--						      <th scope="col">Species Code </th>-->
-                        <th >First Name</th>
-                        <th >Last Name</th>
-<!--                        <th >Email</th>-->
-                        <th>Phone Number</th>
-                        <th >Section</th>
-                        <th >Created At</th>
-                        <th >Action</th>
-                        <!--						  	  <th scope="col">Generate pdf</th>-->
-                    </tr>
-                    </thead>
-                    <tbody>
+                       </div>
 
 
-
-                    <tr th:each="user : ${SystemUsers}">
-
-                        <td th:text="${user.fname}">Fname</td>
-                        <td th:text="${user.lname}">Lname</td>
-<!--                        <td th:text="${user.email}">Email</td>-->
-                        <td th:text="${user.phoneNo}">Phone Number</td>
-                        <td th:text="${user.section.sectionName}">section</td>
-                        <td th:text="${user.createdAt}">Created At</td>
-
-                        <td>
-
-<!--                            <a th:href="@{'/admin/edit/'+ ${user.id}}"><button class="btn btn-success ">Edit</button></a>-->
-
-                            <a th:href="@{'/admin/view/'+ ${user.id}}"><button class="btn btn-secondary ">View</button></a>
-
-                            <!--                            <a th:href="@{'/species/delete/'+${species.id}}"><button class="btn btn-danger" onClick="return confirm('Delete Species?')	">Delete</button></a>-->
-
-
-
-                        </td>
-                    </tr>
-
-
-
-                    </tbody>
-
-                </table>
 
 
             </div>

@@ -26,12 +26,19 @@
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
 
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
                 <li class="active">
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties Data</a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li class="active">
-                            <a href="/inventoryManagerVariety/viewVarietyStockData">Varieties Stock </a>
+                            <a href="/inventoryManagerVariety/viewVarietyStockData">Fingerlings </a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -41,11 +48,11 @@
                     </ul>
                 </li>
                 <li class= >
-                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds Data</a>
+                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
                     <ul class="collapse list-unstyled" id="feed">
 
                         <li  class= >
-                            <a href="/inventoryManager/feedsData">Feeds Stock</a>
+                            <a href="/inventoryManager/feedsData">Farm Feeds</a>
                         </li>
 
 
@@ -88,11 +95,11 @@
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  >
-                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicine Data</a>
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
                     <ul class="collapse list-unstyled" id="medicine">
 
                         <li  >
-                            <a href="/inventoryManagerMedicines/viewMedicines">Medicine Stock</a>
+                            <a href="/inventoryManagerMedicines/viewMedicines">Farm medicines</a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/feeds/addFeed">Add Feed</a>-->
@@ -148,87 +155,88 @@
 
         <div class="container">
 
-            <div class="col-md-10">
+            <div class="col-md-12">
 
                 <div class="row">
 
 
 
-                    <div class="col-md-4">
-                        <div align="left">
-                            <a href="/inventoryManagerVariety/viewVarietyStockData"><button class="btn btn-secondary">Back</button></a><br><br>
+                    <div class="col-md-3">
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div th:switch="${message}">
+                            <div th:case="'success'" class="alert alert-success">
+                                <strong>Success!</strong> <p th:text="${data}"></p>
+                            </div>
+
+                            <div th:case="'failed'" class="alert alert-danger">
+                                <strong>Failed!</strong> <p th:text="${data}"></p>
+                            </div>
                         </div>
 
-                    </div>
+                        <div class="card">
 
-                    <div class="col-md-8">
+                            <div class="card-header">
+                                <h3>Update Fingerlings</h3>
 
-                        <div align="center">
-                            <h3>Edit  Variety Data</h3>
+                            </div>
 
-                        </div>
+                            <div class="card-body">
 
-                    </div>
-                </div>
-
-                <div th:switch="${message}">
-                    <div th:case="'success'" class="alert alert-success">
-                        <strong>Success!</strong> <p th:text="${data}"></p>
-                    </div>
-
-                    <div th:case="'failed'" class="alert alert-danger">
-                        <strong>Failed!</strong> <p th:text="${data}"></p>
-                    </div>
-                </div>
+                                <form action="#" th:action="@{/inventoryManagerVariety/SaveUpdate}" th:object="${varietyStock}" method="post" id="validate_form" data-parsley-validate>
 
 
+                                    <div class="form-group">
+                                        <input type="text" name="" class="form-control" th:field="*{id}" required  data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup" hidden>
 
-                <form action="#" th:action="@{/inventoryManagerVariety/SaveUpdate}" th:object="${varietyStock}" method="post" id="validate_form" data-parsley-validate>
+                                    </div>
 
 
+                                    <div class="form-group">
 
-                    <input type="text" name="" class="form-control" th:field="*{id}" required  data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup" hidden>
+                                        <select  th:field="*{species}" class="form-control" >
 
-                    <select  th:field="*{species}" class="form-control" >
+                                            <option  th:value="*{species.id}" th:text="*{species.name+'('+species.GeneName+' '+ species.speciesName+')'}"  ></option>
 
-                        <!--                       <tr th:each="pondtype : ${pondtypes}">-->
-                        <!--                        <td th:text="${medicine.medicineName}">Medicine  Name<td>-->
+                                        </select>
 
-                        <option  th:value="*{species.id}" th:text="*{species.name+'('+species.GeneName+' '+ species.speciesName+')'}"  ></option>
-                        <!--                       <option th:value="'F'" th:text="FEMALE"></option>-->
+                                    </div>
+                                    <div class="form-group">
 
-                    </select>
+                                        <label>Fingerlings Quantity eg  <i> 40.0</i> </label><br>
+                                        <input type="text" name="" class="form-control" th:field="*{number}" required  data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[2,6 ]" data-parsley-trigger="keyup">
 
-<!--                    <input type="text" name=""   th:value="*{species.GeneName +' '+species.SpeciesName}"  required  data-parsley-pattern data-parsley-length="[2, 20]" data-parsley-trigger="keyup" disabled class="form-control">-->
 
-                    <label>Fingerlings Quantity eg  <i> 40.0</i> </label><br>
-                    <input type="text" name="" class="form-control" th:field="*{number}" required  data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">
+                                    </div>
 
-<!--                    <label>Variety  Price eg <i> 400.0</i></label><br>-->
-<!--                    <input type="text" name="" class="form-control" th:field="*{Price}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup" value="0.0"><br>-->
+                            </div>
 
-                        <br>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success" type="submit" style="float:right">Update</button>
+                                        </form>
 
-                    <div class="row">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/inventoryManagerVariety/viewVarietyStockData"><button class="btn btn-danger">Cancel</button></a>
 
-                        <div class="col-md-8">
-
-                        </div>
-
-                        <div class="col-md-4 ">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <button class="btn btn-success" type="submit" style="float:right">Save</button>
+                                    </div>
 
                                 </div>
-                </form>
+
+                            </div>
+
+                        </div>
 
 
-
-                <div class="col-md-5 offset=2">
-                    <a href=""><button class="btn btn-danger">Cancel</button></a><br><br>
-
+                    </div>
                 </div>
+
+
 
             </div>
 

@@ -24,29 +24,37 @@
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
 
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+
                 <li class=>
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties</a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li >
-                            <a href="/species/viewSpecies">View Varieties</a>
+                            <a href="/species/viewSpecies">Species</a>
                         </li>
                         <li>
-                            <a href="/ManagerVariety/ManagerStockData">Variety Data</a>
+                            <a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
                         </li>
 
 
                     </ul>
                 </li>
                 <li  class="active">
-                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ponds</a>
                     <ul class="collapse list-unstyled" id="ponds">
 
                         <li class>
-                            <a href="/pondtype/viewPondTypes">Tank Types</a>
+                            <a href="/pondtype/viewPondTypes">Ponds Categories </a>
                         </li>
-                        <li class="active"  >
-                            <a href="#">Tank Descriptions</a>
+                        <li class="active" >
+                            <a href="#">Farm Ponds</a>
                         </li>
 
 
@@ -150,100 +158,97 @@
         <div class="container">
 
 
-            <div class="col-md-10">
+            <div class="col-md-12">
 
                 <div class="row">
 
 
 
-                    <div class="col-md-4">
-                        <div align="left">
-                            <a href="/pond/viewPonds"><button class="btn btn-secondary">Back</button></a><br><br>
+                    <div class="col-md-3">
+
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div th:switch="${message}">
+                            <div th:case="'success'" class="alert alert-success">
+                                <strong>Success!</strong> <p th:text="${data}"></p>
+                            </div>
+
+                            <div th:case="'failed'" class="alert alert-danger">
+                                <strong>Failed!</strong> <p th:text="${data}"></p>
+                            </div>
                         </div>
+                        <div class="card">
 
-                    </div>
+                            <div class="card-header">
+                                <h3 align="center">Update Pond</h3>
 
-                    <div class="col-md-8">
+                            </div>
 
-                        <div align="center">
-                            <h3>Edit Pond Data</h3>
+                            <div class="card-body">
 
-                        </div>
+                                <form action="#" th:action="@{/pond/saveUpdate}" th:object="${pond}" method="post" id="validate_form" data-parsley-validate>
 
-                    </div>
-                </div>
+                                    <div class="form-group">
+                                        <input type="text" name="" class="form-control" th:field="*{id}" data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1,3]"  data-parsley-trigger="keyup" hidden>
 
-                <div th:switch="${message}">
-                    <div th:case="'success'" class="alert alert-success">
-                        <strong>Success!</strong> <p th:text="${data}"></p>
-                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Pond Number </label>
+                                        <input type="text" name="" class="form-control" th:field="*{pondNumber}" data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1,3]"  data-parsley-trigger="keyup" >
 
-                    <div th:case="'failed'" class="alert alert-danger">
-                        <strong>Failed!</strong> <p th:text="${data}"></p>
-                    </div>
-                </div>
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label>Pond Type</label><br>
 
+                                        <select  th:field="*{pondType}" class="form-control">
+                                            <option  th:each="pondType: ${pondTypes} "th:value="${pondType.id}" th:text="${pondType.name}" ></option>
+                                        </select>
+                                    </div>
 
-                <form action="#" th:action="@{/pond/saveUpdate}" th:object="${pond}" method="post" id="validate_form" data-parsley-validate>
+                                    <div class="form-group">
 
+                                        <label>Pond Area eg  <i> 40.0</i> </label><br>
+                                        <input type="text" name="" class="form-control" th:field="*{pondArea}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,6]" data-parsley-trigger="keyup">
 
+                                    </div>
 
+                                    <div class="form-group">
+                                        <label>Avarage  Depth eg <i> Not more than 1.5 in (metres)</i></label><br>
+                                        <input type="text" name="" class="form-control" th:field="*{avarageDepth}" required data-parsley-pattern="[1][/.][0-5]" data-parsley-length="[2, 6]" data-parsley-trigger="keyup">
 
+                                    </div>
 
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
 
+                                        <button class="btn btn-success" type="submit" style="float:right">Update</button>
+                                        </form>
 
-                    <input type="text" name="" class="form-control" th:field="*{id}" data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1,3]"  data-parsley-trigger="keyup" hidden>
+                                    </div>
+                                    <div class="col-md-6">
 
-
-
-                    <label>Pond Number </label><br>
-
-                    <input type="text" name="" class="form-control" th:field="*{pondNumber}" data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1,3]"  data-parsley-trigger="keyup" >
-
-                    <label>Pond Type</label><br>
-
-                    <select  th:field="*{pondType}" class="form-control">
-
-                        <!--                       <tr th:each="pondtype : ${pondtypes}">-->
-                        <!--                        <td th:text="${medicine.medicineName}">Medicine  Name<td>-->
-
-                        <option  th:each="pondType: ${pondTypes} "th:value="${pondType.id}" th:text="${pondType.name}" ></option>
-                        <!--                       <option th:value="'F'" th:text="FEMALE"></option>-->
-
-                    </select>
-
-
-                    <!--                    <input type="text" name="" class="form-control" th:field="*{feedName}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 20]" data-parsley-trigger="keyup">-->
-
-                    <label>Pond Area eg  <i> 40.0</i> </label><br>
-                    <input type="text" name="" class="form-control" th:field="*{pondArea}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,6]" data-parsley-trigger="keyup">
-
-                    <label>Avarage  Depth eg <i> Not more than 1.5 in (metres)</i></label><br>
-                    <input type="text" name="" class="form-control" th:field="*{avarageDepth}" required data-parsley-pattern="[1][/.][0-5]" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>
+                                        <a href="/pond/viewPonds"><button class="btn btn-danger">Cancel</button></a>
 
 
-
-                    <div class="row">
-
-                        <div class="col-md-8">
-
-                        </div>
-
-                        <div class="col-md-4 ">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <button class="btn btn-success" type="submit" style="float:right">Save</button>
+                                    </div>
 
                                 </div>
-                </form>
+
+                            </div>
 
 
+                        </div>
 
-                <div class="col-md-5 offset=2">
-                    <a href=""><button class="btn btn-danger">Cancel</button></a><br><br>
 
+                    </div>
                 </div>
+
 
             </div>
 

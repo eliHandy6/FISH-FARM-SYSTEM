@@ -15,23 +15,29 @@
 		 	 <link rel="stylesheet" href="/sidebar-01/css/parsley.css">
 			
 	  </head>
-	  <body>
+	  <body >
 			
 			<div class="wrapper d-flex align-items-stretch">
 				<nav id="sidebar">
 					<div class="p-4 pt-5">
 						<a href="#" class="img logo rounded-circle mb-5"></a>
 						<ul class="list-unstyled components mb-5">
+							<hr/>
+							<li>
+
+								<img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+								<!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+							</li>
 
 							<li class="active">
-								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties</a>
+								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
 								<ul class="collapse list-unstyled" id="species">
 
 									<li class="active">
-										<a href="#">View Varieties</a>
+										<a href="/species/viewSpecies">Species</a>
 									</li>
 									<li class>
-											<a href="/ManagerVariety/ManagerStockData">Varieties Data</a>
+											<a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
 									</li>
 
 
@@ -149,71 +155,76 @@
 			        <div class="container">
 
 						<div class="row">
-
-
-
-							<div class="col-md-4">
-								<div align="left">
-									<a href="/species/viewSpecies"><button class="btn btn-secondary">Back</button></a><br>
-								</div>
+							<div class="col-md-3">
 
 							</div>
 
-							<div class="col-md-8">
+							<div class="col-md-6">
 
-								<div align="left">
-									<h3>Add Variety</h3>
+								<div th:switch="${message}">
+									<div th:case="'success'" class="alert alert-success">
+										<strong>Success!</strong> <p th:text="${data}"></p>
+									</div>
 
+									<div th:case="'failed'" class="alert alert-danger">
+										<strong>Failed!</strong> <p th:text="${data}"></p>
+									</div>
 								</div>
 
+								<div class="card">
+
+									<div class="card-header">
+										<h3 align="center">New Species</h3>
+
+									</div>
+
+									<div class="card-body">
+										<form action="#" th:action="@{/species/save}" th:object="${species}" method="post" id="validate_form" data-parsley-validate>
+
+											<div class="form-group">
+												<label>Fish Common Name</label>
+												<input type="text"  class="form-control" th:field="*{name}"required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]"   data-parsley-trigger="keyup" >
+
+											</div>
+											<div>
+												<label>Fish Genus Name</label>
+												<input type="text" class="form-control" th:field="*{geneName}" required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup">
+
+											</div>
+											<div>
+												<label>Fish Species Name </label>
+												<input type="text"  class="form-control" th:field="*{speciesName}" required  data-parsley-pattern="^[a-z][a-zA-Z]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup">
+
+											</div>
+
+										</div>
+									<div class="card-footer">
+
+										<div class="row">
+
+											<div class="col-md-6">
+												<button class="btn btn-success" type="submit" style="float:right">Save</button>
+												</form>
+											</div>
+
+											<div class="col-md-6">
+												<a href="/species/viewSpecies"><button class="btn btn-danger">Cancel</button>
+
+											</div>
+
+										</div>
+
+									</div>
+
+
 							</div>
+							<div class="col-md-3">
+
+							</div>
+
 
 						</div>
-							<div th:switch="${message}">
-								<div th:case="'success'" class="alert alert-success">
-									<strong>Success!</strong> <p th:text="${data}"></p>
-								</div>
-
-								<div th:case="'failed'" class="alert alert-danger">
-									<strong>Failed!</strong> <p th:text="${data}"></p>
-								</div>
-							</div>
-
-
-			     
-			     	   <form action="#" th:action="@{/species/save}" th:object="${species}" method="post" id="validate_form" data-parsley-validate>
-							
-							<label>Fish Common Name</label><br>
-
-							<input type="text"  class="form-control" th:field="*{name}"required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]"   data-parsley-trigger="keyup" >
-
-						   <label>Fish Gene Name</label><br>
-
-						   <input type="text" class="form-control" th:field="*{geneName}" required  data-parsley-pattern="^[A-Z][a-zA-Z]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup">
-
-						   <label>Fish Species Name </label><br>
-
-						   <input type="text"  class="form-control" th:field="*{speciesName}" required  data-parsley-pattern="^[a-z][a-zA-Z]+$" data-parsley-length="[3, 30]" data-parsley-trigger="keyup"><br>
-							
-			        
-			       
-			        		<div class="row">
-			        		
-			        			<div class="col-md-8">
-			        			
-			        			</div>
-			        			
-			        			<div class="col-md-4 ">
-			        				<div class="row">
-			        					<div class="col-md-5">
-											<button class="btn btn-success" type="submit" style="float:right">Save</button>
-											
-			        					</div>
-			        					</form>
-			        					<div class="col-md-5 offset=2">
-											<a href="/viewSpecies"><button class="btn btn-danger">Cancel</button></a><br><br>
-			        					
-			        					</div>
+>
 			        				
 			        				</div>
 			        			

@@ -18,6 +18,16 @@ public class SeedStock {
 
     private int quantity;
     private boolean status;
+    private boolean rejected;
+
+    public boolean isRejected() {
+        return rejected;
+    }
+
+    public void setRejected(boolean rejected) {
+        this.rejected = rejected;
+    }
+
     private  String createdAt;
     private  String updatedAt;
 

@@ -4,10 +4,12 @@
 		  	<title>View Fish Species</title>
 		    <meta charset="utf-8">
 		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		
-		    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+		  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+		  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 				
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--		  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
 		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -27,17 +29,23 @@
 							<div class="p-4 pt-5">
 								  	<a href="#" class="img logo rounded-circle mb-5"></a>
 							        <ul class="list-unstyled components mb-5">
+										<hr/>
+										<li>
+											
+											<img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+<!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+										</li>
 
 										<li class="active">
-											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties</a>
+											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish" style="color:white"></i>Species</a>
 											<ul class="collapse list-unstyled" id="species">
 
 												<li class="active">
-													<a href="#">View Varieties</a>
+													<a href="#">Species</a>
 												</li>
 
 												<li >
-													<a href="/ManagerVariety/ManagerStockData">Varieties Data</a>
+													<a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
 												</li>
 <!--												<li class>-->
 <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -47,14 +55,14 @@
 											</ul>
 										</li>
 										<li  >
-											<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
+											<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" ><i class="fas fa-water" style="color: white"></i>Ponds</a>
 											<ul class="collapse list-unstyled" id="ponds">
 
 												<li class>
-													<a href="/pondtype/viewPondTypes">Tank Types</a>
+													<a href="/pondtype/viewPondTypes">Pond Categories</a>
 												</li>
 												<li  >
-													<a href="/pond/viewPonds">Tank Descriptions</a>
+													<a href="/pond/viewPonds">Farm Ponds</a>
 												</li>
 
 
@@ -97,7 +105,7 @@
 <!--								             -->
 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
 										<li  >
-											<a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
+											<a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Feeds</a>
 											<ul class="collapse list-unstyled" id="feeds">
 
 												<li  >
@@ -123,7 +131,7 @@
 		    	</nav>
 		
 		        <!-- Page Content  -->
-		      <div id="content" class="p-4 p-md-5">
+		      <div id="content" class="p-4 p-md-8">
 		
 			        <nav class="navbar navbar-expand-lg navbar-light bg-light">
 				          <div class="container-fluid">
@@ -157,10 +165,10 @@
 			        
 			        <div class="container">
 			        
-			        	<div class="col-md-10">
+			        	<div class="col-md-12">
 			        	
 			        		<div align="center">
-									<h3> Varieties </h3>
+									<h3 style="font-weight: bold"> Species </h3>
 								
 							</div>
 
@@ -180,16 +188,16 @@
 
 							<table class="table" id="speciesTable">
 								<div align="right">
-									<a href="/species/addSpecies"><button class="btn btn-secondary">Add Variety</button></a><br><br>
+									<a href="/species/addSpecies"><button class="btn btn-info"> New Species</button></a><br><br>
 								</div>
 
 					
 				  <thead>
 					    <tr>
 <!--						      <th scope="col">Species Code </th>-->
-						      <th scope="col">Variety</th>
+						      <th scope="col">Species</th>
 							  <th scope="col">Created At</th>
-							  <th scope="col">Modified At</th>
+<!--							  <th scope="col">Modified At</th>-->
 						  	  <th scope="col">Action</th>
 <!--						  	  <th scope="col">Generate pdf</th>-->
 						  	  
@@ -209,11 +217,11 @@
 					<td	  th:text="${ species.name+ '('+ species.GeneName +' '+ species.speciesName + ')'}"></td>
 
 					  <td scope="col" th:text="${species.createdAt}">Created At</td>
-					  <td scope="col" th:text="${species.updatedAt}" >Modified At</td>
+<!--					  <td scope="col" th:text="${species.updatedAt}" >Modified At</td>-->
 					  <td>
 
 
-						  <a th:href="@{'/species/edit/'+ ${species.id}}"><button class="btn btn-success ">Edit</button></a>
+						  <a th:href="@{'/species/edit/'+ ${species.id}}"><button class="btn btn-success ">Update</button></a>
 <!--						  <a th:href="@{'/species/delete/'+${species.id}}"><button class="btn btn-danger" onClick="return confirm('Delete Species?')	">Delete</button></a>-->
 
 

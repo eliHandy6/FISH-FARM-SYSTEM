@@ -36,7 +36,6 @@ public class SeedStockingController {
     // Obtain all values in the SeedStock Table
 
     @RequestMapping("findall")
-
     public String obtainAllDatabaseVales(Model model){
 
 
@@ -58,13 +57,13 @@ public class SeedStockingController {
 
         model.addAttribute("listPonds",pondslist);
 
-//        MessageProperties messageProperties=new MessageProperties();
-//        SendSms sendSms=new SendSms();
-//
-//        messageProperties.setPhoneNumber("+254703907872");
-//        messageProperties.setMessage("hello world");
-//
-//        sendSms.sendSMS(messageProperties);
+        //        MessageProperties messageProperties=new MessageProperties();
+        //        SendSms sendSms=new SendSms();
+        //
+        //        messageProperties.setPhoneNumber("+254703907872");
+        //        messageProperties.setMessage("hello world");
+        //
+        //        sendSms.sendSMS(messageProperties);
 
         return "PondFishStocking";
     }
@@ -72,9 +71,13 @@ public class SeedStockingController {
     @RequestMapping("stockpond/{id}")
     public String stockPondwithSeedlings(@PathVariable(name = "id") int id, RedirectAttributes   redirectAttributes,Model  model){
         Pond  pond=pondService.findPondById(id);
+        //Obtaining existing species in the pond
 
 
-        //obtaina all varieties in stock and remove those with 0 number of seedlings
+        List<SeedStock>existingPondSpecies=seedingService.existingPondSpecies(id);
+
+
+        //obtaina all varieties in stock and remove varieties which have been stocked
 
         List <VarietyStock> varietiesInStock=varietyStockService.findAll();
 
@@ -82,9 +85,22 @@ public class SeedStockingController {
 
             VarietyStock varietyStock= (VarietyStock) varietiesInStock.toArray()[i];
 
+            System.out.println(varietyStock.getSpecies().getId());
+
+            for (int j=0;j<existingPondSpecies.toArray().length;j++){
+                SeedStock seedStock= (SeedStock) existingPondSpecies.toArray()[j];
+
+              //  System.out.println(seedStock.getPond().getId());
+
+                if(varietyStock.getId()==seedStock.getVariety().getId()){
+                    varietiesInStock.remove(i);
+                }
+            }
+
 
         }
-
+        SeedStock seedStock=new SeedStock();
+        model.addAttribute("seedStock",seedStock);
         model.addAttribute("variety",varietiesInStock);
         model.addAttribute("pond",pond);
         return "addfishStocking.html";
@@ -102,54 +118,62 @@ public class SeedStockingController {
         return "";
 
     }
-@RequestMapping(value = "save",method = RequestMethod.POST)
+
+    @RequestMapping(value = "save",method = RequestMethod.POST)
     public String saveStockData(@ModelAttribute("seedStock") SeedStock seedStock, RedirectAttributes redirectAttributes ){
 
         String message;
         String data;
 
-        VarietyStock currentSpecies=varietyStockService.getbyID(seedStock.getVariety().getId());
-        int currentno=currentSpecies.getNumber();
+            VarietyStock currentSpecies=varietyStockService.getbyID(seedStock.getVariety().getId());
+            int Count=seedingService.pondSpeciesNumber(seedStock.getPond().getId());
+            int currentno=currentSpecies.getNumber();
 
-         System.out.println(currentno);
+            boolean answer=seedingService.exiting(seedStock.getPond(),seedStock.getVariety());
 
-     boolean answer=seedingService.exiting(seedStock.getPond(),seedStock.getVariety());
+            if(seedStock.getQuantity()>currentno){
 
-        if(seedStock.getQuantity()>currentno){
+                data="The quantity  "+seedStock.getQuantity() +" exceeds " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName()+ " quantity  which is "+currentno;
 
-            data="The quantity  "+seedStock.getQuantity() +" exceeds " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName()+ " quantity  which is "+currentno;
+                redirectAttributes.addFlashAttribute("data",data);
+                redirectAttributes.addFlashAttribute("message","failed");
 
-            redirectAttributes.addFlashAttribute("data",data);
-            redirectAttributes.addFlashAttribute("message","failed");
+                return "redirect:/operationManager/stockpond/"+seedStock.getPond().getId();
 
-            return "redirect:/operationManager/addfishStocking";
+            }
 
-        }
+            else if(answer) {
 
+                data="The pond number "+seedStock.getPond().getPondNumber() +" has " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
 
-        else if(answer) {
-
-            data="The pond number "+seedStock.getPond().getPondNumber() +" has " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
-
-            redirectAttributes.addFlashAttribute("data",data);
-            redirectAttributes.addFlashAttribute("message","failed");
-
-                 return "redirect:/operationManager/addfishStocking";
-          }
-        else{
+                redirectAttributes.addFlashAttribute("data",data);
+                redirectAttributes.addFlashAttribute("message","failed");
 
 
-            currentSpecies.setNumber(currentSpecies.getNumber()-seedStock.getQuantity());
-            seedingService.saveStockData(seedStock);
-            data="The pond number "+seedStock.getPond().getPondNumber() +" is Successfuly stocked with "+seedStock.getQuantity()+" seeds of "+seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
-            redirectAttributes.addFlashAttribute("data",data);
-            redirectAttributes.addFlashAttribute("message","success" );
+                 //return "redirect:/operationManager/findall";
+                return "redirect:/operationManager/stockpond/"+seedStock.getPond().getId();
+              }
+            else if (Count>1){
 
+                data="The pond is FULL.ONLY 2 fingerLings Species Accepted in a pond";
 
-            return "redirect:/operationManager/addfishStocking";
-        }
+                redirectAttributes.addFlashAttribute("data",data);
+                redirectAttributes.addFlashAttribute("message","failed");
 
+                return "redirect:/operationManager/stockpond/"+seedStock.getPond().getId();
+            }
 
+            else{
+
+                    currentSpecies.setNumber(currentSpecies.getNumber()-seedStock.getQuantity());
+                    seedingService.saveStockData(seedStock);
+                    data="The pond number "+seedStock.getPond().getPondNumber() +" is Successfuly stocked with "+seedStock.getQuantity()+" seeds of "+seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
+                    redirectAttributes.addFlashAttribute("data",data);
+                    redirectAttributes.addFlashAttribute("message","success" );
+
+                    return "redirect:/operationManager/stockpond/"+seedStock.getPond().getId();
+                  //   return "redirect:/operationManager/addfishStocking";
+                }
 
 }
 
