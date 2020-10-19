@@ -18,10 +18,15 @@ public class SeedingService {
         return seedingRepository.findAll();
     }
 
+    public List<SeedStock> findallspeciesinapond( int id){
+        return seedingRepository.findByPondId(id);
+    }
 
-    //save data to seedstock table\
+
+    //save data to seedstock table
 
     public void saveStockData(SeedStock seedStock){
+        seedStock.setStatus(true);
         seedingRepository.save(seedStock);
     }
 
@@ -49,10 +54,10 @@ public class SeedingService {
     public int counttrue(int pondnumber){
         return seedingRepository.countTrue(pondnumber);
     }
-
-    public int countfalse(int pondnumber){
-        return seedingRepository.countFalse(pondnumber);
-    }
+//
+//    public int countfalse(int pondnumber){
+//        return seedingRepository.countFalse(pondnumber);
+//    }
     public int pondSpeciesNumber(int pondId){
         return seedingRepository.countpondSpecies(pondId);
     }

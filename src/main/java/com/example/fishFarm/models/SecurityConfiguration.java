@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @EnableWebSecurity
@@ -40,6 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/pondtype/**").hasRole("manager")
                 .antMatchers("/species/**").hasRole("manager")
                 .antMatchers("/ManagerVariety/**").hasRole("manager")
+                .antMatchers("/admin/**").hasRole("manager")
 
 
 
@@ -51,7 +53,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
                 .and().formLogin()
-                .loginPage("/login").permitAll();
+                .loginPage("/login").permitAll()
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
     }
 
     @Bean

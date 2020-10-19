@@ -16,20 +16,45 @@ public class SeedStock {
     @JoinColumn(nullable = false)
     private VarietyStock variety;
 
-    private int quantity;
+
+    private int stockingDensity;
+
+    private String pondType;
+
+    private String stockingRatio;
+
+
     private boolean status;
-    private boolean rejected;
 
-    public boolean isRejected() {
-        return rejected;
-    }
-
-    public void setRejected(boolean rejected) {
-        this.rejected = rejected;
-    }
 
     private  String createdAt;
     private  String updatedAt;
+
+
+
+    public int getStockingDensity() {
+        return stockingDensity;
+    }
+
+    public void setStockingDensity(int stockingDensity) {
+        this.stockingDensity = stockingDensity;
+    }
+
+    public String getPondType() {
+        return pondType;
+    }
+
+    public void setPondType(String pondType) {
+        this.pondType = pondType;
+    }
+
+    public String getStockingRatio() {
+        return stockingRatio;
+    }
+
+    public void setStockingRatio(String stockingRatio) {
+        this.stockingRatio = stockingRatio;
+    }
 
     public boolean isStatus() {
         return status;
@@ -54,10 +79,7 @@ public class SeedStock {
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
     }
-//  private int available;
 
-
-//    private String date;
 
     public SeedStock() {
     }
@@ -86,13 +108,7 @@ public class SeedStock {
         this.variety = variety;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }
 
 

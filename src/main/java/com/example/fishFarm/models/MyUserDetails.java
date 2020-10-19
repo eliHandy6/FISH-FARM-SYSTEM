@@ -24,7 +24,7 @@ public class MyUserDetails implements UserDetails {
     public MyUserDetails(SystemUser systemUser) {
         this.userName=systemUser.getUsername();
         this.password=systemUser.getPassword();
-        this.authorities=systemUser.getSection().getSectionName();
+        this.authorities="ROLE_"+systemUser.getSection().getSectionName();
 
     }
 

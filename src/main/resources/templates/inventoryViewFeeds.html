@@ -97,7 +97,7 @@
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  >
-                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicine</a>
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
                     <ul class="collapse list-unstyled" id="medicine">
 
                         <li  >
@@ -138,17 +138,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -171,7 +162,7 @@
                 <table class="table" id="feedTable">
 
                     			        		<div align="right">
-                    								<a href="/inventoryManager/addFeed/"><button class="btn btn-secondary">Add Feed</button></a><br><br>
+                    								<a href="/inventoryManager/addFeed/"><button class="btn btn-info">New Feed</button></a><br><br>
                     							</div>
 
                     <div th:switch="${message}">
@@ -209,7 +200,7 @@
 
                         						  <td>
 
-                        						  <a th:href="@{'/inventoryManager/edit/'+ ${feed.id}}"><button class="btn btn-success ">Edit</button></a>
+                        						  <a th:href="@{'/inventoryManager/edit/'+ ${feed.id}}"><button class="btn btn-success ">Update</button></a>
 <!--                        						  <a th:href="@{'/inventoryManager/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>-->
 
                         					 	 </td>

@@ -47,11 +47,11 @@
 								</ul>
 							</li>
 							<li class="active" >
-								<a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds Data</a>
+								<a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
 								<ul class="collapse list-unstyled" id="feed">
 
 									<li  class="active" >
-										<a href="/inventoryManager/feedsData">Feeds Stock</a>
+										<a href="/inventoryManager/feedsData">Farm Feeds</a>
 									</li>
 
 
@@ -94,11 +94,11 @@
 							<!--								             -->
 							<!--&lt;!&ndash;								          </li>&ndash;&gt;-->
 							<li  >
-								<a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicine Data</a>
+								<a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
 								<ul class="collapse list-unstyled" id="medicine">
 
 									<li  >
-										<a href="/inventoryManagerMedicines/viewMedicines">Medicine Stock</a>
+										<a href="/inventoryManagerMedicines/viewMedicines">Farm Medicines</a>
 									</li>
 									<!--												<li class>-->
 									<!--													<a href="/feeds/addFeed">Add Feed</a>-->
@@ -135,17 +135,8 @@
 
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="nav navbar-nav ml-auto">
-									<li class="nav-item active">
-										<a class="nav-link" href="#">Home</a>
-									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">About</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Portfolio</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">Contact</a>
+										<a class="nav-link" href="/logout">Logout</a>
 									</li>
 								</ul>
 							</div>
@@ -154,78 +145,92 @@
 
 					<div class="container">
 
-			        	<div class="col-md-10">
+			        	<div class="col-md-12">
 
 			        	<div class="row">
 
 
 
-				        	<div class="col-md-4">
-				        			<div align="left">
-										<a href="/inventoryManager/feedsData"><button class="btn btn-secondary">Back</button></a><br><br>
-									</div>
+				        	<div class="col-md-3">
+
 
 				        	</div>
 
-				        	<div class="col-md-8">
+				        	<div class="col-md-6">
 
-				        		<div align="center">
-										<h3>Add Feed</h3>
+								<div th:switch="${message}">
+									<div th:case="'success'" class="alert alert-success">
+										<strong>Success!</strong> <p th:text="${data}"></p>
+									</div>
+
+									<div th:case="'failed'" class="alert alert-danger">
+										<strong>Failed!</strong> <p th:text="${deta}"></p>
+									</div>
+								</div>
+
+								<div class="card">
+
+									<div class="card-header">
+										<h3 align="center">New Farm Feed</h3>
+
+									</div>
+
+									<div class="card-body">
+
+										<form action="#" th:action="@{/inventoryManager/save}" th:object="${feed}" method="post" id="validate_form" data-parsley-validate>
+
+											<div class="form-group">
+												<label>Feed Name</label><br>
+												<input type="text" name="" class="form-control" th:field="*{feedName}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 20]" data-parsley-trigger="keyup">
+
+
+											</div>
+
+											<div class="form-group"><label>Quantity eg  <i> 40.0</i> (Kgs)</label><br>
+												<input type="text" name="" class="form-control" th:field="*{feedQuality}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,6]" data-parsley-trigger="keyup">
+
+
+
+											</div>
+
+
+
+
+									</div>
+
+									<div class="card-footer">
+
+										<div class="row">
+											<div class="col-md-6">
+												<button class="btn btn-success" type="submit" style="float:right">Save</button>
+
+												</form>
+
+
+											</div>
+											<div class="col-md-6">
+												<a href="/inventoryManager/feedsData"><button class="btn btn-danger">Cancel</button></a>
+
+
+											</div>
+
+										</div>
+
+									</div>
 
 								</div>
+
 
 			        	</div>
 			     	   </div>
 
-							<div th:switch="${message}">
-								<div th:case="'success'" class="alert alert-success">
-									<strong>Success!</strong> <p th:text="${data}"></p>
-								</div>
-
-								<div th:case="'failed'" class="alert alert-danger">
-									<strong>Failed!</strong> <p th:text="${deta}"></p>
-								</div>
-							</div>
 
 
 
-							<form action="#" th:action="@{/inventoryManager/save}" th:object="${feed}" method="post" id="validate_form" data-parsley-validate>
-
-<!--								<label>Feed ID eg <i>Feed-001</i></label><br>-->
-
-<!--								<input type="text" name="" class="form-control" th:field="*{id}" data-parsley-pattern="[a-zA-Z]*[/-][0-9]*" data-parsley-length="[5,10]"  data-parsley-trigger="keyup">-->
-
-								<label>Feed Name</label><br>
-								<input type="text" name="" class="form-control" th:field="*{feedName}" required  data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[2, 20]" data-parsley-trigger="keyup">
-
-								<label>Quantity eg  <i> 40.0</i> </label><br>
-								<input type="text" name="" class="form-control" th:field="*{feedQuality}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,4 ]" data-parsley-trigger="keyup">
-
-<!--								<label>Unit Price eg <i> 400.0</i></label><br>-->
-<!--								<input type="text" name="" class="form-control" th:field="*{unitPrice}" required data-parsley-pattern="[1-9]*[0-9]*[/.][0-9][0-9]*" data-parsley-length="[2, 6]" data-parsley-trigger="keyup"><br>-->
-
-
-								<br>
-								<div class="row">
-
-									<div class="col-md-8">
-
-									</div>
-
-									<div class="col-md-4 ">
-										<div class="row">
-											<div class="col-md-5">
-												<button class="btn btn-success" type="submit" style="float:right">Save</button>
-
-											</div>
-							</form>
 
 
 
-							<div class="col-md-5 offset=2">
-								<a href=""><button class="btn btn-danger">Cancel</button></a><br><br>
 
-							</div>
 
 						</div>
 

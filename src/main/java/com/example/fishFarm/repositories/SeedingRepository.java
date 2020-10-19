@@ -12,6 +12,8 @@ import java.util.List;
 @Repository
 public interface SeedingRepository extends JpaRepository<SeedStock,Integer> {
 
+    List<SeedStock> findByPondId(int id);
+
    boolean existsByPondAndVariety(Pond pondid, VarietyStock varietyID);
 
 
@@ -20,8 +22,8 @@ public interface SeedingRepository extends JpaRepository<SeedStock,Integer> {
    int countTrue(int pondNumber);
 
 
-    @Query(value = "SELECT COUNT(*) from seed_stock where status=0 and pond_id=?1",nativeQuery = true)
-    int countFalse(int pondNumber);
+//    @Query(value = "SELECT COUNT(*) from seed_stock where status=0 and pond_id=?1",nativeQuery = true)
+  //  int countFalse(int pondNumber);
 
 
     @Query(value = "SELECT * from seed_stock where pond_id=?1",nativeQuery = true)

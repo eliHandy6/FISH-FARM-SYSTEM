@@ -24,13 +24,19 @@
         <div class="p-4 pt-5">
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
 
                 <li >
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Varieties Data</a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li >
-                            <a href="/inventoryManagerVariety/viewVarietyStockData">Variety Stock </a>
+                            <a href="/inventoryManagerVariety/viewVarietyStockData">Fingerlings </a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -40,11 +46,11 @@
                     </ul>
                 </li>
                 <li class >
-                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds Data</a>
+                    <a href="#feed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds </a>
                     <ul class="collapse list-unstyled" id="feed">
 
                         <li   >
-                            <a href="/inventoryManager/feedsData">Feeds Stock</a>
+                            <a href="/inventoryManager/feedsData">Farm Feeds</a>
                         </li>
 
 
@@ -87,11 +93,11 @@
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  class="active" >
-                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicine Data</a>
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
                     <ul class="collapse list-unstyled" id="medicine">
 
                         <li class="active" >
-                            <a href="#">Medicine Stock</a>
+                            <a href="#">Farm Medicines</a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/feeds/addFeed">Add Feed</a>-->
@@ -128,17 +134,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -150,7 +147,7 @@
             <div class="col-md-12">
 
                 <div align="center">
-                    <h3> Medicine</h3>
+                    <h3 style="font-weight: bold"> Farm Medicines</h3>
 
                 </div>
 
@@ -161,7 +158,7 @@
                 <table class="table" id="medicinetable">
 
                     <div align="right">
-                        <a href="/inventoryManagerMedicines/addmedicine"><button class="btn btn-secondary">Add Medicine</button></a><br><br>
+                        <a href="/inventoryManagerMedicines/addmedicine"><button class="btn btn-info">New Medicine</button></a><br><br>
                     </div>
 
                     <div th:switch="${status}">
@@ -198,7 +195,7 @@
 
                         <td>
 
-                            <a th:href="@{'/inventoryManagerMedicines/edit/'+ ${medicine.number}}"><button class="btn btn-success ">Edit</button></a>
+                            <a th:href="@{'/inventoryManagerMedicines/edit/'+ ${medicine.number}}"><button class="btn btn-success ">Update</button></a>
 <!--                            <a th:href="@{'/inventoryManagerMedicines/delete/'+${medicine.number}}"><button class="btn btn-danger "onClick="return confirm('Delete Medicine')">Delete</button></a>-->
 
                         </td>

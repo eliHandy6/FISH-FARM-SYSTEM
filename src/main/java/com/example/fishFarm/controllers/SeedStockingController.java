@@ -47,25 +47,24 @@ public class SeedStockingController {
 
                 Pond pond = (Pond) pondslist.toArray()[i];
                 int approved = seedingService.counttrue(pond.getId());
-                int unpproved = seedingService.countfalse(pond.getId());
                  pond.setCreatedAt(Integer.toString(approved));
-                 pond.setUpdatedAt(Integer.toString(unpproved));
-
 
         }
 
 
         model.addAttribute("listPonds",pondslist);
 
-        //        MessageProperties messageProperties=new MessageProperties();
-        //        SendSms sendSms=new SendSms();
-        //
-        //        messageProperties.setPhoneNumber("+254703907872");
-        //        messageProperties.setMessage("hello world");
-        //
-        //        sendSms.sendSMS(messageProperties);
 
         return "PondFishStocking";
+    }
+
+    @RequestMapping("/viewpond/{id}")
+    public  String speciesinapond(@PathVariable (name = "id") int id,Model model){
+        List<SeedStock> findallspeciesinapond=seedingService.findallspeciesinapond(id);
+
+        model.addAttribute("findallspeciesinapond",findallspeciesinapond);
+
+        return "pondspecies";
     }
 
     @RequestMapping("stockpond/{id}")
@@ -131,9 +130,9 @@ public class SeedStockingController {
 
             boolean answer=seedingService.exiting(seedStock.getPond(),seedStock.getVariety());
 
-            if(seedStock.getQuantity()>currentno){
+            if(seedStock.getStockingDensity()>currentno){
 
-                data="The quantity  "+seedStock.getQuantity() +" exceeds " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName()+ " quantity  which is "+currentno;
+                data="The quantity  "+seedStock.getStockingDensity() +" exceeds " +seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName()+ " quantity  which is "+currentno;
 
                 redirectAttributes.addFlashAttribute("data",data);
                 redirectAttributes.addFlashAttribute("message","failed");
@@ -165,9 +164,9 @@ public class SeedStockingController {
 
             else{
 
-                    currentSpecies.setNumber(currentSpecies.getNumber()-seedStock.getQuantity());
+                    currentSpecies.setNumber(currentSpecies.getNumber()-seedStock.getStockingDensity());
                     seedingService.saveStockData(seedStock);
-                    data="The pond number "+seedStock.getPond().getPondNumber() +" is Successfuly stocked with "+seedStock.getQuantity()+" seeds of "+seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
+                    data="The pond number "+seedStock.getPond().getPondNumber() +" is Successfuly stocked with "+seedStock.getStockingDensity()+" fingerlings of "+seedStock.getVariety().getSpecies().getGeneName()+ " "+seedStock.getVariety().getSpecies().getSpeciesName();
                     redirectAttributes.addFlashAttribute("data",data);
                     redirectAttributes.addFlashAttribute("message","success" );
 

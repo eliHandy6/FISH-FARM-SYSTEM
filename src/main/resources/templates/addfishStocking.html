@@ -27,12 +27,19 @@
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
 
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
                 <li class="active" >
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Fish Stocking </a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Stocking </a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li class="active">
-                            <a href="/operationManager/findall">Pond Fish Stocking </a>
+                            <a href="/operationManager/findall">Fish Ponds </a>
                         </li>
                         <!--												<li class>-->
                         <!--													<a href="/species/addSpecies">Add Species</a>-->
@@ -140,28 +147,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <li>
                     <a href="#">Portfolio</a>
                 </li>
@@ -191,17 +176,8 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -210,83 +186,125 @@
 
         <div class="container">
 
-            <div class="col-md-10">
+            <div class="col-md-12">
 
                 <div class="row">
 
 
 
-                    <div class="col-md-4">
-                        <div align="left">
-                            <a href="/operationManager/findall"><button class="btn btn-secondary">Back</button></a><br><br>
+                    <div class="col-md-3">
+
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div th:switch="${message}">
+                            <div th:case="'success'" class="alert alert-success">
+                                <strong>Success!</strong> <p th:text="${data}"></p>
+                            </div>
+
+                            <div th:case="'failed'" class="alert alert-danger">
+                                <strong>Failed!</strong> <p th:text="${data}"></p>
+                            </div>
                         </div>
 
-                    </div>
-
-                    <div class="col-md-8">
-
-                        <div align="center">
-                            <h4>Pond FingerLings Variety Stocking</h4>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div th:switch="${message}">
-                    <div th:case="'success'" class="alert alert-success">
-                        <strong>Success!</strong> <p th:text="${data}"></p>
-                    </div>
-
-                    <div th:case="'failed'" class="alert alert-danger">
-                        <strong>Failed!</strong> <p th:text="${data}"></p>
-                    </div>
-                </div>
-
-                <form action="#" th:action="@{/operationManager/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
+                        <div class="card">
 
 
-                    <label>Pond  Number </label><br>
+                            <div class="card-header">
+                                <h3 align="center">New Stocking</h3>
+                            </div>
 
-                    <input type="text"  name="pond" class="form-control" th:value="${pond.id}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" hidden >
+                            <div class="card-body">
+                                <form action="#" th:action="@{/operationManager/save}" th:object="${seedStock}" method="post" id="validate_form" data-parsley-validate>
+
+                                    <div class="form-group">
+                                        <label>Pond  Number </label>
+                                        <input type="text"  name="pond" class="form-control" th:value="${pond.id}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" hidden >
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text"   class="form-control" th:value="${pond.pondNumber}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" disabled>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Pond Type</label>
+                                        <select  th:field="*{pondType}"class="form-control">
+                                            <option value="Breeding Pond">Breeding Pond </option>
+                                            <option value ="Nursery Pond">Nursery Pond </option>
+                                        </select>
+
+                                    </div>
 
 
-                    <input type="text"   class="form-control" th:value="${pond.pondNumber}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" disabled>
+                                    <div class="form-group">
+                                        <label>Species </label>
+                                        <select th:field="*{variety}" class="form-control">
+
+                                            <option  th:each="varietystock: ${variety} "th:value="${varietystock.id}" th:text="${varietystock.species.name+'('+varietystock.species.geneName+' '+varietystock.species.speciesName+ ')-----available =' +varietystock.number}" ></option>
+
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label> Stocking Density eg <i> 400.0</i></label>
+                                        <input  type="text" th:field="*{stockingDensity}"  class="form-control"  required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                    <label> Stocking ratio eg <i> eg 3:1</i></label>
+                                    <input  type="text" th:field="*{stockingRatio}"  class="form-control"  required data-parsley-pattern="[1-9][:][0-9]" data-parsley-length="[1, 6]" data-parsley-trigger="keyup">
+
+                                   </div>
 
 
-                    <label>Variety </label><br>
-
-                     <select th:field="*{variety}" class="form-control">
-
-                        <option  th:each="varietystock: ${variety} "th:value="${varietystock.id}" th:text="${varietystock.species.name+'('+varietystock.species.geneName+' '+varietystock.species.speciesName+ ')------------ Available fingerLings =' +varietystock.number}" ></option>
-
-                    </select>
-
-                    <label> Variety Quantity eg <i> 400.0</i></label><br>
-                    <input  type="text" th:field="*{quantity}"  class="form-control"  required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0"><br>
 
 
 
-                    <div class="row">
 
-                        <div class="col-md-8">
 
-                        </div>
 
-                        <div class="col-md-4 ">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <button class="btn btn-success" type="submit" style="float:right">Save</button>
+                            </div>
+
+
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success" type="submit" style="float:right">Save</button>
+                                        </form>
+
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/operationManager/findall"><button class="btn btn-danger">Cancel</button></a>
+
+
+                                    </div>
 
                                 </div>
-                </form>
+
+                            </div>
 
 
+                        </div>
 
-                <div class="col-md-5 offset=2">
-                    <a href=""><button class="btn btn-danger">Cancel</button></a><br><br>
+                        <div align="center">
 
+
+                        </div>
+
+                    </div>
                 </div>
+
+
+
+
 
             </div>
 
