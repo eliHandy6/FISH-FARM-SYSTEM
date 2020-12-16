@@ -10,30 +10,52 @@ import javax.persistence.ManyToOne;
 @Entity
 public class FeedHistory {
 	@Id
-	
 	private int id;
 	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false, name = "Feed")
+	@JoinColumn(nullable = false)
 	private Feed feed;
 	
 	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
-	@JoinColumn(nullable = false, name = "pondNumber")
+	@JoinColumn(nullable = false)
 	private Pond pond;
 	private double Quanity;
-	private String date;
-	
-	
+
+	private double fishWeight;
+
+	private  String createdAt;
+
+	private boolean status ;
+
+
+	public String getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public FeedHistory() {
 		super();
 	}
-	public FeedHistory(int id, Feed feed, Pond pond, double quanity, String date) {
-		super();
-		this.id = id;
-		this.feed = feed;
-		this.pond = pond;
-		Quanity = quanity;
-		this.date = date;
+
+
+	public double getFishWeight() {
+		return fishWeight;
 	}
+
+	public void setFishWeight(double fishWeight) {
+		this.fishWeight = fishWeight;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -46,9 +68,7 @@ public class FeedHistory {
 	public double getQuanity() {
 		return Quanity;
 	}
-	public String getDate() {
-		return date;
-	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -61,9 +81,7 @@ public class FeedHistory {
 	public void setQuanity(double quanity) {
 		Quanity = quanity;
 	}
-	public void setDate(String date) {
-		this.date = date;
-	}
+
 
 	
 	

@@ -14,7 +14,16 @@ public class DailyPondRecordsService {
 	
 	@Autowired
 	private DailyPondRecordsRepository dailyPondRecordsRepo;
-	
+
+	public List<DailyPondRecords> findDailyRecordsByStatus(){
+		return dailyPondRecordsRepo.findByStatusOrderByIdAsc(true);
+
+	}
+
+	public List<DailyPondRecords> generatePhysioByPondNumber(int pondnumber){
+		return dailyPondRecordsRepo.findByPondPondNumberAndStatus(pondnumber,true);
+
+	}
 	public List<DailyPondRecords> findAllDailyRecords(){
 		return dailyPondRecordsRepo.findAll();
 	}

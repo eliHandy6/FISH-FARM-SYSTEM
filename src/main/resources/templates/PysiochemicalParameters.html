@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 
     <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
     <link rel="stylesheet" href="/sidebar-01/css/style.css">
@@ -22,90 +27,74 @@
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
 
-                <li >
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Fish Stocking </a>
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+                <li class="" >
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Stocking </a>
                     <ul class="collapse list-unstyled" id="species">
 
-                        <li >
-                            <a href="/operationManager/findall">Pond Fish Stocking </a>
+                        <li class="">
+                            <a href="/operationManager/findall">Ponds </a>
                         </li>
-                        <!--												<li class>-->
-                        <!--													<a href="/species/addSpecies">Add Species</a>-->
-                        <!--												</li>-->
+
+                        <li class="">
+                            <a href="/operationManager/breeding">Breeding Ponds </a>
+                        </li>
+                        <li class="">
+                            <a href="/operationManager/nursery">Nursery Ponds </a>
+                        </li>
 
 
                     </ul>
                 </li>
-                <li class="active" >
-                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Daily Records</a>
+                <li class="" >
+                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
                     <ul class="collapse list-unstyled" id="dailyRecords">
 
-                        <li  >
-                            <a href="">Requested Feeds</a>
+                        <li class="">
+                            <a href="/operationManager/unfed">Ponds</a>
+                        </li>
+
+                        <li >
+                            <a href="/operation/requestedfeeds">Feeding History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="active" >
+                    <a href="#dailyPhysi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Physiochemical Params</a>
+                    <ul class="collapse list-unstyled" id="dailyPhysi">
+
+                        <li class="">
+                            <a href="/operationManager/unTempRecorded">Ponds</a>
                         </li>
 
                         <li  class="active" >
-                            <a href="#">Physiochemical Parameters</a>
+                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Params History</a>
                         </li>
-
-
-                        <li  class="" >
-                            <a href="">Dead Fish</a>
-                        </li>
-
-
 
                     </ul>
                 </li>
-                <!--										<li class="active">-->
-                <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
-                <!--											<ul class="collapse list-unstyled" id="species">-->
-
-                <!--												<li class="active">-->
-                <!--													<a href="#">View Species</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/species/addSpecies">Add Species</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
-
-                <!--										<li >-->
-                <!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
-                <!--											<ul class="collapse list-unstyled" id="owners">-->
-
-                <!--												<li >-->
-                <!--													<a href="/owners/viewOwners">View Owners</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/owners/addOwner">Add Owner</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
 
 
 
-                <!--								          <li >-->
-                <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
-                <!--								             -->
-                <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
+
                 <li  >
                     <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medication </a>
                     <ul class="collapse list-unstyled" id="medicine">
-
-                        <li  >
-                            <a href="">Medicine Used</a>
+                        <li>
+                            <a href="/operationMana/mediPonds">Ponds</a>
                         </li>
 
-
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
-
+                        <li  >
+                            <a href="/operationMana/medication">Medication History</a>
+                        </li>
 
                     </ul>
 
@@ -118,51 +107,16 @@
                     <ul class="collapse list-unstyled" id="harvest">
 
                         <li  >
-                            <a href="">Harvested  Fish</a>
+                            <a href="/operationManag/harvest">Harvested  Fish</a>
                         </li>
 
-
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
-
-
                     </ul>
-
-
-
                 </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <li>
-                    <a href="#">Portfolio</a>
+                <li >
+                    <a href="/farm/pond">Reports</a>
                 </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+
             </ul>
 
 
@@ -197,95 +151,66 @@
 
             <div class="col-md-12">
 
+                <div th:switch="${message}">
+                    <div th:case="'success'" class="alert alert-success">
+                        <strong>Success!</strong> <p th:text="${data}"></p>
+                    </div>
+
+                    <div th:case="'failed'" class="alert alert-danger">
+                        <strong>Failed!</strong> <p th:text="${data}"></p>
+                    </div>
+                </div>
+
                 <div align="center">
                     <h3> Physiochemical Data</h3>
 
+
+
                 </div>
 
-
-
-
-
-                <table class="table">
-
-                    <div align="right">
-                        <a href=""><button class="btn btn-secondary"> Add Pond Status</button></a><br><br>
-                    </div>
-
-                    <div th:switch="${message}">
-                        <div th:case="'success'" class="alert alert-success">
-                            <strong>Success!</strong> <p th:text="${data}"></p>
-                        </div>
-
-                        <div th:case="'failed'" class="alert alert-danger">
-                            <strong>Failed!</strong> <p th:text="${deta}"></p>
-                        </div>
-                    </div>
+                <table class="table" id="pondtable">
 
                     <thead>
-                    <tr>
-                        <!--						      <th scope="col">#</th>-->
-                        <th scope="col">Date<th>
-                        <th scope="col">Pond Number<th>
-                        <th scope="col">Pond Type<th>
-                        <th scope="col">Temprature</th>
-                        <th scope="col">Dissolved Oxygen</th>
-                        <th scope="col">PH</th>
-                        <th scope="col">Ammonia</th>
 
-                    </tr>
+                        <tr>
+                            <th>Pond Number<th>
+                            <th >Temprature (O c)<th>
+                            <th >Nitrogen(mg/litre)</th>
+                            <th >Ammonia(mg/litre)</th>
+                            <th >Date</th>
+                            <th >Action</th>
+                        </tr>
+
                     </thead>
-                                        <tbody>
-
-                                        <tr th:each="phyChem : ${physchemical}">
-
-                                            <td></td>
-                                            <td></td>
-                                            <td th:text="${phyChem.pondId.pondNumber}">Pond  number<td>
-
-                                            <td th:text="${phyChem.pondId.pondType.name}">Pond  Type<td>
-<!--                                            -->
-                                            <td th:text="${phyChem.temprature}">Pond Temprature</td>
-
-                                            <td th:text="${phyChem.dissolvedOxygen}">   Disolved Oxygen</td>
-
-                                            <td th:text="${phyChem.dissolvedOxygen}">   Ammonia</td>
-
-                                            <td th:text="${phyChem.ammonia}">Water pH/td>
+                    <tbody>
 
 
-<!--                                            <td></td>-->
-<!--                                            <td th:text="${feed.unitPrice}">Unit Price</td>-->
-<!--                                            <td th:text="${feed.unitPrice * feed.feedQuality}">Total Price</td>-->
+                    <tr th:each="phyChem : ${physchemical}">
+                        <td scope="col" th:text="${phyChem.pond.pondNumber}">Pond  number</td>
+                        <td></td>
+                        <td scope="col" th:text="${phyChem.temprature}">Pond Temprature</td>
+                       <td></td>
+                        <td scope="col" th:text="${phyChem.nitrogen}">Pond Nitrogen</td>
+                        <td scope="col" th:text="${phyChem.ammonia}">Pond Ammonia</td>
+                        <td scope="col" th:text="${phyChem.createdAt}">Water pH</td>
+                        <td>
+                            <a th:href="@{'/OperationalMaanager/edit/'+ ${phyChem.id}}"><button class="btn btn-success ">Update</button></a>
+                                </td>
 
+                              </tr>
+                             </tbody>
 
-                                            <td>
+                        </table>
+                                </div>
+                            </div>
+                            <script>
 
-                                                <a href=""><button class="btn btn-success ">Edit</button></a>
-                                                <!--                        						  <a th:href="@{'/inventoryManager/delete/'+${feed.id}}"><button class="btn btn-danger "onClick="return confirm('Delete Feed')">Delete</button></a>-->
+                                $(document).ready(function() {
+                                    $('#pondtable').DataTable()
 
-                                            </td>
-                    </tr>
-
-
-
-
-                    </tbody>
-
-                </table>
-
-
-            </div>
-
-
-
-
-
-        </div>
-    </div>
-</div>
-
-<script src="/sidebar-01/js/jquery.min.js"></script>
+                                });
+                            </script>
+                            <!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
 <script src="/sidebar-01/js/popper.js"></script>
 <script src="/sidebar-01/js/bootstrap.min.js"></script>
 <script src="/sidebar-01/js/main.js"></script>

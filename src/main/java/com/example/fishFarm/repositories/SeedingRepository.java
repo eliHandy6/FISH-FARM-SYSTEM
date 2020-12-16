@@ -14,8 +14,12 @@ public interface SeedingRepository extends JpaRepository<SeedStock,Integer> {
 
     List<SeedStock> findByPondId(int id);
 
-   boolean existsByPondAndVariety(Pond pondid, VarietyStock varietyID);
+    List<SeedStock> findByPondPondNumberAndStatus(int number,boolean status);
 
+
+    List<SeedStock> findByPondPondStockingTypeAndStatus(String name,boolean status);
+
+   boolean existsByPondAndVariety(Pond pondid, VarietyStock varietyID);
 
 
    @Query(value = "SELECT COUNT(*) from seed_stock where  status=1 and pond_id=?1",nativeQuery = true)

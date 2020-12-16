@@ -21,7 +21,7 @@ public class SMSNotification {
     }
 
     public void UserNotification(SystemUser systemUser) throws IOException {
-        String message ="Dear "+systemUser.getFname()+" you have been registed successfuly to the Fish Farm.Kindy Check your Email for more information";
+        String message ="Dear "+systemUser.getFname()+" you have been registed successfuly to the "+systemUser.getSection().getSectionName()+" section of  the Fish Farm Kindy Check your Email for more information";
         String url="http://messaging.advantasms.com/bulksms/sendsms.jsp?user=sunflash&password=%23Sunfla5&mobiles="+systemUser.getPhoneNo()+"&sms="+message+"&clientsmsid=10001&senderid=SUNFLASH";
         SendGateway(url);
     }

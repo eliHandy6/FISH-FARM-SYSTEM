@@ -14,10 +14,39 @@ public class Pond {
 	private PondType pondType;
 	private double  pondArea;
 	private double  avarageDepth;
+	private String pondStockingType;
+	private boolean stockingStatus;
+	private boolean feedingStatus;
+	private boolean paramStatus;
+	private boolean medicationStatus;
 
 	private String createdAt;
 	private String updatedAt;
-	
+
+	public boolean isMedicationStatus() {
+		return medicationStatus;
+	}
+
+	public void setMedicationStatus(boolean medicationStatus) {
+		this.medicationStatus = medicationStatus;
+	}
+
+	public boolean isFeedingStatus() {
+		return feedingStatus;
+	}
+
+	public void setFeedingStatus(boolean feedingStatus) {
+		this.feedingStatus = feedingStatus;
+	}
+
+	public boolean isParamStatus() {
+		return paramStatus;
+	}
+
+	public void setParamStatus(boolean paramStatus) {
+		this.paramStatus = paramStatus;
+	}
+
 	public Pond() {
 		super();
 	}
@@ -38,14 +67,20 @@ public class Pond {
 		this.updatedAt = updatedAt;
 	}
 
-	public Pond (int id, int pondnumber, PondType pondtype, int pondArea, int avarageDepth, String createdAt, String updatedAt) {
-		this.id = id;
-		this.pondNumber = pondnumber;
-		this.pondType = pondtype;
-		this.pondArea = pondArea;
-		this.avarageDepth = avarageDepth;
-		this.createdAt=createdAt;
-		this.updatedAt=updatedAt;
+	public String getPondStockingType() {
+		return pondStockingType;
+	}
+
+	public void setPondStockingType(String pondStockingType) {
+		this.pondStockingType = pondStockingType;
+	}
+
+	public boolean isStockingStatus() {
+		return stockingStatus;
+	}
+
+	public void setStockingStatus(boolean stockingStatus) {
+		this.stockingStatus = stockingStatus;
 	}
 
 	public int getId() {

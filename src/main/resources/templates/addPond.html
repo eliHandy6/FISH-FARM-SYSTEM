@@ -29,6 +29,9 @@
                     <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
                     <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
                 </li>
+                <li >
+                    <a href="/admin/viewallUsers">System Users</a>
+                </li>
 
                 <li class=>
                     <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
@@ -58,62 +61,43 @@
 
                     </ul>
                 </li>
-                <!--										<li class="active">-->
-                <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
-                <!--											<ul class="collapse list-unstyled" id="species">-->
 
-                <!--												<li class="active">-->
-                <!--													<a href="#">View Species</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/species/addSpecies">Add Species</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
-
-                <!--										<li >-->
-                <!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
-                <!--											<ul class="collapse list-unstyled" id="owners">-->
-
-                <!--												<li >-->
-                <!--													<a href="/owners/viewOwners">View Owners</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/owners/addOwner">Add Owner</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
-
-
-
-                <!--								          <li >-->
-                <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
-                <!--								             -->
-                <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  >
                     <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
                     <ul class="collapse list-unstyled" id="feeds">
 
                         <li  >
-                            <a href="/feeds/viewFeeds">View Feeds</a>
+                            <a href="/feeds/viewFeeds"> Feeds</a>
                         </li>
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
+                        <li  >
+                            <a href="/farmmanager/feedHistory"> Feed History</a>
+                        </li>
+
+
+
+                    </ul>
+                </li>
+
+                <li  >
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medicines</a>
+                    <ul class="collapse list-unstyled" id="medicine">
+
+                        <li  >
+                            <a href="/farmmanager/medicines"> Medicines</a>
+                        </li>
+                        <li  >
+                            <a href="/farmmanager/medicinesHistory">Medicine History</a>
+                        </li>
+
 
 
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="/farmmanager/harvest">Harvest</a>
                 </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+
+
             </ul>
 
 
@@ -196,6 +180,18 @@
                                         </select>
 
                                     </div>
+                                    <div class="form-group">
+                                        <label>Pond Type</label><br>
+
+                                        <select  th:field="*{pondStockingType}" class="form-control">
+
+                                            <option  th:value="Breeding"  >Breeding Pond</option>
+                                            <option  th:value="Nursery"  >Nursery Pond</option>
+
+                                        </select>
+
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Pond Area eg  <i> 40.0 m sq</i> </label>
                                         <input type="text" name="" class="form-control" th:field="*{pondArea}" required  data-parsley-pattern="[1-9][0-9]*[/.][0-9][0-9]*" data-parsley-length="[2,6]" data-parsley-trigger="keyup" >

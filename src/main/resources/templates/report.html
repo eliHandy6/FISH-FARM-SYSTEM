@@ -1,0 +1,429 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+    <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sidebar-01/css/style.css">
+
+
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"></a>
+            <ul class="list-unstyled components mb-5">
+
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+                <li class="active" >
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Stocking </a>
+                    <ul class="collapse list-unstyled" id="species">
+
+                        <li class="active">
+                            <a href="/operationManager/findall">Ponds </a>
+                        </li>
+
+                        <li class="">
+                            <a href="/operationManager/breeding">Breeding Ponds </a>
+                        </li>
+                        <li class="">
+                            <a href="/operationManager/nursery">Nursery Ponds </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li class="" >
+                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
+                    <ul class="collapse list-unstyled" id="dailyRecords">
+
+                        <li>
+                            <a href="/operationManager/unfed">Ponds</a>
+                        </li>
+
+                        <li >
+                            <a href="/operation/requestedfeeds">Feeding History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="" >
+                    <a href="#dailyPhysi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Physiochemical Params</a>
+                    <ul class="collapse list-unstyled" id="dailyPhysi">
+
+                        <li>
+                            <a href="/operationManager/unTempRecorded">Ponds</a>
+                        </li>
+
+                        <li  class="" >
+                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Params History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li  >
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medication </a>
+                    <ul class="collapse list-unstyled" id="medicine">
+                        <li>
+                            <a href="/operationMana/mediPonds">Ponds</a>
+                        </li>
+
+                        <li  >
+                            <a href="/operationMana/medication">Medication History</a>
+                        </li>
+
+                    </ul>
+
+
+
+                </li>
+
+                <li  >
+                    <a href="#harvest" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Harvest </a>
+                    <ul class="collapse list-unstyled" id="harvest">
+
+                        <li  >
+                            <a href="/operationManag/harvest">Harvested  Fish</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="/farm/pond">Reports</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </nav>
+
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                       <li>
+<!--                           <span sec:authentication="name">Bob</span>-->
+                       </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="col-md-12">
+
+                <div align="center">
+                    <h3 style="font-weight: bold"> Pond History</h3>
+
+                </div>
+
+                    <div class="row" th:object="${pond}" style="margin-top: 10px">
+                        <div class="col-md-6">
+                            <h6>Pond Number</h6>
+                            <label th:text="*{pondNumber}"></label>
+                            <br/>
+                            <h6>Pond Type</h6>
+                            <label th:text="*{pondStockingType}"></label>
+                            <br/>
+
+                            <h6>Pond Category</h6>
+                            <label th:text="*{pondType.name}"></label>
+                            <br/>
+                            <br/>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6>Pond Area</h6>
+                            <label th:text="*{pondArea}"></label>
+                            <br/>
+                            <h6>Avarage Depth</h6>
+                            <label th:text="*{avarageDepth}"></label>
+                            <h6>Created At</h6>
+                            <label th:text="*{createdAt}"></label>
+<!--                            <h6>Updated At</h6>-->
+<!--                            <label th:text="*{updatedAt}"></label>-->
+                        </div>
+
+
+                    </div>
+
+
+
+                <div class="row">
+                    <h3>Stocked Species</h3>
+                    <table class="table" id="pondtable">
+                        <div align="right">
+                            <!--                        <a href="/pond/addPond"><button class="btn btn-secondary">Add Pond</button></a><br><br>-->
+                        </div>
+
+
+                        <thead>
+                        <tr>
+                            <th>Species</th>
+                            <th >Stocking Density</th>
+                            <th>Stocking ratio(F:M)</th>
+                            <th>Date</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="pondrecords : ${listPonds}">
+                            <td th:text="${pondrecords.variety.species.name+' ('+pondrecords.variety.species.geneName+' '+pondrecords.variety.species.speciesName}+' )'">Species</td>
+                            <td th:text="${pondrecords.stockingDensity}">Stocking Density</td>
+                            <td th:text="${pondrecords.stockingRatio}">Stocking ratio</td>
+                            <td th:text="${pondrecords.createdAt}">Date</td>
+                        </tr>
+
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <h3>Feed History</h3>
+                    <table class="table" id="pondtable2">
+                        <div align="right">
+
+                        </div>
+
+
+                        <thead>
+                        <tr>
+                            <th>Feed</th>
+                            <th>Feed Quantity(Kgs)</th>
+                            <th>Fish Weight(Kgs)</th>
+                            <th>Date</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        <tr th:each="feedrequest : ${feedHistory}">
+
+                            <td th:text="${feedrequest.feed.feedName}">Feed</td>
+                            <td th:text="${feedrequest.Quanity }">Feed Quanity</td>
+                            <td th:text="${feedrequest.fishWeight}">Fish Weight(Kg)</td>
+
+                            <td th:text="${feedrequest.CreatedAt}">0</td>
+
+                        </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <h3>Medication History</h3>
+                    <table class="table" id="">
+                        <div align="right">
+
+                        </div>
+
+
+                        <thead>
+                        <tr>
+
+                            <th>Medicine</th>
+                            <th>Medicine Quanity </th>
+                            <th>Description</th>
+                            <th>Date</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        <tr th:each="medicineHisto : ${medicineHistory}">
+
+
+                            <td th:text="${medicineHisto.medicine.medicineName}">Medicine</td>
+                            <td th:text="${medicineHisto.quantity }">Medicine Quanity</td>
+                            <td th:text="${medicineHisto.description}">Description</td>
+
+                            <td th:text="${medicineHisto.CreatedAt}">0</td>
+
+                        </tr>
+
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <h3>Physiochemical Parameters</h3>
+                    <table class="table" id="pondtable3">
+
+                        <thead>
+
+                        <tr>
+
+                            <th >Temprature (O c)</th>
+                            <th >Nitrogen(mg/litre)</th>
+                            <th >Ammonia(mg/litre)</th>
+                            <th >Date</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+
+
+                        <tr th:each="phyChem : ${physiochemical}">
+
+
+                            <td scope="col" th:text="${phyChem.temprature}">Pond Temprature</td>
+
+                            <td scope="col" th:text="${phyChem.nitrogen}">Pond Nitrogen</td>
+                            <td scope="col" th:text="${phyChem.ammonia}">Pond Ammonia</td>
+                            <td scope="col" th:text="${phyChem.createdAt}">Water pH</td>
+                        </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+                <br>
+                <br>
+
+                <div class="row">
+                    <h3>Harvest History</h3>
+                    <table class="table" id="pondtable4">
+                        <div align="right">
+
+                        </div>
+
+
+                        <thead>
+                        <tr>
+
+                            <th>Species</th>
+                            <th>Number</th>
+                            <th>Size</th>
+                            <th>Description</th>
+                            <th>Date</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="harvest : ${harvestList}">
+                            <td th:text="${harvest.seedStock.variety.species.name+' ('+harvest.seedStock.variety.species.geneName+' '+harvest.seedStock.variety.species.speciesName}+' )'">Species</td>
+                            <td th:text="${harvest.number}">Number</td>
+                            <td th:text="${harvest.size}">Size</td>
+                            <td th:text="${harvest.description}">Description</td>
+                            <td th:text="${harvest.createdAt}">Date</td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!--<script>-->
+
+<!--    $(document).ready(function() {-->
+<!--        $('#pondtable2').DataTable()-->
+
+<!--    });-->
+<!--</script>-->
+<!--<script>-->
+
+<!--    $(document).ready(function() {-->
+<!--        $('#pondtable3').DataTable()-->
+
+<!--    });-->
+<!--</script>-->
+
+<!--<script>-->
+
+<!--    $(document).ready(function() {-->
+<!--        $('#pondtable4').DataTable()-->
+
+<!--    });-->
+<!--</script>-->
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
+<script src="/sidebar-01/js/popper.js"></script>
+<script src="/sidebar-01/js/bootstrap.min.js"></script>
+<script src="/sidebar-01/js/main.js"></script>
+</body>
+</html>

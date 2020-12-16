@@ -35,93 +35,68 @@
                 </li>
 
                 <li class="active" >
-                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Stocking </a>
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Stocking </a>
                     <ul class="collapse list-unstyled" id="species">
 
                         <li class="active">
-                            <a href="/operationManager/findall">Fish Ponds </a>
+                            <a href="/operationManager/findall">Ponds </a>
                         </li>
-                        <!--												<li class>-->
-                        <!--													<a href="/species/addSpecies">Add Species</a>-->
-                        <!--												</li>-->
+
+                        <li class="">
+                            <a href="/operationManager/breeding">Breeding Ponds </a>
+                        </li>
+                        <li class="">
+                            <a href="/operationManager/nursery">Nursery Ponds </a>
+                        </li>
 
 
                     </ul>
                 </li>
                 <li class="" >
-                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Daily Records</a>
+                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
                     <ul class="collapse list-unstyled" id="dailyRecords">
 
-                        <li  >
-                            <a href="/operation/requestedfeeds">Requested Feeds</a>
+                        <li>
+                            <a href="/operationManager/unfed">Ponds</a>
                         </li>
 
-                        <li  class="" >
-                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Parameters</a>
+                        <li >
+                            <a href="/operation/requestedfeeds">Feeding History</a>
                         </li>
-
-
-                        <li  class="" >
-                            <a href="/operationM/deadFish">Dead Fish</a>
-                        </li>
-
-
 
                     </ul>
                 </li>
-                <!--										<li class="active">-->
-                <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
-                <!--											<ul class="collapse list-unstyled" id="species">-->
 
-                <!--												<li class="active">-->
-                <!--													<a href="#">View Species</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/species/addSpecies">Add Species</a>-->
-                <!--												</li>-->
+                <li class="" >
+                    <a href="#dailyPhysi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Physiochemical Params</a>
+                    <ul class="collapse list-unstyled" id="dailyPhysi">
 
+                        <li>
+                            <a href="/operationManager/unTempRecorded">Ponds</a>
+                        </li>
 
-                <!--											</ul>-->
-                <!--										</li>-->
+                        <li  class="" >
+                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Params History</a>
+                        </li>
 
-                <!--										<li >-->
-                <!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
-                <!--											<ul class="collapse list-unstyled" id="owners">-->
-
-                <!--												<li >-->
-                <!--													<a href="/owners/viewOwners">View Owners</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/owners/addOwner">Add Owner</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
+                    </ul>
+                </li>
 
 
 
-                <!--								          <li >-->
-                <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
-                <!--								             -->
-                <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
+
                 <li  >
                     <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medication </a>
                     <ul class="collapse list-unstyled" id="medicine">
-
-                        <li  >
-                            <a href="/operationMana/medication">Medicine Used</a>
+                        <li>
+                            <a href="operationMana/mediPonds">Ponds</a>
                         </li>
 
-
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
-
+                        <li  >
+                            <a href="/operationMana/medication">Medication History</a>
+                        </li>
 
                     </ul>
-
-
 
                 </li>
 
@@ -133,25 +108,10 @@
                             <a href="/operationManag/harvest">Harvested  Fish</a>
                         </li>
 
-
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
-
-
                     </ul>
-
-
-
                 </li>
-
-
-
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                <li >
+                    <a href="/farm/pond">Reports</a>
                 </li>
             </ul>
 
@@ -176,6 +136,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
+                        <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
@@ -230,42 +191,27 @@
 
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Pond Type</label>
-                                        <select  th:field="*{pondType}"class="form-control">
-                                            <option value="Breeding Pond">Breeding Pond </option>
-                                            <option value ="Nursery Pond">Nursery Pond </option>
-                                        </select>
-
-                                    </div>
-
 
                                     <div class="form-group">
                                         <label>Species </label>
                                         <select th:field="*{variety}" class="form-control">
 
-                                            <option  th:each="varietystock: ${variety} "th:value="${varietystock.id}" th:text="${varietystock.species.name+'('+varietystock.species.geneName+' '+varietystock.species.speciesName+ ')-----available =' +varietystock.number}" ></option>
+                                            <option  th:each="varietystock: ${variety} "th:value="${varietystock.id}" th:text="${varietystock.species.name+'('+varietystock.species.geneName+' '+varietystock.species.speciesName+ ')-----available =' +varietystock.pond.number}" ></option>
 
                                         </select>
 
                                     </div>
                                     <div class="form-group">
-                                        <label> Stocking Density eg <i> 400.0</i></label>
+                                        <label> Stocking Density eg <i> 400.0</i> </label>
                                         <input  type="text" th:field="*{stockingDensity}"  class="form-control"  required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0">
 
                                     </div>
 
                                     <div class="form-group">
-                                    <label> Stocking ratio eg <i> eg 3:1</i></label>
+                                    <label> Stocking ratio eg <i> eg 1:3</i> male:female</label>
                                     <input  type="text" th:field="*{stockingRatio}"  class="form-control"  required data-parsley-pattern="[1-9][:][0-9]" data-parsley-length="[1, 6]" data-parsley-trigger="keyup">
 
                                    </div>
-
-
-
-
-
-
 
 
                             </div>

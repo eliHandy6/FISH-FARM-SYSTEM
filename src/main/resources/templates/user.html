@@ -26,36 +26,47 @@
         <div class="p-4 pt-5">
             <a href="#" class="img logo rounded-circle mb-5"></a>
             <ul class="list-unstyled components mb-5">
+                <hr/>
+                <li>
 
-                <li class="active">
-                    <a href="#users" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>System Users</a>
-                    <ul class="collapse list-unstyled" id="users">
+                    <img  class="img logo rounded-circle mb-5" src="images/pexels-fox-213399.jpg" width="1000" alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+                <li class="active" >
+                    <a href="/admin/viewallUsers">System Users</a>
+                </li>
+                <li class="">
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish" style="color:white"></i>Species</a>
+                    <ul class="collapse list-unstyled" id="species">
 
-                        <li class="active" >
-                            <a href="/admin/viewallUsers">View System users</a>
+                        <li class="">
+                            <a href="/species/viewSpecies">Species</a>
                         </li>
-                        <!--                        <li>-->
-                        <!--                            <a href="/ManagerVariety/ManagerStockData">Variety Data</a>-->
-                        <!--                        </li>-->
+
+                        <li >
+                            <a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
+                        </li>
+                        <!--												<li class>-->
+                        <!--													<a href="/species/addSpecies">Add Species</a>-->
+                        <!--												</li>-->
 
 
                     </ul>
                 </li>
+                <li  >
+                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" ><i class="fas fa-water" style="color: white"></i>Ponds</a>
+                    <ul class="collapse list-unstyled" id="ponds">
 
-                <!--                <li  class="active">-->
-                <!--                    <a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>-->
-                <!--                    <ul class="collapse list-unstyled" id="ponds">-->
-
-                <!--                        <li class>-->
-                <!--                            <a href="/pondtype/viewPondTypes">Tank Types</a>-->
-                <!--                        </li>-->
-                <!--                        <li class="active"  >-->
-                <!--                            <a href="#">Tank Descriptions</a>-->
-                <!--                        </li>-->
+                        <li class>
+                            <a href="/pondtype/viewPondTypes">Pond Categories</a>
+                        </li>
+                        <li  >
+                            <a href="/pond/viewPonds">Farm Ponds</a>
+                        </li>
 
 
-                <!--                    </ul>-->
-                <!--                </li>-->
+                    </ul>
+                </li>
                 <!--										<li class="active">-->
                 <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
                 <!--											<ul class="collapse list-unstyled" id="species">-->
@@ -92,25 +103,39 @@
                 <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
                 <!--								             -->
                 <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
-                <!--                <li  >-->
-                <!--                    <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>-->
-                <!--                    <ul class="collapse list-unstyled" id="feeds">-->
+                <li  >
+                    <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Feeds</a>
+                    <ul class="collapse list-unstyled" id="feeds">
 
-                <!--                        <li  >-->
-                <!--                            <a href="/feeds/viewFeeds">View Feeds</a>-->
-                <!--                        </li>-->
-                <!--                        &lt;!&ndash;												<li class>&ndash;&gt;-->
-                <!--                        &lt;!&ndash;													<a href="/feeds/addFeed">Add Feed</a>&ndash;&gt;-->
-                <!--                        &lt;!&ndash;												</li>&ndash;&gt;-->
+                        <li  >
+                            <a href="/feeds/viewFeeds"> Feeds</a>
+                        </li>
+                        <li  >
+                            <a href="/farmmanager/feedHistory"> Feed History</a>
+                        </li>
 
 
-                <!--                    </ul>-->
-                <!--                </li>-->
-                <li>
-                    <a href="#">Portfolio</a>
+                    </ul>
                 </li>
+
+                <li  >
+                    <a href="#medicines" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Feeds</a>
+                    <ul class="collapse list-unstyled" id="medicines">
+
+                        <li  >
+                            <a href="/farmmanager/medicines"> Medicines</a>
+                        </li>
+
+                        <li  >
+                            <a href="/farmmanager/medicinesHistory"> Medication History</a>
+                        </li>
+
+
+                    </ul>
+                </li>
+
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/farmmanager/harvest">Harvest</a>
                 </li>
             </ul>
 
@@ -119,7 +144,7 @@
     </nav>
 
     <!-- Page Content  -->
-    <div id="content" class="p-4 p-md-5">
+    <div id="content" class="p-4 p-md-8">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -134,6 +159,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
+
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>
@@ -145,10 +171,10 @@
         <div class="container">
 
             <div class="col-md-12">
-               <h3 align="center">User Details</h3>
-                <hr/>
+               <h3 align="center",style="font-weight:bold">User Details</h3>
 
-                       <div class="row" th:object="${user}">
+
+                       <div class="row" th:object="${user}" style="margin-top: 100px">
                            <div class="col-md-6">
                                <h6>First Name</h6>
                                <label th:text="*{fname}"></label>
@@ -171,7 +197,7 @@
                                <h6>Updated At</h6>
                                <label th:text="*{updatedAt}"></label>
                            </div>
-                           <a href="/admin/viewallUsers"><button class="btn btn-secondary">Back</button></a>
+
 
                        </div>
 

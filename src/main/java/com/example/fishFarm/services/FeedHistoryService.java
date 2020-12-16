@@ -23,17 +23,13 @@ public class FeedHistoryService {
 	public List<FeedHistory> findAllFeedHistory(){
 		return feedHistoryRepo.findAll();
 	}
+
+	public List<FeedHistory> generatePondFeedingHistory(int pondnumber){
+		return feedHistoryRepo.findByPondPondNumberAndStatus(pondnumber,true);
+	}
 	
 	public void saveFeedHistory(FeedHistory feedHistory) {
-		
-//		Feed feedUsed=feedService.FeedTypeById(feedHistory.getFeed().getId());
-//
-//		feedHistory.setFeed(feedUsed);
-//		feedUsed.setFeedQuality(feedUsed.getFeedQuality()-feedHistory.getQuanity());
-//		feedHistoryRepo.save(feedHistory);
-//		feedService.saveFeed(feedUsed);
-		
-		
+		feedHistoryRepo.save(feedHistory);
 	}
 	
 	
@@ -50,6 +46,10 @@ public class FeedHistoryService {
 	public int countNumberFeedHistory(){
 		return (int) feedHistoryRepo.count();
 		
+	}
+
+	public List<FeedHistory> findAllbyStatus(){
+		return feedHistoryRepo.findByStatusOrderByIdDesc(true);
 	}
 	
 

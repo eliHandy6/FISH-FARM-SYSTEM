@@ -42,12 +42,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/species/**").hasRole("manager")
                 .antMatchers("/ManagerVariety/**").hasRole("manager")
                 .antMatchers("/admin/**").hasRole("manager")
+                .antMatchers("/farmmanager/**").hasRole("manager")
 
 
 
                 .antMatchers("/inventoryManager/**").hasRole("accountant")
+
                 .antMatchers("/inventoryManagerVariety/**").hasRole("accountant")
+
                 .antMatchers("/inventoryManagerMedicines/**").hasRole("accountant")
+
+
+                .antMatchers("/operationManager/**").hasRole("operations")
+
+
+                .antMatchers("/operation/**").hasRole("operations")
+
+
+                .antMatchers("/OperationalMaanager/**").hasRole("operations")
+
+
+                .antMatchers("/operationMana/**").hasRole("operations")
+
+
+                .antMatchers("/operationManag/**").hasRole("operations")
+                .antMatchers("/farm/**").hasRole("operations")
 
                 .antMatchers("/").permitAll()
 

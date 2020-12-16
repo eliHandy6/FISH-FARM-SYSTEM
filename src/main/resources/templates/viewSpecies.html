@@ -5,7 +5,7 @@
 		    <meta charset="utf-8">
 		    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<!--		  <script src="https://kit.fontawesome.com/a076d05399.js"></script>-->
 
 		  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 				
@@ -31,7 +31,7 @@
 							        <ul class="list-unstyled components mb-5">
 										<hr/>
 										<li>
-											
+
 											<img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
 <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
 										</li>
@@ -100,8 +100,8 @@
 <!--											</ul>-->
 <!--										</li>-->
 
-								          
-								          
+
+
 <!--								          <li >-->
 <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
 <!--								             -->
@@ -111,27 +111,41 @@
 											<ul class="collapse list-unstyled" id="feeds">
 
 												<li  >
-													<a href="/feeds/viewFeeds">View Feeds</a>
+													<a href="/feeds/viewFeeds"> Feeds</a>
 												</li>
-<!--												<li class>-->
-<!--													<a href="/feeds/addFeed">Add Feed</a>-->
-<!--												</li>-->
+												<li  >
+													<a href="/farmmanager/feedHistory"> Feed History</a>
+												</li>
 
 
 											</ul>
 										</li>
-								          <li>
-							             	 <a href="#">Portfolio</a>
-								          </li>
-								          <li>
-							             	 <a href="#">Contact</a>
-								          </li>
+
+										<li  >
+											<a href="#medicines" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Medicines</a>
+											<ul class="collapse list-unstyled" id="medicines">
+
+												<li  >
+													<a href="/farmmanager/medicines"> Medicines</a>
+												</li>
+
+												<li  >
+													<a href="/farmmanager/medicinesHistory"> Medication History</a>
+												</li>
+
+
+											</ul>
+										</li>
+
+										<li>
+											<a href="/farmmanager/harvest">Harvest</a>
+										</li>
 							        </ul>
-						
-							      
+
+
 				      </div>
 		    	</nav>
-		
+
 		        <!-- Page Content  -->
 		      <div id="content" class="p-4 p-md-8">
 		

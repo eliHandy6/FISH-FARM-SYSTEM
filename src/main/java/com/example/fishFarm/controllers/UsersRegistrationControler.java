@@ -6,6 +6,7 @@ import com.example.fishFarm.models.FarmSection;
 import com.example.fishFarm.models.SmtpMailSender;
 import com.example.fishFarm.models.SystemUser;
 import com.example.fishFarm.models.VarietyStock;
+import com.example.fishFarm.passwordGenerator.PasswordGenerator;
 import com.example.fishFarm.services.SectionsService;
 import com.example.fishFarm.services.SystemUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,9 @@ public class UsersRegistrationControler {
     @Autowired
     private SMSNotification smsNotification;
 
+    @Autowired
+    private PasswordGenerator passwordGenerator;
+
 
 
 
@@ -72,7 +76,7 @@ public class UsersRegistrationControler {
         SystemUser user=systemUsersService.findById(id);
 
         FarmSection section = sectionsService.findById(user.getSection().getId());
-        String returnedsection=section.getSectionName().substring(5);
+        String returnedsection=section.getSectionName();
         section.setSectionName(returnedsection);
         user.setSection(section);
 
@@ -105,7 +109,8 @@ public class UsersRegistrationControler {
 
             return "redirect:/admin/addUser";
         } else {
-
+            String generatedpassword= passwordGenerator.generatePassword(6);
+            user.setPassword(generatedpassword);
             systemUsersService.SaveUser(user);
 
             data = "The user " + user.getUsername() + "  is successfully saved and logins  sent to " + user.getEmail();
@@ -117,7 +122,7 @@ public class UsersRegistrationControler {
                         ""+user.getSection().getSectionName(),"Congratulations!,\n" +
                         "Your username :" +
                         user.getUsername()
-                        +"\n Password : "+password);
+                        +"\n Password : "+generatedpassword);
             } catch (MessagingException e) {
 
                 return "redirect:/admin/addUser";

@@ -19,6 +19,7 @@ public class RequestedFeed {
     private double quantity;
 
 
+
     public RequestedFeed() {
     }
 

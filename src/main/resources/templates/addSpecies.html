@@ -28,90 +28,75 @@
 								<img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
 								<!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
 							</li>
-
+							<li >
+								<a href="/admin/viewallUsers">System Users</a>
+							</li>
 							<li class="active">
-								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i>Species</a>
+								<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish" style="color:white"></i>Species</a>
 								<ul class="collapse list-unstyled" id="species">
 
 									<li class="active">
 										<a href="/species/viewSpecies">Species</a>
 									</li>
-									<li class>
-											<a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
-									</li>
 
-
-								</ul>
-							</li>
-							<li  >
-								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tanks</a>
-								<ul class="collapse list-unstyled" id="ponds">
-
-									<li class>
-										<a href="/pondtype/viewPondTypes">Tank Types</a>
-									</li>
-									<li  >
-										<a href="/pond/viewPonds">Tank Descriptions</a>
-									</li>
-
-
-								</ul>
-							</li>
-							<!--										<li class="active">-->
-							<!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
-							<!--											<ul class="collapse list-unstyled" id="species">-->
-
-							<!--												<li class="active">-->
-							<!--													<a href="#">View Species</a>-->
-							<!--												</li>-->
-							<!--												<li class>-->
-							<!--													<a href="/species/addSpecies">Add Species</a>-->
-							<!--												</li>-->
-
-
-							<!--											</ul>-->
-							<!--										</li>-->
-
-							<!--										<li >-->
-							<!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
-							<!--											<ul class="collapse list-unstyled" id="owners">-->
-
-							<!--												<li >-->
-							<!--													<a href="/owners/viewOwners">View Owners</a>-->
-							<!--												</li>-->
-							<!--												<li class>-->
-							<!--													<a href="/owners/addOwner">Add Owner</a>-->
-							<!--												</li>-->
-
-
-							<!--											</ul>-->
-							<!--										</li>-->
-
-
-
-							<!--								          <li >-->
-							<!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
-							<!--								             -->
-							<!--&lt;!&ndash;								          </li>&ndash;&gt;-->
-							<li  >
-								<a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
-								<ul class="collapse list-unstyled" id="feeds">
-
-									<li  >
-										<a href="/feeds/viewFeeds">View Feeds</a>
+									<li >
+										<a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
 									</li>
 									<!--												<li class>-->
-									<!--													<a href="/feeds/addFeed">Add Feed</a>-->
+									<!--													<a href="/species/addSpecies">Add Species</a>-->
 									<!--												</li>-->
 
 
 								</ul>
 							</li>
-							<li>
-								<a href="#">Portfolio</a>
+							<li  >
+								<a href="#ponds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" ><i class="fas fa-water" style="color: white"></i>Ponds</a>
+								<ul class="collapse list-unstyled" id="ponds">
+
+									<li class>
+										<a href="/pondtype/viewPondTypes">Pond Categories</a>
+									</li>
+									<li  >
+										<a href="/pond/viewPonds">Farm Ponds</a>
+									</li>
+
+
+								</ul>
 							</li>
+
+							<li  >
+								<a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Feeds</a>
+								<ul class="collapse list-unstyled" id="feeds">
+
+									<li  >
+										<a href="/feeds/viewFeeds"> Feeds</a>
+									</li>
+									<li  >
+										<a href="/farmmanager/feedHistory"> Feed History</a>
+									</li>
+
+
+								</ul>
+							</li>
+
+							<li  >
+								<a href="#medicines" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Medication</a>
+								<ul class="collapse list-unstyled" id="medicines">
+
+									<li  >
+										<a href="/farmmanager/medicines"> Medicines</a>
+									</li>
+
+									<li  >
+										<a href="/farmmanager/medicinesHistory"> Medication History</a>
+									</li>
+
+
+								</ul>
+							</li>
+
 							<li>
-								<a href="#">Contact</a>
+								<a href="/farmmanager/harvest">Harvest</a>
 							</li>
 						</ul>
 

@@ -1,0 +1,244 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Unfed Fish Ponds</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+
+    <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sidebar-01/css/style.css">
+
+
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"></a>
+            <ul class="list-unstyled components mb-5">
+
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+                <li class="" >
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Stocking </a>
+                    <ul class="collapse list-unstyled" id="species">
+
+                        <li class="">
+                            <a href="/operationManager/findall">Ponds </a>
+                        </li>
+
+                        <li class="">
+                            <a href="/operationManager/breeding">Breeding Ponds </a>
+                        </li>
+                        <li class="">
+                            <a href="/operationManager/nursery">Nursery Ponds </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li class="active" >
+                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
+                    <ul class="collapse list-unstyled" id="dailyRecords">
+
+                        <li class="active">
+                            <a href="/operationManager/unfed">Ponds</a>
+                        </li>
+
+                        <li >
+                            <a href="/operation/requestedfeeds">Feeding History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="" >
+                    <a href="#dailyPhysi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Physiochemical Params</a>
+                    <ul class="collapse list-unstyled" id="dailyPhysi">
+
+                        <li>
+                            <a href="/operationManager/unTempRecorded">Ponds</a>
+                        </li>
+
+                        <li  class="" >
+                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Params History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li  >
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medication </a>
+                    <ul class="collapse list-unstyled" id="medicine">
+                        <li>
+                            <a href="/operationMana/mediPonds">Ponds</a>
+                        </li>
+
+                        <li  >
+                            <a href="/operationMana/medication">Medication History</a>
+                        </li>
+
+                    </ul>
+
+
+
+                </li>
+
+                <li  >
+                    <a href="#harvest" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Harvest </a>
+                    <ul class="collapse list-unstyled" id="harvest">
+
+                        <li  >
+                            <a href="/operationManag/harvest">Harvested  Fish</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li >
+                    <a href="/farm/pond">Reports</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </nav>
+
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="col-md-12">
+
+                <div align="center">
+                    <h3 style="font-weight: bold"> Unfed Fish Ponds</h3>
+
+                </div>
+
+                <div th:switch="${message}">
+                    <div th:case="'success'" class="alert alert-success">
+                        <strong>Success!</strong> <p th:text="${data}"></p>
+                    </div>
+
+                    <div th:case="'failed'" class="alert alert-danger">
+                        <strong>Failed!</strong> <p th:text="${data}"></p>
+                    </div>
+                </div>
+
+
+                <table class="table" id="pondtable">
+                    <div align="right">
+                        <!--                        <a href="/pond/addPond"><button class="btn btn-secondary">Add Pond</button></a><br><br>-->
+                    </div>
+
+
+                    <thead>
+                    <tr>
+                        <!--						      <th scope="col">Species Code </th>-->
+                        <th >Pond Number</th>
+                        <th >Pond Category</th>
+                        <th >Pond Area</th>
+                        <th>Pond Type</th>
+
+                        <th>Number of species</th>
+
+                        <th >Action</th>
+                        <!--						  	  <th scope="col">Generate pdf</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                    <tr th:each="pond : ${listPonds}">
+
+                        <td th:text="${pond.pondNumber}">Pond Numberi</td>
+                        <td th:text="${pond.pondType.name}">Pond Category</td>
+                        <td th:text="${pond.pondArea }">Pond Volume</td>
+                        <td th:text="${pond.pondStockingType}">Pond Type</td>
+
+                        <td th:text="${pond.CreatedAt}">0</td>
+
+
+
+                        <td>
+
+                            <a th:href="@{'/operationManager/viewpond/'+ ${pond.id}}"><button class="btn btn-secondary ">Feed</button></a>
+
+
+
+                        </td>
+                    </tr>
+
+
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function() {
+        $('#pondtable').DataTable()
+
+    });
+</script>
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
+<script src="/sidebar-01/js/popper.js"></script>
+<script src="/sidebar-01/js/bootstrap.min.js"></script>
+<script src="/sidebar-01/js/main.js"></script>
+</body>
+</html>

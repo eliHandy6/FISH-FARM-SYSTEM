@@ -14,9 +14,24 @@ public class SeedingService {
     @Autowired
     SeedingRepository seedingRepository;
 
+
+    public List<SeedStock> generateStockingData(int pondNumber){
+        return  seedingRepository.findByPondPondNumberAndStatus(pondNumber,true);
+    }
+
     public List<SeedStock> getallStockingData(){
         return seedingRepository.findAll();
     }
+
+    public List<SeedStock> findBreedingponds(){
+        return seedingRepository.findByPondPondStockingTypeAndStatus("Breeding",true);
+    }
+
+    public List<SeedStock> findNurseryponds(){
+        return seedingRepository.findByPondPondStockingTypeAndStatus("Nursery",true);
+    }
+
+
 
     public List<SeedStock> findallspeciesinapond( int id){
         return seedingRepository.findByPondId(id);
@@ -50,6 +65,10 @@ public class SeedingService {
     public List<SeedStock> existingPondSpecies(int pondId){
         return seedingRepository.existingPondSpecies(pondId);
     }
+    public List<SeedStock> approved(){
+        return seedingRepository.approved();
+    }
+
 
     public int counttrue(int pondnumber){
         return seedingRepository.countTrue(pondnumber);

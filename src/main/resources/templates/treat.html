@@ -1,0 +1,325 @@
+<!doctype html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Treat Fish</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" href="/sidebar-01/css/parsley.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.js"></script>
+
+
+    <link rel="stylesheet" href="/sidebar-01/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/sidebar-01/css/style.css">
+
+
+</head>
+<body>
+
+<div class="wrapper d-flex align-items-stretch">
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"></a>
+            <ul class="list-unstyled components mb-5">
+
+                <hr/>
+                <li>
+
+                    <img  class="img logo rounded-circle mb-5" src="./sidebar-01/images/pexels-fox-213399.jpg" width="1000" th:src="@{images/pexels-fox-213399.jpg}"alt="Fish Farm Management System"/>
+                    <!--											<h3  align="center" style="color: white">Fish Farm Management System</h3>-->
+                </li>
+
+                <li class="" >
+                    <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Stocking </a>
+                    <ul class="collapse list-unstyled" id="species">
+
+                        <li class="">
+                            <a href="/operationManager/findall">Ponds </a>
+                        </li>
+
+                        <li class="">
+                            <a href="/operationManager/breeding">Breeding Ponds </a>
+                        </li>
+                        <li class="">
+                            <a href="/operationManager/nursery">Nursery Ponds </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                <li class="" >
+                    <a href="#dailyRecords" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Feeds</a>
+                    <ul class="collapse list-unstyled" id="dailyRecords">
+
+                        <li class="">
+                            <a href="/operationManager/unfed">Ponds</a>
+                        </li>
+
+                        <li >
+                            <a href="/operation/requestedfeeds">Feeding History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="" >
+                    <a href="#dailyPhysi" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Physiochemical Params</a>
+                    <ul class="collapse list-unstyled" id="dailyPhysi">
+
+                        <li >
+                            <a href="/operationManager/unTempRecorded">Ponds</a>
+                        </li>
+
+                        <li  class="" >
+                            <a href="/OperationalMaanager/viewPhysChemRecords">Physiochemical Params History</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+
+
+                <li class="active" >
+                    <a href="#medicine" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Medication </a>
+                    <ul class="collapse list-unstyled" id="medicine">
+                        <li class="active">
+                            <a href="/operationMana/mediPonds">Ponds</a>
+                        </li>
+
+                        <li  >
+                            <a href="/operationMana/medication">Medication History</a>
+                        </li>
+
+                    </ul>
+
+
+
+                </li>
+
+                <li  >
+                    <a href="#harvest" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Harvest </a>
+                    <ul class="collapse list-unstyled" id="harvest">
+
+                        <li  >
+                            <a href="/operationManag/harvest">Harvested  Fish</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li >
+                    <a href="/farm/pond">Reports</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </nav>
+
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container">
+
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div th:switch="${message}">
+                                <div th:case="'success'" class="alert alert-success">
+                                    <strong>Success!</strong> <p th:text="${data}"></p>
+                                </div>
+
+                                <div th:case="'failed'" class="alert alert-danger">
+                                    <strong>Failed!</strong> <p th:text="${data}"></p>
+                                </div>
+                            </div>
+                            <div class="card-header">
+                                <h3 align="center">Treat</h3>
+
+                            </div>
+                            <div class="card-body">
+                                <form action="#" th:action="@{/operationMana/save}" th:object="${medicineHistory}" method="post" id="validate_form" data-parsley-validate>
+                                    <div class="form-group">
+                                        <label>Pond  Number </label>
+                                        <input type="text"  name="pond" class="form-control" th:value="${pond.id}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" hidden >
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text"   class="form-control" th:value="${pond.pondNumber}" required data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0" disabled>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Medicine</label>
+                                        <select class="form-control" th:field="*{medicine}" >
+                                            <option  th:each="medicine: ${allMedicines}" th:value="${medicine.number}" th:text="${medicine.medicineName+' available  '+medicine.medicineQuantity +' 0'+ medicine.medicineUnit}"></option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Medicine Quantity</label>
+                                        <input  type="text" th:field="*{Quantity}"  class="form-control"  required data-parsley-pattern="[1-9][0-9]*[.]*[0-9]*" data-parsley-length="[1, 6]" data-parsley-trigger="keyup" value="0.0">
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input  type="text" th:field="*{description}"  class="form-control"  required data-parsley-length="[1, 255]" data-parsley-trigger="keyup">
+
+
+                                    </div>
+
+
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-success" type="submit" style="float:right">Save</button>
+
+                                        </form>
+
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="/operationMana/mediPonds"><button class="btn btn-danger">Cancel</button></a>
+
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <div align="center">
+
+                        </div>
+                        <table class="table" id="pondtable">
+
+
+
+                            <!--                        <thead>-->
+                            <!--                        <tr>-->
+                            <!--                            <th>Species</th>-->
+
+                            <!--                            <th>Stocking Density</th>-->
+
+                            <!--                            <th>Stocking ratio</th>-->
+                            <!--                            <th>Created At</th>-->
+
+
+
+
+                            <!--                        </tr>-->
+                            <!--                        </thead>-->
+                            <tbody>
+
+
+
+                            <tr th:each="seedstock : ${findallspeciesinapond}">
+
+                                <td th:text="${seedstock.variety.species.name}+'('+${seedstock.variety.species.geneName}+' '+ ${seedstock.variety.species.speciesName}+')'"></td>
+                                <!--                        <td th:text="${seedstock.pondType}">Pond Type</td>-->
+                                <td th:text="${seedstock.stockingDensity}">Stocking Density</td>
+                                <td th:text="${seedstock.stockingRatio}">Stocking Ratio</td>
+                                <td th:text="${seedstock.createdAt}">Created At</td>
+                                <!--                        <td th:text="${seedstock.updatedAt}">Updated At</td>-->
+
+
+
+                            </tr>
+
+
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<script >
+
+    $(document).ready(function(){
+        $('#validate_form').parsley();
+
+
+
+    });
+</script>
+<script>
+
+    $(document).ready(function() {
+        $('#pondtable').DataTable()
+
+    });
+</script>
+<!--<script src="/sidebar-01/js/jquery.min.js"></script>-->
+<script src="/sidebar-01/js/popper.js"></script>
+<script src="/sidebar-01/js/bootstrap.min.js"></script>
+<script src="/sidebar-01/js/main.js"></script>
+<script src="/sidebar-01/js/parsley.min.js"></script>
+</body>
+</html>

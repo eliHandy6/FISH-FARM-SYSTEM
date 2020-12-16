@@ -32,20 +32,17 @@
                 <li class="active" >
                     <a href="/admin/viewallUsers">System Users</a>
                 </li>
-                <li class="active">
+                <li class="">
                     <a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish" style="color:white"></i>Species</a>
                     <ul class="collapse list-unstyled" id="species">
 
-                        <li class="active">
+                        <li class="">
                             <a href="#">Species</a>
                         </li>
 
                         <li >
                             <a href="/ManagerVariety/ManagerStockData">Fingerlings</a>
                         </li>
-                        <!--												<li class>-->
-                        <!--													<a href="/species/addSpecies">Add Species</a>-->
-                        <!--												</li>-->
 
 
                     </ul>
@@ -64,62 +61,42 @@
 
                     </ul>
                 </li>
-                <!--										<li class="active">-->
-                <!--											<a href="#species" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-fish"></i> Species</a>-->
-                <!--											<ul class="collapse list-unstyled" id="species">-->
 
-                <!--												<li class="active">-->
-                <!--													<a href="#">View Species</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/species/addSpecies">Add Species</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
-
-                <!--										<li >-->
-                <!--											<a href="#owners" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Owners</a>-->
-                <!--											<ul class="collapse list-unstyled" id="owners">-->
-
-                <!--												<li >-->
-                <!--													<a href="/owners/viewOwners">View Owners</a>-->
-                <!--												</li>-->
-                <!--												<li class>-->
-                <!--													<a href="/owners/addOwner">Add Owner</a>-->
-                <!--												</li>-->
-
-
-                <!--											</ul>-->
-                <!--										</li>-->
-
-
-
-                <!--								          <li >-->
-                <!--							             	 <a href="/pondownership/viewPondOwnership">Pond Ownership</a>-->
-                <!--								             -->
-                <!--&lt;!&ndash;								          </li>&ndash;&gt;-->
                 <li  >
                     <a href="#feeds" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Feeds</a>
                     <ul class="collapse list-unstyled" id="feeds">
 
                         <li  >
-                            <a href="/feeds/viewFeeds">View Feeds</a>
+                            <a href="/feeds/viewFeeds"> Feeds</a>
                         </li>
-                        <!--												<li class>-->
-                        <!--													<a href="/feeds/addFeed">Add Feed</a>-->
-                        <!--												</li>-->
+                        <li  >
+                            <a href="/farmmanager/feedHistory"> Feed History</a>
+                        </li>
 
 
                     </ul>
                 </li>
-                <li>
-                    <a href="#">Portfolio</a>
+
+                <li  >
+                    <a href="#medicines" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-luggage-cart" style="color: white"></i>Medicines</a>
+                    <ul class="collapse list-unstyled" id="medicines">
+
+                        <li  >
+                            <a href="/farmmanager/medicines"> Medicines</a>
+                        </li>
+
+                        <li  >
+                            <a href="/farmmanager/medicinesHistory"> Medication History</a>
+                        </li>
+
+
+                    </ul>
                 </li>
+
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/farmmanager/harvest">Harvest</a>
                 </li>
+
             </ul>
 
 
@@ -178,13 +155,13 @@
 
 
                                         <label>First Name  </label>
-                                        <input type="text" placeholder="First Name" class="form-control" th:field="*{fname}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
+                                        <input type="text" placeholder="First Name" pattern="^[a-zA-Z]+$" class="form-control" th:field="*{fname}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
 
                                     </div>
 
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" placeholder="Last Name" class="form-control" th:field="*{lname}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
+                                        <input type="text" placeholder="Last Name" pattern="^[a-zA-Z]+$"  class="form-control" th:field="*{lname}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
 
                                     </div>
 
@@ -196,20 +173,14 @@
 
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input type="text" placeholder="254703907872" class="form-control" th:field="*{phoneNo}"  data-parsley-length="[10,20]"  data-parsley-trigger="keyup" required>
+                                        <input type="text" placeholder="254703907872" pattern="[2][5][4][0-9]*" class="form-control" th:field="*{phoneNo}"  length="[10]"  data-parsley-trigger="keyup" required>
                                     </div>
 
 
 
                                     <div class="form-group">
                                         <label>User Name</label>
-                                        <input type="text" placeholder="Username" class="form-control" th:field="*{username}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" placeholder="******" class="form-control" th:field="*{password}" data-parsley-pattern="[1-9][0-9]*" data-parsley-length="[1,3]"  data-parsley-trigger="keyup" required>
-
+                                        <input type="text" placeholder="Username" pattern="^[a-zA-Z]+$" class="form-control" th:field="*{username}" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-length="[3-10]"  data-parsley-trigger="keyup" required>
                                     </div>
 
                                     <div class="form-group">

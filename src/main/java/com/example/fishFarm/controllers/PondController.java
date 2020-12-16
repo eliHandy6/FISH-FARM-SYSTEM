@@ -2,8 +2,7 @@ package com.example.fishFarm.controllers;
 
 import com.example.fishFarm.models.Pond;
 import com.example.fishFarm.models.PondType;
-import com.example.fishFarm.services.PondService;
-import com.example.fishFarm.services.PondTypeService;
+import com.example.fishFarm.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +19,25 @@ public class PondController {
 
     @Autowired
     PondTypeService pondTypeService;
+
+    @Autowired
+    DailyPondRecordsService dailyPondRecordsService;
+
+    @Autowired
+    SeedingService seedingService;
+
+
+
+    @Autowired
+    private FeedHistoryService feedHistoryService;
+
+
+    @Autowired
+    private HarvestService harvestService;
+
+
+    @Autowired
+    private MedicineHistoryService medicineHistoryService;
 
 
     @RequestMapping("viewPonds")
@@ -57,6 +75,23 @@ public class PondController {
         return mav;
     }
 
+    @RequestMapping("/report/{id}")
+    public String report(Model model, @PathVariable("id") int id){
+
+
+        Pond pond=pondService.findPondById(id);
+        int pondNumber=pond.getPondNumber();
+
+        model.addAttribute("pond",pond);
+        model.addAttribute("listPonds",seedingService.generateStockingData(pondNumber));
+        model.addAttribute("feedHistory",feedHistoryService.generatePondFeedingHistory(pondNumber));
+        model.addAttribute("physiochemical",dailyPondRecordsService.generatePhysioByPondNumber(pondNumber));
+        model.addAttribute("harvestList",harvestService.generateHarvestingDataByPondNumber(pondNumber));
+        model.addAttribute("medicineHistory",medicineHistoryService.generateMedicationReport(pondNumber));
+
+        return "managersum";
+    }
+
     @RequestMapping(value="save",method = RequestMethod.POST)
 
     public  String savePond(@ModelAttribute("pond")Pond pond, RedirectAttributes redirectAttributes){
@@ -76,7 +111,7 @@ public class PondController {
 
         }
         else{
-
+            pond.setStockingStatus(false);
             pondService.savePond(pond);
             data="The pond number " + pond.getPondNumber()+ " is successfully saved";
             redirectAttributes.addFlashAttribute("data",data);

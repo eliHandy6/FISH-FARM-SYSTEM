@@ -19,7 +19,6 @@ public class SeedStock {
 
     private int stockingDensity;
 
-    private String pondType;
 
     private String stockingRatio;
 
@@ -40,13 +39,6 @@ public class SeedStock {
         this.stockingDensity = stockingDensity;
     }
 
-    public String getPondType() {
-        return pondType;
-    }
-
-    public void setPondType(String pondType) {
-        this.pondType = pondType;
-    }
 
     public String getStockingRatio() {
         return stockingRatio;

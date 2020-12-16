@@ -13,125 +13,86 @@ public class DailyPondRecords {
 	@Id
 	private int id;
 	private double temprature;
-	private double dissolvedOxygen;
+	private double nitrogen;
 	private double ammonia;
-	private int pH;
-	private double carbonOxide;
-	//private double waterLevel;
-
-	//private String date;
-
-	//private String comment;
-	
 	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false)
 	private Pond pond;
-	
-	public DailyPondRecords() {
+
+	private String createdAt;
+
+	private boolean status;
+
+		@Override
+		public String toString() {
+			return "DailyPondRecords{" +
+					"id=" + id +
+					", temprature=" + temprature +
+					", nitrogen=" + nitrogen +
+					", ammonia=" + ammonia +
+					", pond=" + pond +
+					", createdAt='" + createdAt + '\'' +
+					", status=" + status +
+					'}';
+		}
+
+		public DailyPondRecords() {
 		super();
 	}
 
-	public DailyPondRecords(int id, double temprature, double dissolvedOxygen, double ammonia, int pH,
-			int carbonOxide, Pond pond) {
-		super();
-		this.id = id;
-	//ss	this.date = date;
-		this.temprature = temprature;
-		this.dissolvedOxygen = dissolvedOxygen;
-		this.ammonia = ammonia;
-		this.pH = pH;
-		this.carbonOxide = carbonOxide;
-	//	this.waterLevel = waterLevel;
-		//this.comment = comment;
-		this.pond = pond;
+		public boolean isStatus() {
+			return status;
+		}
+
+		public void setStatus(boolean status) {
+			this.status = status;
+		}
+
+		public String getCreatedAt() {
+			return createdAt;
+		}
+
+		public void setCreatedAt(String createdAt) {
+			this.createdAt = createdAt;
+		}
+
+		public double getAmmonia() {
+			return ammonia;
+		}
+
+		public void setAmmonia(double ammonia) {
+			this.ammonia = ammonia;
+		}
+
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public double getTemprature() {
+			return temprature;
+		}
+
+		public void setTemprature(double temprature) {
+			this.temprature = temprature;
+		}
+
+		public double getNitrogen() {
+			return nitrogen;
+		}
+
+		public void setNitrogen(double nitrogen) {
+			this.nitrogen = nitrogen;
+		}
+
+		public Pond getPond() {
+			return pond;
+		}
+
+		public void setPond(Pond pond) {
+			this.pond = pond;
+		}
 	}
-
-	public int getId() {
-		return id;
-	}
-
-//	public String getDate() {
-//		return date;
-//	}
-
-	public double getTemprature() {
-		return temprature;
-	}
-
-	public double getDissolvedOxygen() {
-		return dissolvedOxygen;
-	}
-
-	public double getAmmonia() {
-		return ammonia;
-	}
-
-	public int getpH() {
-		return pH;
-	}
-
-	public double getCarbonOxide() {
-		return carbonOxide;
-	}
-
-//	public double getWaterLevel() {
-//		return waterLevel;
-//	}
-
-//	public String getComment() {
-//		return comment;
-//	}
-
-	public Pond getPondId() {
-		return pond;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-//	public void setDate(String date) {
-//		this.date = date;
-//	}
-
-	public void setTemprature(double temprature) {
-		this.temprature = temprature;
-	}
-
-	public void setDissolvedOxygen(double dissolvedOxygen) {
-		this.dissolvedOxygen = dissolvedOxygen;
-	}
-
-	public void setAmmonia(double ammonia) {
-		this.ammonia = ammonia;
-	}
-
-	public void setpH(int pH) {
-		this.pH = pH;
-	}
-
-	public void setCarbonOxide(double carbonOxide) {
-		this.carbonOxide = carbonOxide;
-	}
-
-//	public void setWaterLevel(double waterLevel) {
-//		this.waterLevel = waterLevel;
-//	}
-
-//	public void setComment(String comment) {
-//		this.comment = comment;
-//	}
-
-	public void setPondId(Pond pondId) {
-		this.pond = pondId;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-
-}
