@@ -1,12 +1,15 @@
 package com.example.fishFarm.models;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
-public class SystemUser  {
+public class SystemUser {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String fname;
     private String lname;
@@ -17,8 +20,9 @@ public class SystemUser  {
     private String createdAt;
     private String updatedAt;
 
-     @ManyToOne(cascade = CascadeType.ALL,optional = false,fetch = FetchType.EAGER)
-     @JoinColumn(nullable = false)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY)
+    @JoinColumn()
     private FarmSection section;
 
     public String getPhoneNo() {
@@ -49,17 +53,17 @@ public class SystemUser  {
 
     }
 
-    public  SystemUser(int id,String fname,String lname,String username,String password,String email,FarmSection section,String createdAt,String updatedAt,String phoneno){
-        this.id=id;
-        this.fname=fname;
-        this.lname=lname;
-        this.username=username;
-        this.password=password;
-        this.email=email;
-        this.section=section;
-        this.createdAt=createdAt;
-        this.updatedAt=updatedAt;
-        this.phoneNo=phoneno;
+    public SystemUser(int id, String fname, String lname, String username, String password, String email, FarmSection section, String createdAt, String updatedAt, String phoneno) {
+        this.id = id;
+        this.fname = fname;
+        this.lname = lname;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.section = section;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.phoneNo = phoneno;
 
     }
 
