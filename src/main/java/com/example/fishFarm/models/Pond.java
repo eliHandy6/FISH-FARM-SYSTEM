@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Pond {
 	
 	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	private int pondNumber;
 

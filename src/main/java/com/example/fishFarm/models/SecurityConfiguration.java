@@ -35,44 +35,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
 
-
-                .antMatchers("/pond/**").access("hasRole('manager')")
-                .antMatchers("/feeds/**").hasRole("manager")
-                .antMatchers("/pondtype/**").hasRole("manager")
-                .antMatchers("/species/**").hasRole("manager")
-                .antMatchers("/ManagerVariety/**").hasRole("manager")
-                .antMatchers("/admin/**").hasRole("manager")
-                .antMatchers("/farmmanager/**").hasRole("manager")
-
-
-
-                .antMatchers("/inventoryManager/**").hasRole("accountant")
-
-                .antMatchers("/inventoryManagerVariety/**").hasRole("accountant")
-
-                .antMatchers("/inventoryManagerMedicines/**").hasRole("accountant")
+//manager
+                .antMatchers("/pond/**").permitAll()
+                .antMatchers("/feeds/**").permitAll()
+                .antMatchers("/pondtype/**").permitAll()
+                .antMatchers("/species/**").permitAll()
+                .antMatchers("/ManagerVariety/**").permitAll()
+                .antMatchers("/farmmanager/**").permitAll()
+                .antMatchers("/admin/**").permitAll()
 
 
-                .antMatchers("/operationManager/**").hasRole("operations")
-
-
-                .antMatchers("/operation/**").hasRole("operations")
-
-
-                .antMatchers("/OperationalMaanager/**").hasRole("operations")
-
-
-                .antMatchers("/operationMana/**").hasRole("operations")
-
-
+//operations
+                .antMatchers("/inventoryManager/**").permitAll()
+                .antMatchers("/inventoryManagerVariety/**").permitAll()
+                .antMatchers("/inventoryManagerMedicines/**").permitAll()
+                .antMatchers("/operationManager/**").permitAll()
+                .antMatchers("/operation/**").permitAll()
+                .antMatchers("/OperationalMaanager/**").permitAll()
+                .antMatchers("/operationMana/**").permitAll()
                 .antMatchers("/operationManag/**").hasRole("operations")
-                .antMatchers("/farm/**").hasRole("operations")
+                .antMatchers("/farm/**").permitAll()
 
-                .antMatchers("/").permitAll()
+                .antMatchers("/**").permitAll()
+
 
 
                 .and().formLogin()
                 .loginPage("/login").permitAll()
+
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/");
     }

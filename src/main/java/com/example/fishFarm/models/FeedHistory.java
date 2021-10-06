@@ -1,15 +1,11 @@
 package com.example.fishFarm.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class FeedHistory {
 	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false)

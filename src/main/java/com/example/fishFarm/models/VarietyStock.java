@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class VarietyStock {
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)

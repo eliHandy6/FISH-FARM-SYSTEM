@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class SystemUser  {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
     private String fname;
     private String lname;

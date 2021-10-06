@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class SeedStock {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int number;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)

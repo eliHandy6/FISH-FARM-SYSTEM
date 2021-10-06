@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Owner {
 
 
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	private int id;
 	private int idNo;

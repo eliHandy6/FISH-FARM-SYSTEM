@@ -1,11 +1,6 @@
 package com.example.fishFarm.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 
@@ -13,6 +8,7 @@ public class PondProduction {
 
 	
 		@Id
+		@GeneratedValue(strategy= GenerationType.AUTO)
 		private int productionid;
 		
 		@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

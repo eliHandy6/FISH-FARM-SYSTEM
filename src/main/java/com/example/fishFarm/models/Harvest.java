@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class Harvest {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)

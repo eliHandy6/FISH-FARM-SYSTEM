@@ -1,16 +1,12 @@
 package com.example.fishFarm.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class PondOwnership {
 	
 	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
