@@ -75,10 +75,10 @@ public class UsersRegistrationControler {
         ModelAndView mav=new ModelAndView("user");
         SystemUser user=systemUsersService.findById(id);
 
-        FarmSection section = sectionsService.findById(user.getSection().getId());
-        String returnedsection=section.getSectionName();
-        section.setSectionName(returnedsection);
-        user.setSection(section);
+//        FarmSection section = sectionsService.findById(user.getSection().getId());
+//        String returnedsection=section.getSectionName();
+//        section.setSectionName(returnedsection);
+//        user.setSection(section);
 
         mav.addObject("user",user);
         return mav;
