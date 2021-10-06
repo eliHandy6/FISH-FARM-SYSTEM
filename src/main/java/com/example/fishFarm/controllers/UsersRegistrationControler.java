@@ -113,18 +113,9 @@ public class UsersRegistrationControler {
             user.setPassword(generatedpassword);
             systemUsersService.SaveUser(user);
 
-            data = "The user " + user.getUsername() + "  is successfully saved and logins  sent to " + user.getEmail();
+            data = "The user " + user.getUsername() + "  is successfully saved " + user.getEmail();
             redirectAttributes.addFlashAttribute("message", "success");
             redirectAttributes.addFlashAttribute("data", data);
-
-            try {
-                smtpMailSender.send(user.getEmail(),"Logins to the System with " +
-                        ""+user.getSection().getSectionName(),"Congratulations!,\n" +
-                        "Your username :" +
-                        user.getUsername()
-                        +"\n Password : "+generatedpassword);
-                return "redirect:/admin/addUser";
-            } catch (MessagingException e) {
 
                 return "redirect:/admin/addUser";
             }
