@@ -129,10 +129,6 @@ public class UsersRegistrationControler {
                 return "redirect:/admin/addUser";
             }
 
-//            smsNotification.UserNotification(user);
-
-
-            return "redirect:/admin/addUser";
 
         }
 
