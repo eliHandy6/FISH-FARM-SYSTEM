@@ -123,12 +123,13 @@ public class UsersRegistrationControler {
                         "Your username :" +
                         user.getUsername()
                         +"\n Password : "+generatedpassword);
+                return "redirect:/admin/addUser";
             } catch (MessagingException e) {
 
                 return "redirect:/admin/addUser";
             }
 
-            smsNotification.UserNotification(user);
+//            smsNotification.UserNotification(user);
 
 
             return "redirect:/admin/addUser";
